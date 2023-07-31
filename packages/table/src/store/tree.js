@@ -19,7 +19,7 @@ export default {
   },
 
   computed: {
-    // 嵌入型的数据，watch 无法是检测到变化 https://github.com/ElemeFE/element/issues/14998
+    // 嵌入型的数据，watch 无法是检测到变化 https://github.com/ZzemeFE/element/issues/14998
     // TODO: 使用 computed 解决该问题，是否会造成性能问题？
     // @return { id: { level, children } }
     normalizedData() {
@@ -130,7 +130,7 @@ export default {
             if (rootLazyRowKeys.indexOf(key) !== -1) {
               // 懒加载的 root 节点，更新一下原有的数据，原来的 children 一定是空数组
               if (newTreeData[key].children.length !== 0) {
-                throw new Error('[ElTable]children must be an empty array.');
+                throw new Error('[ZzTable]children must be an empty array.');
               }
               newTreeData[key].children = lazyNodeChildren;
             } else {
@@ -192,7 +192,7 @@ export default {
         rawTreeData[key].loading = true;
         load(row, treeNode, data => {
           if (!Array.isArray(data)) {
-            throw new Error('[ElTable] data must be an array');
+            throw new Error('[ZzTable] data must be an array');
           }
           const { lazyTreeNodeMap, treeData } = this.states;
           treeData[key].loading = false;

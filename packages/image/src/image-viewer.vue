@@ -1,45 +1,45 @@
 <template>
   <transition name="viewer-fade">
-    <div tabindex="-1" ref="el-image-viewer__wrapper" class="el-image-viewer__wrapper" :style="{ 'z-index': viewerZIndex }">
-      <div class="el-image-viewer__mask" @click.self="handleMaskClick"></div>
+    <div tabindex="-1" ref="zz-image-viewer__wrapper" class="zz-image-viewer__wrapper" :style="{ 'z-index': viewerZIndex }">
+      <div class="zz-image-viewer__mask" @click.self="handleMaskClick"></div>
       <!-- CLOSE -->
-      <span class="el-image-viewer__btn el-image-viewer__close" @click="hide">
-        <i class="el-icon-close"></i>
+      <span class="zz-image-viewer__btn zz-image-viewer__close" @click="hide">
+        <i class="zz-icon-close"></i>
       </span>
       <!-- ARROW -->
       <template v-if="!isSingle">
         <span
-          class="el-image-viewer__btn el-image-viewer__prev"
+          class="zz-image-viewer__btn zz-image-viewer__prev"
           :class="{ 'is-disabled': !infinite && isFirst }"
           @click="prev">
-          <i class="el-icon-arrow-left"/>
+          <i class="zz-icon-arrow-left"/>
         </span>
         <span
-          class="el-image-viewer__btn el-image-viewer__next"
+          class="zz-image-viewer__btn zz-image-viewer__next"
           :class="{ 'is-disabled': !infinite && isLast }"
           @click="next">
-          <i class="el-icon-arrow-right"/>
+          <i class="zz-icon-arrow-right"/>
         </span>
       </template>
       <!-- ACTIONS -->
-      <div class="el-image-viewer__btn el-image-viewer__actions">
-        <div class="el-image-viewer__actions__inner">
-          <i class="el-icon-zoom-out" @click="handleActions('zoomOut')"></i>
-          <i class="el-icon-zoom-in" @click="handleActions('zoomIn')"></i>
-          <i class="el-image-viewer__actions__divider"></i>
+      <div class="zz-image-viewer__btn zz-image-viewer__actions">
+        <div class="zz-image-viewer__actions__inner">
+          <i class="zz-icon-zoom-out" @click="handleActions('zoomOut')"></i>
+          <i class="zz-icon-zoom-in" @click="handleActions('zoomIn')"></i>
+          <i class="zz-image-viewer__actions__divider"></i>
           <i :class="mode.icon" @click="toggleMode"></i>
-          <i class="el-image-viewer__actions__divider"></i>
-          <i class="el-icon-refresh-left" @click="handleActions('anticlocelise')"></i>
-          <i class="el-icon-refresh-right" @click="handleActions('clocelise')"></i>
+          <i class="zz-image-viewer__actions__divider"></i>
+          <i class="zz-icon-refresh-left" @click="handleActions('anticlocelise')"></i>
+          <i class="zz-icon-refresh-right" @click="handleActions('clocelise')"></i>
         </div>
       </div>
       <!-- CANVAS -->
-      <div class="el-image-viewer__canvas">
+      <div class="zz-image-viewer__canvas">
         <img
           v-for="(url, i) in urlList"
           v-if="i === index"
           ref="img"
-          class="el-image-viewer__img"
+          class="zz-image-viewer__img"
           :key="url"
           :src="currentImg"
           :style="imgStyle"
@@ -60,11 +60,11 @@ import { PopupManager } from 'element-ui/src/utils/popup';
 const Mode = {
   CONTAIN: {
     name: 'contain',
-    icon: 'el-icon-full-screen'
+    icon: 'zz-icon-full-screen'
   },
   ORIGINAL: {
     name: 'original',
-    icon: 'el-icon-c-scale-to-original'
+    icon: 'zz-icon-c-scale-to-original'
   }
 };
 
@@ -319,7 +319,7 @@ export default {
     }
     // add tabindex then wrapper can be focusable via Javascript
     // focus wrapper so arrow key can't cause inner scroll behavior underneath
-    this.$refs['el-image-viewer__wrapper'].focus();
+    this.$refs['zz-image-viewer__wrapper'].focus();
   },
   destroyed() {
     // if appendToBody is true, remove DOM node after destroy

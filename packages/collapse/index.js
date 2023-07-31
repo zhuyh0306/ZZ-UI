@@ -1,9 +1,9 @@
-import ElCollapse from './src/collapse';
+import ZzCollapse from './src/collapse';
 
 /* istanbul ignore next */
-ElCollapse.install = function(Vue) {
-  Vue.component(ElCollapse.name, ElCollapse);
+ZzCollapse.install = function (Vue) {
+  Vue.component(ZzCollapse.name, ZzCollapse);
 };
 
-export default ElCollapse;
+export default ZzCollapse;
 

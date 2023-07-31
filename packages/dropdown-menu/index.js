@@ -1,8 +1,8 @@
-import ElDropdownMenu from '../dropdown/src/dropdown-menu';
+import ZzDropdownMenu from '../dropdown/src/dropdown-menu';
 
 /* istanbul ignore next */
-ElDropdownMenu.install = function(Vue) {
-  Vue.component(ElDropdownMenu.name, ElDropdownMenu);
+ZzDropdownMenu.install = function (Vue) {
+  Vue.component(ZzDropdownMenu.name, ZzDropdownMenu);
 };
 
-export default ElDropdownMenu;
+export default ZzDropdownMenu;

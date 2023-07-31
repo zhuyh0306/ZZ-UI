@@ -1,17 +1,17 @@
 <template>
-  <div class="el-collapse-item"
+  <div class="zz-collapse-item"
     :class="{'is-active': isActive, 'is-disabled': disabled }">
     <div
       role="tab"
       :aria-expanded="isActive"
-      :aria-controls="`el-collapse-content-${id}`"
-      :aria-describedby ="`el-collapse-content-${id}`"
+      :aria-controls="`zz-collapse-content-${id}`"
+      :aria-describedby ="`zz-collapse-content-${id}`"
     >
       <div
-        class="el-collapse-item__header"
+        class="zz-collapse-item__header"
         @click="handleHeaderClick"
         role="button"
-        :id="`el-collapse-head-${id}`"
+        :id="`zz-collapse-head-${id}`"
         :tabindex="disabled ? undefined : 0"
         @keyup.space.enter.stop="handleEnterClick"
         :class="{
@@ -23,40 +23,40 @@
       >
         <slot name="title">{{title}}</slot>
         <i
-          class="el-collapse-item__arrow el-icon-arrow-right"
+          class="zz-collapse-item__arrow zz-icon-arrow-right"
           :class="{'is-active': isActive}">
         </i>
       </div>
     </div>
-    <el-collapse-transition>
+    <zz-collapse-transition>
       <div
-        class="el-collapse-item__wrap"
+        class="zz-collapse-item__wrap"
         v-show="isActive"
         role="tabpanel"
         :aria-hidden="!isActive"
-        :aria-labelledby="`el-collapse-head-${id}`"
-        :id="`el-collapse-content-${id}`"
+        :aria-labelledby="`zz-collapse-head-${id}`"
+        :id="`zz-collapse-content-${id}`"
       >
-        <div class="el-collapse-item__content">
+        <div class="zz-collapse-item__content">
           <slot></slot>
         </div>
       </div>
-    </el-collapse-transition>
+    </zz-collapse-transition>
   </div>
 </template>
 <script>
-  import ElCollapseTransition from 'element-ui/src/transitions/collapse-transition';
+  import ZzCollapseTransition from 'element-ui/src/transitions/collapse-transition';
   import Emitter from 'element-ui/src/mixins/emitter';
   import { generateId } from 'element-ui/src/utils/util';
 
   export default {
-    name: 'ElCollapseItem',
+    name: 'ZzCollapseItem',
 
-    componentName: 'ElCollapseItem',
+    componentName: 'ZzCollapseItem',
 
     mixins: [Emitter],
 
-    components: { ElCollapseTransition },
+    components: { ZzCollapseTransition },
 
     data() {
       return {
@@ -102,12 +102,12 @@
       },
       handleHeaderClick() {
         if (this.disabled) return;
-        this.dispatch('ElCollapse', 'item-click', this);
+        this.dispatch('ZzCollapse', 'item-click', this);
         this.focusing = false;
         this.isClick = true;
       },
       handleEnterClick() {
-        this.dispatch('ElCollapse', 'item-click', this);
+        this.dispatch('ZzCollapse', 'item-click', this);
       }
     }
   };

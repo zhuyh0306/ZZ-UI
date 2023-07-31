@@ -53,7 +53,7 @@
       transform: rotate(90deg);
     }
 
-    > .el-icon {
+    >.zz-icon {
       position: absolute;
       left: 50%;
       top: 50%;
@@ -89,19 +89,19 @@
     border-right: 0;
     border-bottom: 0;
 
-    .el-table__cell.gutter {
+    .zz-table__cell.gutter {
       border-right-width: 1px;
     }
   }
 
   @include m(scrollable-x) {
-    .el-table__body-wrapper {
+    .zz-table__body-wrapper {
       overflow-x: auto;
     }
   }
 
   @include m(scrollable-y) {
-    .el-table__body-wrapper {
+    .zz-table__body-wrapper {
       overflow-y: auto;
     }
   }
@@ -111,13 +111,13 @@
     font-weight: 500;
 
     &.is-group {
-      th.el-table__cell {
+      th.zz-table__cell {
         background: $--background-color-base;
       }
     }
   }
 
-  .el-table__cell {
+  .zz-table__cell {
     padding: 12px 0;
     min-width: 0;
     box-sizing: border-box;
@@ -142,28 +142,30 @@
     }
 
     &.is-hidden {
-      > * {
+      >* {
         visibility: hidden;
       }
     }
   }
 
   @include m(medium) {
-    .el-table__cell {
+    .zz-table__cell {
       padding: 10px 0;
     }
   }
 
   @include m(small) {
     font-size: 12px;
-    .el-table__cell {
+
+    .zz-table__cell {
       padding: 8px 0;
     }
   }
 
   @include m(mini) {
     font-size: 12px;
-    .el-table__cell {
+
+    .zz-table__cell {
       padding: 6px 0;
     }
   }
@@ -176,21 +178,21 @@
     }
   }
 
-  th.el-table__cell.is-leaf,
-  td.el-table__cell {
+  th.zz-table__cell.is-leaf,
+  td.zz-table__cell {
     border-bottom: $--table-border;
   }
 
-  th.el-table__cell.is-sortable {
+  th.zz-table__cell.is-sortable {
     cursor: pointer;
   }
 
-  th.el-table__cell {
+  th.zz-table__cell {
     overflow: hidden;
     user-select: none;
     background-color: $--table-header-background-color;
 
-    > .cell {
+    >.cell {
       display: inline-block;
       box-sizing: border-box;
       position: relative;
@@ -204,7 +206,7 @@
       }
     }
 
-    &.required > div::before {
+    &.required>div::before {
       display: inline-block;
       content: "";
       width: 8px;
@@ -216,7 +218,7 @@
     }
   }
 
-  td.el-table__cell {
+  td.zz-table__cell {
     div {
       box-sizing: border-box;
     }
@@ -236,7 +238,7 @@
     padding-left: 10px;
     padding-right: 10px;
 
-    &.el-tooltip {
+    &.zz-tooltip {
       white-space: nowrap;
       min-width: 50px;
     }
@@ -277,11 +279,11 @@
     border-right: none;
     border-bottom: none;
 
-    &.el-loading-parent--relative {
+    &.zz-loading-parent--relative {
       border-color: transparent;
     }
 
-    .el-table__cell {
+    .zz-table__cell {
       border-right: $--table-border;
 
       &:first-child .cell {
@@ -289,12 +291,12 @@
       }
     }
 
-    th.el-table__cell.gutter:last-of-type {
+    th.zz-table__cell.gutter:last-of-type {
       border-bottom: $--table-border;
       border-bottom-width: 1px;
     }
 
-    & th.el-table__cell {
+    & th.zz-table__cell {
       border-bottom: $--table-border;
     }
   }
@@ -336,9 +338,9 @@
     left: auto;
     right: 0;
 
-    .el-table__fixed-header-wrapper,
-    .el-table__fixed-body-wrapper,
-    .el-table__fixed-footer-wrapper {
+    .zz-table__fixed-header-wrapper,
+    .zz-table__fixed-body-wrapper,
+    .zz-table__fixed-footer-wrapper {
       left: auto;
       right: 0;
     }
@@ -357,7 +359,7 @@
     bottom: 0;
     z-index: 3;
 
-    & tbody td.el-table__cell {
+    & tbody td.zz-table__cell {
       border-top: $--table-border;
       background-color: $--table-row-hover-background-color;
       color: $--table-font-color;
@@ -378,7 +380,8 @@
 
   @include e(footer-wrapper) {
     margin-top: -1px;
-    td.el-table__cell {
+
+    td.zz-table__cell {
       border-top: $--table-border;
     }
   }
@@ -391,7 +394,7 @@
   @include e((header-wrapper, footer-wrapper)) {
     overflow: hidden;
 
-    & tbody td.el-table__cell {
+    & tbody td.zz-table__cell {
       background-color: $--table-row-hover-background-color;
       color: $--table-font-color;
     }
@@ -402,33 +405,34 @@
     position: relative;
 
     @include when(scrolling-none) {
-      ~ .el-table__fixed,
-      ~ .el-table__fixed-right {
+
+      ~.zz-table__fixed,
+      ~.zz-table__fixed-right {
         box-shadow: none;
       }
     }
 
     @include when(scrolling-left) {
-      ~ .el-table__fixed {
+      ~.zz-table__fixed {
         box-shadow: none;
       }
     }
 
     @include when(scrolling-right) {
-      ~ .el-table__fixed-right {
+      ~.zz-table__fixed-right {
         box-shadow: none;
       }
     }
 
-    .el-table--border {
+    .zz-table--border {
       @include when(scrolling-right) {
-        ~ .el-table__fixed-right {
+        ~.zz-table__fixed-right {
           border-left: $--table-border;
         }
       }
 
       @include when(scrolling-left) {
-        ~ .el-table__fixed {
+        ~.zz-table__fixed {
           border-right: $--table-border;
         }
       }
@@ -480,13 +484,13 @@
   }
 
   @include m(striped) {
-    & .el-table__body {
-      & tr.el-table__row--striped {
-        td.el-table__cell {
+    & .zz-table__body {
+      & tr.zz-table__row--striped {
+        td.zz-table__cell {
           background: #FAFAFA;
         }
 
-        &.current-row td.el-table__cell {
+        &.current-row td.zz-table__cell {
           background-color: $--table-current-row-background-color;
         }
       }
@@ -495,16 +499,20 @@
 
   @include e(body) {
     tr.hover-row {
-      &, &.el-table__row--striped {
-        &, &.current-row {
-          > td.el-table__cell {
+
+      &,
+      &.zz-table__row--striped {
+
+        &,
+        &.current-row {
+          >td.zz-table__cell {
             background-color: $--table-row-hover-background-color;
           }
         }
       }
     }
 
-    tr.current-row > td.el-table__cell {
+    tr.current-row>td.zz-table__cell {
       background-color: $--table-current-row-background-color;
     }
   }
@@ -532,27 +540,28 @@
   }
 
   @include m(enable-row-transition) {
-    .el-table__body td.el-table__cell {
+    .zz-table__body td.zz-table__cell {
       transition: background-color .25s ease;
     }
   }
 
   @include m(enable-row-hover) {
-    .el-table__body tr:hover > td.el-table__cell {
+    .zz-table__body tr:hover>td.zz-table__cell {
       background-color: $--table-row-hover-background-color;
     }
   }
 
   @include m(fluid-height) {
-    .el-table__fixed,
-    .el-table__fixed-right {
+
+    .zz-table__fixed,
+    .zz-table__fixed-right {
       bottom: 0;
       overflow: hidden;
     }
   }
 
-  [class*=el-table__row--level] {
-    .el-table__expand-icon {
+  [class*=zz-table__row--level] {
+    .zz-table__expand-icon {
       display: inline-block;
       width: 20px;
       line-height: 20px;

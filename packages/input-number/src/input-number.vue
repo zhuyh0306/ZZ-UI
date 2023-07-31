@@ -2,31 +2,31 @@
   <div
     @dragstart.prevent
     :class="[
-      'el-input-number',
-      inputNumberSize ? 'el-input-number--' + inputNumberSize : '',
+      'zz-input-number',
+      inputNumberSize ? 'zz-input-number--' + inputNumberSize : '',
       { 'is-disabled': inputNumberDisabled },
       { 'is-without-controls': !controls },
       { 'is-controls-right': controlsAtRight }
     ]">
     <span
-      class="el-input-number__decrease"
+      class="zz-input-number__decrease"
       role="button"
       v-if="controls"
       v-repeat-click="decrease"
       :class="{'is-disabled': minDisabled}"
       @keydown.enter="decrease">
-      <i :class="`el-icon-${controlsAtRight ? 'arrow-down' : 'minus'}`"></i>
+      <i :class="`zz-icon-${controlsAtRight ? 'arrow-down' : 'minus'}`"></i>
     </span>
     <span
-      class="el-input-number__increase"
+      class="zz-input-number__increase"
       role="button"
       v-if="controls"
       v-repeat-click="increase"
       :class="{'is-disabled': maxDisabled}"
       @keydown.enter="increase">
-      <i :class="`el-icon-${controlsAtRight ? 'arrow-up' : 'plus'}`"></i>
+      <i :class="`zz-icon-${controlsAtRight ? 'arrow-up' : 'plus'}`"></i>
     </span>
-    <el-input
+    <zz-input
       ref="input"
       :value="displayValue"
       :placeholder="placeholder"
@@ -42,16 +42,16 @@
       @focus="handleFocus"
       @input="handleInput"
       @change="handleInputChange">
-    </el-input>
+    </zz-input>
   </div>
 </template>
 <script>
-  import ElInput from 'element-ui/packages/input';
+  import ZzInput from 'element-ui/packages/input';
   import Focus from 'element-ui/src/mixins/focus';
   import RepeatClick from 'element-ui/src/directives/repeat-click';
 
   export default {
-    name: 'ElInputNumber',
+    name: 'ZzInputNumber',
     mixins: [Focus('input')],
     inject: {
       elForm: {
@@ -65,7 +65,7 @@
       repeatClick: RepeatClick
     },
     components: {
-      ElInput
+      ZzInput
     },
     props: {
       step: {
@@ -151,7 +151,7 @@
         const stepPrecision = getPrecision(step);
         if (precision !== undefined) {
           if (stepPrecision > precision) {
-            console.warn('[Element Warn][InputNumber]precision should not be less than the decimal places of step');
+            console.warn('[Zzement Warn][InputNumber]precision should not be less than the decimal places of step');
           }
           return precision;
         } else {

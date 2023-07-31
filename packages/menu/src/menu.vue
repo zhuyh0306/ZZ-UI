@@ -5,7 +5,7 @@
   import { addClass, removeClass, hasClass } from 'element-ui/src/utils/dom';
 
   export default {
-    name: 'ElMenu',
+    name: 'ZzMenu',
 
     render (h) {
       const component = (
@@ -14,9 +14,9 @@
           key={ +this.collapse }
           style={{ backgroundColor: this.backgroundColor || '' }}
           class={{
-            'el-menu--horizontal': this.mode === 'horizontal',
-            'el-menu--collapse': this.collapse,
-            "el-menu": true
+            'zz-menu--horizontal': this.mode === 'horizontal',
+            'zz-menu--collapse': this.collapse,
+            "zz-menu": true
           }}
         >
           { this.$slots.default }
@@ -25,16 +25,16 @@
 
       if (this.collapseTransition) {
         return (
-          <el-menu-collapse-transition>
+          <zz-menu-collapse-transition>
             { component }
-          </el-menu-collapse-transition>
+          </zz-menu-collapse-transition>
         );
       } else {
         return component;
       }
     },
 
-    componentName: 'ElMenu',
+    componentName: 'ZzMenu',
 
     mixins: [emitter, Migrating],
 
@@ -45,9 +45,9 @@
     },
 
     components: {
-      'el-menu-collapse-transition': {
+      'zz-menu-collapse-transition': {
         functional: true,
-        render(createElement, context) {
+        render(createZzement, context) {
           const data = {
             props: {
               mode: 'out-in'
@@ -58,28 +58,28 @@
               },
 
               enter(el) {
-                addClass(el, 'el-opacity-transition');
+                addClass(el, 'zz-opacity-transition');
                 el.style.opacity = 1;
               },
 
               afterEnter(el) {
-                removeClass(el, 'el-opacity-transition');
+                removeClass(el, 'zz-opacity-transition');
                 el.style.opacity = '';
               },
 
               beforeLeave(el) {
                 if (!el.dataset) el.dataset = {};
 
-                if (hasClass(el, 'el-menu--collapse')) {
-                  removeClass(el, 'el-menu--collapse');
+                if (hasClass(el, 'zz-menu--collapse')) {
+                  removeClass(el, 'zz-menu--collapse');
                   el.dataset.oldOverflow = el.style.overflow;
                   el.dataset.scrollWidth = el.clientWidth;
-                  addClass(el, 'el-menu--collapse');
+                  addClass(el, 'zz-menu--collapse');
                 } else {
-                  addClass(el, 'el-menu--collapse');
+                  addClass(el, 'zz-menu--collapse');
                   el.dataset.oldOverflow = el.style.overflow;
                   el.dataset.scrollWidth = el.clientWidth;
-                  removeClass(el, 'el-menu--collapse');
+                  removeClass(el, 'zz-menu--collapse');
                 }
 
                 el.style.width = el.scrollWidth + 'px';
@@ -92,7 +92,7 @@
               }
             }
           };
-          return createElement('transition', data, context.children);
+          return createZzement('transition', data, context.children);
         }
       }
     },
@@ -154,7 +154,7 @@
 
       collapse(value) {
         if (value) this.openedMenus = [];
-        this.broadcast('ElSubmenu', 'toggle-collapse', value);
+        this.broadcast('ZzSubmenu', 'toggle-collapse', value);
       }
     },
     methods: {
@@ -273,7 +273,7 @@
             this.activeIndex = oldActiveIndex;
             if (error) {
               // vue-router 3.1.0+ push/replace cause NavigationDuplicated error 
-              // https://github.com/ElemeFE/element/issues/17044
+              // https://github.com/ZzemeFE/element/issues/17044
               if (error.name === 'NavigationDuplicated') return
               console.error(error)
             }

@@ -1,8 +1,8 @@
-import ElProgress from './src/progress';
+import ZzProgress from './src/progress';
 
 /* istanbul ignore next */
-ElProgress.install = function(Vue) {
-  Vue.component(ElProgress.name, ElProgress);
+ZzProgress.install = function (Vue) {
+  Vue.component(ZzProgress.name, ZzProgress);
 };
 
-export default ElProgress;
+export default ZzProgress;

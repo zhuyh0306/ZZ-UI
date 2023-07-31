@@ -1,12 +1,12 @@
 <template>
-  <main class="el-main">
+  <main class="zz-main">
     <slot></slot>
   </main>
 </template>
 
 <script>
   export default {
-    name: 'ElMain',
-    componentName: 'ElMain'
+    name: 'ZzMain',
+    componentName: 'ZzMain'
   };
 </script>

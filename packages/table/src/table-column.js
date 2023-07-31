@@ -1,11 +1,11 @@
 import { cellStarts, cellForced, defaultRenderCell, treeCellPrefix } from './config';
 import { mergeOptions, parseWidth, parseMinWidth, compose } from './util';
-import ElCheckbox from 'element-ui/packages/checkbox';
+import ZzCheckbox from 'element-ui/packages/checkbox';
 
 let columnIdSeed = 1;
 
 export default {
-  name: 'ElTableColumn',
+  name: 'ZzTableColumn',
 
   props: {
     type: {
@@ -112,7 +112,7 @@ export default {
       }, {});
     },
 
-    getColumnElIndex(children, child) {
+    getColumnZzIndex(children, child) {
       return [].indexOf.call(children, child);
     },
 
@@ -146,7 +146,7 @@ export default {
     setColumnRenders(column) {
       // renderHeader 属性不推荐使用。
       if (this.renderHeader) {
-        console.warn('[Element Warn][TableColumn]Comparing to render-header, scoped-slot header is easier to use. We recommend users to use scoped-slot header.');
+        console.warn('[Zzement Warn][TableColumn]Comparing to render-header, scoped-slot header is easier to use. We recommend users to use scoped-slot header.');
       } else if (column.type !== 'selection') {
         column.renderHeader = (h, scope) => {
           const renderHeader = this.$scopedSlots.header;
@@ -159,7 +159,7 @@ export default {
       if (column.type === 'expand') {
         // 对于展开行，renderCell 不允许配置的。在上一步中已经设置过，这里需要简单封装一下。
         column.renderCell = (h, data) => (<div class="cell">
-          { originRenderCell(h, data) }
+          {originRenderCell(h, data)}
         </div>);
         this.owner.renderExpanded = (h, data) => {
           return this.$scopedSlots.default
@@ -182,12 +182,12 @@ export default {
             style: {}
           };
           if (column.showOverflowTooltip) {
-            props.class += ' el-tooltip';
-            props.style = {width: (data.column.realWidth || data.column.width) - 1 + 'px'};
+            props.class += ' zz-tooltip';
+            props.style = { width: (data.column.realWidth || data.column.width) - 1 + 'px' };
           }
-          return (<div { ...props }>
-            { prefix }
-            { children }
+          return (<div {...props}>
+            {prefix}
+            {children}
           </div>);
         };
       }
@@ -241,7 +241,7 @@ export default {
   },
 
   components: {
-    ElCheckbox
+    ZzCheckbox
   },
 
   beforeCreate() {
@@ -301,7 +301,7 @@ export default {
     const owner = this.owner;
     const parent = this.columnOrTableParent;
     const children = this.isSubColumn ? parent.$el.children : parent.$refs.hiddenColumns.children;
-    const columnIndex = this.getColumnElIndex(children, this.$el);
+    const columnIndex = this.getColumnZzIndex(children, this.$el);
 
     owner.store.commit('insertColumn', this.columnConfig, columnIndex, this.isSubColumn ? parent.columnConfig : null);
   },

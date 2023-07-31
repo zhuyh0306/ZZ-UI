@@ -2,22 +2,22 @@
   import Clickoutside from 'element-ui/src/utils/clickoutside';
   import Emitter from 'element-ui/src/mixins/emitter';
   import Migrating from 'element-ui/src/mixins/migrating';
-  import ElButton from 'element-ui/packages/button';
-  import ElButtonGroup from 'element-ui/packages/button-group';
+  import ZzButton from 'element-ui/packages/button';
+  import ZzButtonGroup from 'element-ui/packages/button-group';
   import { generateId } from 'element-ui/src/utils/util';
 
   export default {
-    name: 'ElDropdown',
+    name: 'ZzDropdown',
 
-    componentName: 'ElDropdown',
+    componentName: 'ZzDropdown',
 
     mixins: [Emitter, Migrating],
 
     directives: { Clickoutside },
 
     components: {
-      ElButton,
-      ElButtonGroup
+      ZzButton,
+      ZzButtonGroup
     },
 
     provide() {
@@ -70,10 +70,10 @@
       return {
         timeout: null,
         visible: false,
-        triggerElm: null,
+        triggerZzm: null,
         menuItems: null,
         menuItemsArray: null,
-        dropdownElm: null,
+        dropdownZzm: null,
         focusing: false,
         listId: `dropdown-menu-${generateId()}`
       };
@@ -91,11 +91,11 @@
 
     watch: {
       visible(val) {
-        this.broadcast('ElDropdownMenu', 'visible', val);
+        this.broadcast('ZzDropdownMenu', 'visible', val);
         this.$emit('visible-change', val);
       },
       focusing(val) {
-        const selfDefine = this.$el.querySelector('.el-dropdown-selfdefine');
+        const selfDefine = this.$el.querySelector('.zz-dropdown-selfdefine');
         if (selfDefine) { // 自定义
           if (val) {
             selfDefine.className += ' focusing';
@@ -125,7 +125,7 @@
         if (this.disabled) return;
         this.removeTabindex();
         if (this.tabindex >= 0) {
-          this.resetTabindex(this.triggerElm);
+          this.resetTabindex(this.triggerZzm);
         }
         clearTimeout(this.timeout);
         this.timeout = setTimeout(() => {
@@ -172,14 +172,14 @@
           ev.preventDefault();
           ev.stopPropagation();
         } else if (keyCode === 13) { // enter选中
-          this.triggerElmFocus();
+          this.triggerZzmFocus();
           target.click();
           if (this.hideOnClick) { // click关闭
             this.visible = false;
           }
         } else if ([9, 27].indexOf(keyCode) > -1) { // tab // esc
           this.hide();
-          this.triggerElmFocus();
+          this.triggerZzmFocus();
         }
       },
       resetTabindex(ele) { // 下次tab时组件聚焦元素
@@ -187,51 +187,51 @@
         ele.setAttribute('tabindex', '0'); // 下次期望的聚焦元素
       },
       removeTabindex() {
-        this.triggerElm.setAttribute('tabindex', '-1');
+        this.triggerZzm.setAttribute('tabindex', '-1');
         this.menuItemsArray.forEach((item) => {
           item.setAttribute('tabindex', '-1');
         });
       },
       initAria() {
-        this.dropdownElm.setAttribute('id', this.listId);
-        this.triggerElm.setAttribute('aria-haspopup', 'list');
-        this.triggerElm.setAttribute('aria-controls', this.listId);
+        this.dropdownZzm.setAttribute('id', this.listId);
+        this.triggerZzm.setAttribute('aria-haspopup', 'list');
+        this.triggerZzm.setAttribute('aria-controls', this.listId);
 
         if (!this.splitButton) { // 自定义
-          this.triggerElm.setAttribute('role', 'button');
-          this.triggerElm.setAttribute('tabindex', this.tabindex);
-          this.triggerElm.setAttribute('class', (this.triggerElm.getAttribute('class') || '') + ' el-dropdown-selfdefine'); // 控制
+          this.triggerZzm.setAttribute('role', 'button');
+          this.triggerZzm.setAttribute('tabindex', this.tabindex);
+          this.triggerZzm.setAttribute('class', (this.triggerZzm.getAttribute('class') || '') + ' zz-dropdown-selfdefine'); // 控制
         }
       },
       initEvent() {
         let { trigger, show, hide, handleClick, splitButton, handleTriggerKeyDown, handleItemKeyDown } = this;
-        this.triggerElm = splitButton
+        this.triggerZzm = splitButton
           ? this.$refs.trigger.$el
           : this.$slots.default[0].elm;
 
-        let dropdownElm = this.dropdownElm;
+        let dropdownZzm = this.dropdownZzm;
 
-        this.triggerElm.addEventListener('keydown', handleTriggerKeyDown); // triggerElm keydown
-        dropdownElm.addEventListener('keydown', handleItemKeyDown, true); // item keydown
+        this.triggerZzm.addEventListener('keydown', handleTriggerKeyDown); // triggerZzm keydown
+        dropdownZzm.addEventListener('keydown', handleItemKeyDown, true); // item keydown
         // 控制自定义元素的样式
         if (!splitButton) {
-          this.triggerElm.addEventListener('focus', () => {
+          this.triggerZzm.addEventListener('focus', () => {
             this.focusing = true;
           });
-          this.triggerElm.addEventListener('blur', () => {
+          this.triggerZzm.addEventListener('blur', () => {
             this.focusing = false;
           });
-          this.triggerElm.addEventListener('click', () => {
+          this.triggerZzm.addEventListener('click', () => {
             this.focusing = false;
           });
         }
         if (trigger === 'hover') {
-          this.triggerElm.addEventListener('mouseenter', show);
-          this.triggerElm.addEventListener('mouseleave', hide);
-          dropdownElm.addEventListener('mouseenter', show);
-          dropdownElm.addEventListener('mouseleave', hide);
+          this.triggerZzm.addEventListener('mouseenter', show);
+          this.triggerZzm.addEventListener('mouseleave', hide);
+          dropdownZzm.addEventListener('mouseenter', show);
+          dropdownZzm.addEventListener('mouseleave', hide);
         } else if (trigger === 'click') {
-          this.triggerElm.addEventListener('click', handleClick);
+          this.triggerZzm.addEventListener('click', handleClick);
         }
       },
       handleMenuItemClick(command, instance) {
@@ -240,12 +240,12 @@
         }
         this.$emit('command', command, instance);
       },
-      triggerElmFocus() {
-        this.triggerElm.focus && this.triggerElm.focus();
+      triggerZzmFocus() {
+        this.triggerZzm.focus && this.triggerZzm.focus();
       },
       initDomOperation() {
-        this.dropdownElm = this.popperElm;
-        this.menuItems = this.dropdownElm.querySelectorAll("[tabindex='-1']");
+        this.dropdownZzm = this.popperZzm;
+        this.menuItems = this.dropdownZzm.querySelectorAll("[tabindex='-1']");
         this.menuItemsArray = [].slice.call(this.menuItems);
 
         this.initEvent();
@@ -261,31 +261,31 @@
         hide();
       };
 
-      let triggerElm = null;
+      let triggerZzm = null;
       if (splitButton) {
-        triggerElm = <el-button-group>
-          <el-button type={type} size={dropdownSize} nativeOn-click={handleMainButtonClick} disabled={disabled}>
+        triggerZzm = <zz-button-group>
+          <zz-button type={type} size={dropdownSize} nativeOn-click={handleMainButtonClick} disabled={disabled}>
             {this.$slots.default}
-          </el-button>
-          <el-button ref="trigger" type={type} size={dropdownSize} class="el-dropdown__caret-button" disabled={disabled}>
-            <i class="el-dropdown__icon el-icon-arrow-down"></i>
-          </el-button>
-        </el-button-group>;
+          </zz-button>
+          <zz-button ref="trigger" type={type} size={dropdownSize} class="zz-dropdown__caret-button" disabled={disabled}>
+            <i class="zz-dropdown__icon zz-icon-arrow-down"></i>
+          </zz-button>
+        </zz-button-group>;
       } else {
-        triggerElm = this.$slots.default;
-        const vnodeData = triggerElm[0].data || {};
+        triggerZzm = this.$slots.default;
+        const vnodeData = triggerZzm[0].data || {};
         let { attrs = {} } = vnodeData;
         if (disabled && !attrs.disabled) {
           attrs.disabled = true;
           vnodeData.attrs = attrs;
         }
       }
-      const menuElm = disabled ? null : this.$slots.dropdown;
+      const menuZzm = disabled ? null : this.$slots.dropdown;
 
       return (
-        <div class="el-dropdown" v-clickoutside={hide} aria-disabled={disabled}>
-          {triggerElm}
-          {menuElm}
+        <div class="zz-dropdown" v-clickoutside={hide} aria-disabled={disabled}>
+          {triggerZzm}
+          {menuZzm}
         </div>
       );
     }

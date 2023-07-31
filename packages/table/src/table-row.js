@@ -1,6 +1,6 @@
-import ElCheckbox from 'element-ui/packages/checkbox';
+import ZzCheckbox from 'element-ui/packages/checkbox';
 export default {
-  name: 'ElTableRow',
+  name: 'ZzTableRow',
   props: [
     'columns',
     'row',
@@ -22,7 +22,7 @@ export default {
     'fixed'
   ],
   components: {
-    ElCheckbox
+    ZzCheckbox
   },
   render() {
     const {
@@ -86,7 +86,7 @@ export default {
                 {
                   column.renderCell.call(
                     this._renderProxy,
-                    this.$createElement,
+                    this.$createZzement,
                     data,
                     columnsHidden[cellIndex]
                   )

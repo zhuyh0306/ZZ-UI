@@ -1,8 +1,8 @@
-import ElBreadcrumb from './src/breadcrumb';
+import ZzBreadcrumb from './src/breadcrumb';
 
 /* istanbul ignore next */
-ElBreadcrumb.install = function(Vue) {
-  Vue.component(ElBreadcrumb.name, ElBreadcrumb);
+ZzBreadcrumb.install = function (Vue) {
+  Vue.component(ZzBreadcrumb.name, ZzBreadcrumb);
 };
 
-export default ElBreadcrumb;
+export default ZzBreadcrumb;

@@ -1,11 +1,11 @@
 <template>
-  <div class="el-color-svpanel"
+  <div class="zz-color-svpanel"
       :style="{
         backgroundColor: background
       }">
-    <div class="el-color-svpanel__white"></div>
-    <div class="el-color-svpanel__black"></div>
-    <div class="el-color-svpanel__cursor"
+    <div class="zz-color-svpanel__white"></div>
+    <div class="zz-color-svpanel__black"></div>
+    <div class="zz-color-svpanel__cursor"
       :style="{
         top: cursorTop + 'px',
         left: cursorLeft + 'px'
@@ -19,7 +19,7 @@
   import draggable from '../draggable';
 
   export default {
-    name: 'el-sl-panel',
+    name: 'zz-sl-panel',
 
     props: {
       color: {

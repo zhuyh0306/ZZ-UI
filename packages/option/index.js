@@ -1,8 +1,8 @@
-import ElOption from '../select/src/option';
+import ZzOption from '../select/src/option';
 
 /* istanbul ignore next */
-ElOption.install = function(Vue) {
-  Vue.component(ElOption.name, ElOption);
+ZzOption.install = function (Vue) {
+  Vue.component(ZzOption.name, ZzOption);
 };
 
-export default ElOption;
+export default ZzOption;

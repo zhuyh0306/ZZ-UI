@@ -37,7 +37,7 @@
     }
   }
 
-  & .el-input__count {
+  & .zz-input__count {
     color: $--color-info;
     background: $--color-white;
     position: absolute;
@@ -47,7 +47,7 @@
   }
 
   @include when(disabled) {
-    .el-textarea__inner {
+    .zz-textarea__inner {
       background-color: $--input-disabled-fill;
       border-color: $--input-disabled-border;
       color: $--input-disabled-color;
@@ -60,11 +60,11 @@
   }
 
   @include when(exceed) {
-    .el-textarea__inner {
+    .zz-textarea__inner {
       border-color: $--color-danger;
     }
 
-    .el-input__count {
+    .zz-input__count {
       color: $--color-danger;
     }
   }
@@ -77,7 +77,7 @@
   width: 100%;
   @include scroll-bar;
 
-  & .el-input__clear {
+  & .zz-input__clear {
     color: $--input-icon-color;
     font-size: $--input-font-size;
     cursor: pointer;
@@ -88,14 +88,14 @@
     }
   }
 
-  & .el-input__count {
+  & .zz-input__count {
     height: 100%;
     display: inline-flex;
     align-items: center;
     color: $--color-info;
     font-size: 12px;
 
-    .el-input__count-inner {
+    .zz-input__count-inner {
       background: $--color-white;
       line-height: initial;
       display: inline-block;
@@ -184,14 +184,14 @@
   }
 
   @include when(active) {
-    .el-input__inner {
+    .zz-input__inner {
       outline: none;
       border-color: $--input-focus-border;
     }
   }
 
   @include when(disabled) {
-    .el-input__inner {
+    .zz-input__inner {
       background-color: $--input-disabled-fill;
       border-color: $--input-disabled-border;
       color: $--input-disabled-color;
@@ -202,31 +202,31 @@
       }
     }
 
-    .el-input__icon {
+    .zz-input__icon {
       cursor: not-allowed;
     }
   }
 
   @include when(exceed) {
-    .el-input__inner {
+    .zz-input__inner {
       border-color: $--color-danger;
     }
 
-    .el-input__suffix {
-      .el-input__count {
+    .zz-input__suffix {
+      .zz-input__count {
         color: $--color-danger;
       }
     }
   }
 
   @include m(suffix) {
-    .el-input__inner {
+    .zz-input__inner {
       padding-right: 30px;
     }
   }
 
   @include m(prefix) {
-    .el-input__inner {
+    .zz-input__inner {
       padding-left: 30px;
     }
   }
@@ -239,10 +239,11 @@
       line-height: $--input-medium-height;
     }
 
-    .el-input__icon {
+    .zz-input__icon {
       line-height: $--input-medium-height;
     }
   }
+
   @include m(small) {
     font-size: $--input-small-font-size;
 
@@ -251,10 +252,11 @@
       line-height: $--input-small-height;
     }
 
-    .el-input__icon {
+    .zz-input__icon {
       line-height: $--input-small-height;
     }
   }
+
   @include m(mini) {
     font-size: $--input-mini-font-size;
 
@@ -263,7 +265,7 @@
       line-height: $--input-mini-height;
     }
 
-    .el-input__icon {
+    .zz-input__icon {
       line-height: $--input-mini-height;
     }
   }
@@ -274,9 +276,9 @@
   display: inline-table;
   width: 100%;
   border-collapse: separate;
-  border-spacing:0;
+  border-spacing: 0;
 
-  > .el-input__inner {
+  >.zz-input__inner {
     vertical-align: middle;
     display: table-cell;
   }
@@ -297,15 +299,15 @@
       outline: none;
     }
 
-    .el-select,
-    .el-button {
+    .zz-select,
+    .zz-button {
       display: inline-block;
       margin: -10px -20px;
     }
 
-    button.el-button,
-    div.el-select .el-input__inner,
-    div.el-select:hover .el-input__inner {
+    button.zz-button,
+    div.zz-select .zz-input__inner,
+    div.zz-select:hover .zz-input__inner {
       border-color: transparent;
       background-color: transparent;
       color: inherit;
@@ -313,8 +315,8 @@
       border-bottom: 0;
     }
 
-    .el-button,
-    .el-input {
+    .zz-button,
+    .zz-input {
       font-size: inherit;
     }
   }
@@ -332,28 +334,30 @@
   }
 
   @include m(prepend) {
-    .el-input__inner {
+    .zz-input__inner {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
-    .el-select .el-input.is-focus .el-input__inner {
+
+    .zz-select .zz-input.is-focus .zz-input__inner {
       border-color: transparent;
     }
   }
 
   @include m(append) {
-    .el-input__inner {
+    .zz-input__inner {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
-    .el-select .el-input.is-focus .el-input__inner {
+
+    .zz-select .zz-input.is-focus .zz-input__inner {
       border-color: transparent;
     }
   }
 }
 
 /** disalbe default clear on IE */
-.el-input__inner::-ms-clear {
+.zz-input__inner::-ms-clear {
   display: none;
   width: 0;
   height: 0;

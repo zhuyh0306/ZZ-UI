@@ -3,7 +3,7 @@ import DatePanel from '../panel/date';
 import DateRangePanel from '../panel/date-range';
 import MonthRangePanel from '../panel/month-range';
 
-const getPanel = function(type) {
+const getPanel = function (type) {
   if (type === 'daterange' || type === 'datetimerange') {
     return DateRangePanel;
   } else if (type === 'monthrange') {
@@ -15,7 +15,7 @@ const getPanel = function(type) {
 export default {
   mixins: [Picker],
 
-  name: 'ElDatePicker',
+  name: 'ZzDatePicker',
 
   props: {
     type: {

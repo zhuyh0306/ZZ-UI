@@ -1,8 +1,8 @@
-import ElTable from './src/table';
+import ZzTable from './src/table';
 
 /* istanbul ignore next */
-ElTable.install = function(Vue) {
-  Vue.component(ElTable.name, ElTable);
+ZzTable.install = function (Vue) {
+  Vue.component(ZzTable.name, ZzTable);
 };
 
-export default ElTable;
+export default ZzTable;

@@ -4,32 +4,32 @@
     @mouseenter.stop="handleMouseEnter"
     @mouseleave.stop="handleMouseLeave">
     <div
-      class="el-carousel__container"
+      class="zz-carousel__container"
       :style="{ height: height }">
       <transition
         v-if="arrowDisplay"
-        name="carousel-arrow-left">
+        name="carouszz-arrow-left">
         <button
           type="button"
           v-show="(arrow === 'always' || hover) && (loop || activeIndex > 0)"
           @mouseenter="handleButtonEnter('left')"
           @mouseleave="handleButtonLeave"
           @click.stop="throttledArrowClick(activeIndex - 1)"
-          class="el-carousel__arrow el-carousel__arrow--left">
-          <i class="el-icon-arrow-left"></i>
+          class="zz-carousel__arrow zz-carousel__arrow--left">
+          <i class="zz-icon-arrow-left"></i>
         </button>
       </transition>
       <transition
         v-if="arrowDisplay"
-        name="carousel-arrow-right">
+        name="carouszz-arrow-right">
         <button
           type="button"
           v-show="(arrow === 'always' || hover) && (loop || activeIndex < items.length - 1)"
           @mouseenter="handleButtonEnter('right')"
           @mouseleave="handleButtonLeave"
           @click.stop="throttledArrowClick(activeIndex + 1)"
-          class="el-carousel__arrow el-carousel__arrow--right">
-          <i class="el-icon-arrow-right"></i>
+          class="zz-carousel__arrow zz-carousel__arrow--right">
+          <i class="zz-icon-arrow-right"></i>
         </button>
       </transition>
       <slot></slot>
@@ -41,12 +41,12 @@
         v-for="(item, index) in items"
         :key="index"
         :class="[
-          'el-carousel__indicator',
-          'el-carousel__indicator--' + direction,
+          'zz-carousel__indicator',
+          'zz-carousel__indicator--' + direction,
           { 'is-active': index === activeIndex }]"
         @mouseenter="throttledIndicatorHover(index)"
         @click.stop="handleIndicatorClick(index)">
-        <button class="el-carousel__button">
+        <button class="zz-carousel__button">
           <span v-if="hasLabel">{{ item.label }}</span>
         </button>
       </li>
@@ -59,7 +59,7 @@ import throttle from 'throttle-debounce/throttle';
 import { addResizeListener, removeResizeListener } from 'element-ui/src/utils/resize-event';
 
 export default {
-  name: 'ElCarousel',
+  name: 'ZzCarousel',
 
   props: {
     initialIndex: {
@@ -122,20 +122,20 @@ export default {
     },
 
     carouselClasses() {
-      const classes = ['el-carousel', 'el-carousel--' + this.direction];
+      const classes = ['zz-carousel', 'zz-carouszz--' + this.direction];
       if (this.type === 'card') {
-        classes.push('el-carousel--card');
+        classes.push('zz-carouszz--card');
       }
       return classes;
     },
 
     indicatorsClasses() {
-      const classes = ['el-carousel__indicators', 'el-carousel__indicators--' + this.direction];
+      const classes = ['zz-carousel__indicators', 'zz-carousel__indicators--' + this.direction];
       if (this.hasLabel) {
-        classes.push('el-carousel__indicators--labels');
+        classes.push('zz-carousel__indicators--labels');
       }
       if (this.indicatorPosition === 'outside' || this.type === 'card') {
-        classes.push('el-carousel__indicators--outside');
+        classes.push('zz-carousel__indicators--outside');
       }
       return classes;
     }
@@ -207,7 +207,7 @@ export default {
     },
 
     updateItems() {
-      this.items = this.$children.filter(child => child.$options.name === 'ElCarouselItem');
+      this.items = this.$children.filter(child => child.$options.name === 'ZzCarouselItem');
     },
 
     resetItemPosition(oldIndex) {
@@ -250,7 +250,7 @@ export default {
       }
       index = Number(index);
       if (isNaN(index) || index !== Math.floor(index)) {
-        console.warn('[Element Warn][Carousel]index must be an integer.');
+        console.warn('[Zzement Warn][Carousel]index must be an integer.');
         return;
       }
       let length = this.items.length;

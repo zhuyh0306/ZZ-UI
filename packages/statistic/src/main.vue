@@ -1,5 +1,5 @@
 <template>
-  <div class="el-statistic">
+  <div class="zz-statistic">
     <div class="head" v-if="title||$slots.title">
       <slot name="title">
         <span class="title">
@@ -28,7 +28,7 @@
 <script>
 import { isNumber, chain, multiply, padStart, reduce} from 'element-ui/src/utils/lodash';
 export default {
-  name: 'ElStatistic',
+  name: 'ZzStatistic',
   data() {
     return {
       disposeValue: '',

@@ -1,8 +1,8 @@
-import ElCarouselItem from '../carousel/src/item';
+import ZzCarouselItem from '../carousel/src/item';
 
 /* istanbul ignore next */
-ElCarouselItem.install = function(Vue) {
-  Vue.component(ElCarouselItem.name, ElCarouselItem);
+ZzCarouselItem.install = function (Vue) {
+  Vue.component(ZzCarouselItem.name, ZzCarouselItem);
 };
 
-export default ElCarouselItem;
+export default ZzCarouselItem;

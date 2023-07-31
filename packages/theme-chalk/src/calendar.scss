@@ -4,7 +4,7 @@
 @import "button-group";
 
 @include b(calendar) {
-  background-color:#fff;
+  background-color: #fff;
 
   @include e(header) {
     display: flex;
@@ -34,6 +34,7 @@
   }
 
   &:not(.is-range) {
+
     td.prev,
     td.next {
       color: $--color-text-placeholder;
@@ -63,7 +64,7 @@
     border-left: $--calendar-border;
   }
 
-  tr.el-calendar-table__row--hide-border td {
+  tr.zz-calendar-table__row--hide-border td {
     border-top: none;
   }
 
@@ -71,6 +72,7 @@
     box-sizing: border-box;
     padding: 8px;
     height: $--calendar-cell-width;
+
     &:hover {
       cursor: pointer;
       background-color: $--calendar-selected-background-color;

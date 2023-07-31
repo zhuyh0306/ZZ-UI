@@ -13,10 +13,11 @@
   margin: 5px 0;
 
   @include when(multiple) {
-    & .el-select-dropdown__item {
+    & .zz-select-dropdown__item {
       padding-right: 40px;
     }
-    & .el-select-dropdown__item.selected {
+
+    & .zz-select-dropdown__item.selected {
       color: $--select-option-selected-font-color;
       background-color: $--select-dropdown-background;
 
@@ -37,7 +38,7 @@
     }
   }
 
-  .el-scrollbar.is-empty .el-select-dropdown__list{
+  .zz-scrollbar.is-empty .zz-select-dropdown__list {
     padding: 0;
   }
 }

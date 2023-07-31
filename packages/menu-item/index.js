@@ -1,8 +1,8 @@
-import ElMenuItem from '../menu/src/menu-item';
+import ZzMenuItem from '../menu/src/menu-item';
 
 /* istanbul ignore next */
-ElMenuItem.install = function(Vue) {
-  Vue.component(ElMenuItem.name, ElMenuItem);
+ZzMenuItem.install = function (Vue) {
+  Vue.component(ZzMenuItem.name, ZzMenuItem);
 };
 
-export default ElMenuItem;
+export default ZzMenuItem;

@@ -1,35 +1,35 @@
 <template>
-  <transition name="el-zoom-in-top" @after-leave="$emit('dodestroy')">
+  <transition name="zz-zoom-in-top" @after-leave="$emit('dodestroy')">
     <div
       v-show="visible"
-      class="el-picker-panel el-date-range-picker el-popper"
+      class="zz-picker-panel zz-date-range-picker zz-popper"
       :class="[{
         'has-sidebar': $slots.sidebar || shortcuts
       }, popperClass]">
-      <div class="el-picker-panel__body-wrapper">
-        <slot name="sidebar" class="el-picker-panel__sidebar"></slot>
-        <div class="el-picker-panel__sidebar" v-if="shortcuts">
+      <div class="zz-picker-panel__body-wrapper">
+        <slot name="sidebar" class="zz-picker-panel__sidebar"></slot>
+        <div class="zz-picker-panel__sidebar" v-if="shortcuts">
           <button
             type="button"
-            class="el-picker-panel__shortcut"
+            class="zz-picker-panel__shortcut"
             v-for="(shortcut, key) in shortcuts"
             :key="key"
             @click="handleShortcutClick(shortcut)">{{shortcut.text}}</button>
         </div>
-        <div class="el-picker-panel__body">
-          <div class="el-picker-panel__content el-date-range-picker__content is-left">
-            <div class="el-date-range-picker__header">
+        <div class="zz-picker-panel__body">
+          <div class="zz-picker-panel__content zz-date-range-picker__content is-left">
+            <div class="zz-date-range-picker__header">
               <button
                 type="button"
                 @click="leftPrevYear"
-                class="el-picker-panel__icon-btn el-icon-d-arrow-left"></button>
+                class="zz-picker-panel__icon-btn zz-icon-d-arrow-left"></button>
               <button
                 type="button"
                 v-if="unlinkPanels"
                 @click="leftNextYear"
                 :disabled="!enableYearArrow"
                 :class="{ 'is-disabled': !enableYearArrow }"
-                class="el-picker-panel__icon-btn el-icon-d-arrow-right"></button>
+                class="zz-picker-panel__icon-btn zz-icon-d-arrow-right"></button>
               <div>{{ leftLabel }}</div>
             </div>
             <month-table
@@ -44,19 +44,19 @@
               @pick="handleRangePick">
             </month-table>
           </div>
-          <div class="el-picker-panel__content el-date-range-picker__content is-right">
-            <div class="el-date-range-picker__header">
+          <div class="zz-picker-panel__content zz-date-range-picker__content is-right">
+            <div class="zz-date-range-picker__header">
               <button
                 type="button"
                 v-if="unlinkPanels"
                 @click="rightPrevYear"
                 :disabled="!enableYearArrow"
                 :class="{ 'is-disabled': !enableYearArrow }"
-                class="el-picker-panel__icon-btn el-icon-d-arrow-left"></button>
+                class="zz-picker-panel__icon-btn zz-icon-d-arrow-left"></button>
               <button
                 type="button"
                 @click="rightNextYear"
-                class="el-picker-panel__icon-btn el-icon-d-arrow-right"></button>
+                class="zz-picker-panel__icon-btn zz-icon-d-arrow-right"></button>
               <div>{{ rightLabel }}</div>
             </div>
             <month-table
@@ -88,8 +88,8 @@
   import Clickoutside from 'element-ui/src/utils/clickoutside';
   import Locale from 'element-ui/src/mixins/locale';
   import MonthTable from '../basic/month-table';
-  import ElInput from 'element-ui/packages/input';
-  import ElButton from 'element-ui/packages/button';
+  import ZzInput from 'element-ui/packages/input';
+  import ZzButton from 'element-ui/packages/button';
 
   const calcDefaultValue = (defaultValue) => {
     if (Array.isArray(defaultValue)) {
@@ -219,7 +219,7 @@
         this.maxDate = maxDate;
         this.minDate = minDate;
 
-        // workaround for https://github.com/ElemeFE/element/issues/7539, should remove this block when we don't have to care about Chromium 55 - 57
+        // workaround for https://github.com/ZzemeFE/element/issues/7539, should remove this block when we don't have to care about Chromium 55 - 57
         setTimeout(() => {
           this.maxDate = maxDate;
           this.minDate = minDate;
@@ -284,6 +284,6 @@
       }
     },
 
-    components: { MonthTable, ElInput, ElButton }
+    components: { MonthTable, ZzInput, ZzButton }
   };
 </script>

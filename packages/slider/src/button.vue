@@ -1,6 +1,6 @@
 <template>
   <div
-    class="el-slider__button-wrapper"
+    class="zz-slider__button-wrapper"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
     @mousedown="onButtonDown"
@@ -16,25 +16,25 @@
     @keydown.down.prevent="onLeftKeyDown"
     @keydown.up.prevent="onRightKeyDown"
   >
-    <el-tooltip
+    <zz-tooltip
       placement="top"
       ref="tooltip"
       :popper-class="tooltipClass"
       :disabled="!showTooltip">
       <span slot="content">{{ formatValue }}</span>
-      <div class="el-slider__button" :class="{ 'hover': hovering, 'dragging': dragging }"></div>
-    </el-tooltip>
+      <div class="zz-slider__button" :class="{ 'hover': hovering, 'dragging': dragging }"></div>
+    </zz-tooltip>
   </div>
 </template>
 
 <script>
-  import ElTooltip from 'element-ui/packages/tooltip';
+  import ZzTooltip from 'element-ui/packages/tooltip';
 
   export default {
-    name: 'ElSliderButton',
+    name: 'ZzSliderButton',
 
     components: {
-      ElTooltip
+      ZzTooltip
     },
 
     props: {

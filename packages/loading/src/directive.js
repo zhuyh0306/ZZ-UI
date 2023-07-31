@@ -28,8 +28,8 @@ loadingDirective.install = Vue => {
               const scroll = property === 'top' ? 'scrollTop' : 'scrollLeft';
               el.maskStyle[property] = el.getBoundingClientRect()[property] +
                 document.body[scroll] +
-                document.documentElement[scroll] -
-                parseInt(getStyle(document.body, `margin-${ property }`), 10) +
+                document.documentZzement[scroll] -
+                parseInt(getStyle(document.body, `margin-${property}`), 10) +
                 'px';
             });
             ['height', 'width'].forEach(property => {
@@ -50,8 +50,8 @@ loadingDirective.install = Vue => {
         const target = binding.modifiers.fullscreen || binding.modifiers.body
           ? document.body
           : el;
-        removeClass(target, 'el-loading-parent--relative');
-        removeClass(target, 'el-loading-parent--hidden');
+        removeClass(target, 'zz-loading-parent--relative');
+        removeClass(target, 'zz-loading-parent--hidden');
         el.instance.hiding = false;
       }, 300, true);
       el.instance.visible = false;
@@ -65,10 +65,10 @@ loadingDirective.install = Vue => {
       });
 
       if (el.originalPosition !== 'absolute' && el.originalPosition !== 'fixed' && el.originalPosition !== 'sticky') {
-        addClass(parent, 'el-loading-parent--relative');
+        addClass(parent, 'zz-loading-parent--relative');
       }
       if (binding.modifiers.fullscreen && binding.modifiers.lock) {
-        addClass(parent, 'el-loading-parent--hidden');
+        addClass(parent, 'zz-loading-parent--hidden');
       }
       el.domVisible = true;
 
@@ -88,14 +88,14 @@ loadingDirective.install = Vue => {
   };
 
   Vue.directive('loading', {
-    bind: function(el, binding, vnode) {
+    bind: function (el, binding, vnode) {
       const textExr = el.getAttribute('element-loading-text');
       const spinnerExr = el.getAttribute('element-loading-spinner');
       const backgroundExr = el.getAttribute('element-loading-background');
       const customClassExr = el.getAttribute('element-loading-custom-class');
       const vm = vnode.context;
       const mask = new Mask({
-        el: document.createElement('div'),
+        el: document.createZzement('div'),
         data: {
           text: vm && vm[textExr] || textExr,
           spinner: vm && vm[spinnerExr] || spinnerExr,
@@ -111,18 +111,18 @@ loadingDirective.install = Vue => {
       binding.value && toggleLoading(el, binding);
     },
 
-    update: function(el, binding) {
+    update: function (el, binding) {
       el.instance.setText(el.getAttribute('element-loading-text'));
       if (binding.oldValue !== binding.value) {
         toggleLoading(el, binding);
       }
     },
 
-    unbind: function(el, binding) {
+    unbind: function (el, binding) {
       if (el.domInserted) {
         el.mask &&
-        el.mask.parentNode &&
-        el.mask.parentNode.removeChild(el.mask);
+          el.mask.parentNode &&
+          el.mask.parentNode.removeChild(el.mask);
         toggleLoading(el, { value: false, modifiers: binding.modifiers });
       }
       el.instance && el.instance.$destroy();

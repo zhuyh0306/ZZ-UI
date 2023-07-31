@@ -2,7 +2,7 @@ import LayoutObserver from './layout-observer';
 import { mapStates } from './store/helper';
 
 export default {
-  name: 'ElTableFooter',
+  name: 'ZzTableFooter',
 
   mixins: [LayoutObserver],
 
@@ -44,27 +44,27 @@ export default {
 
     return (
       <table
-        class="el-table__footer"
+        class="zz-table__footer"
         cellspacing="0"
         cellpadding="0"
         border="0">
         <colgroup>
           {
-            this.columns.map(column => <col name={ column.id } key={column.id} />)
+            this.columns.map(column => <col name={column.id} key={column.id} />)
           }
           {
             this.hasGutter ? <col name="gutter" /> : ''
           }
         </colgroup>
-        <tbody class={ [{ 'has-gutter': this.hasGutter }] }>
+        <tbody class={[{ 'has-gutter': this.hasGutter }]}>
           <tr>
             {
               this.columns.map((column, cellIndex) => <td
                 key={cellIndex}
-                colspan={ column.colSpan }
-                rowspan={ column.rowSpan }
-                class={ [...this.getRowClasses(column, cellIndex), 'el-table__cell'] }>
-                <div class={ ['cell', column.labelClassName] }>
+                colspan={column.colSpan}
+                rowspan={column.rowSpan}
+                class={[...this.getRowClasses(column, cellIndex), 'zz-table__cell']}>
+                <div class={['cell', column.labelClassName]}>
                   {
                     sums[cellIndex]
                   }
@@ -72,7 +72,7 @@ export default {
               </td>)
             }
             {
-              this.hasGutter ? <th class="el-table__cell gutter"></th> : ''
+              this.hasGutter ? <th class="zz-table__cell gutter"></th> : ''
             }
           </tr>
         </tbody>

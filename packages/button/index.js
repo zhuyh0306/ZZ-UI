@@ -1,8 +1,8 @@
-import ElButton from './src/button';
+import ZzButton from './src/button';
 
 /* istanbul ignore next */
-ElButton.install = function(Vue) {
-  Vue.component(ElButton.name, ElButton);
+ZzButton.install = function (Vue) {
+  Vue.component(ZzButton.name, ZzButton);
 };
 
-export default ElButton;
+export default ZzButton;

@@ -2,11 +2,12 @@
 @import "common/var";
 
 $typeMap: (
-  primary: $--link-primary-font-color, 
-  danger: $--link-danger-font-color, 
-  success: $--link-success-font-color, 
-  warning: $--link-warning-font-color, 
-  info: $--link-info-font-color);
+  primary: $--link-primary-font-color,
+  danger: $--link-danger-font-color,
+  success: $--link-success-font-color,
+  warning: $--link-warning-font-color,
+  info: $--link-info-font-color
+);
 
 @include b(link) {
   display: inline-flex;
@@ -36,40 +37,48 @@ $typeMap: (
 
   @include when(disabled) {
     cursor: not-allowed;
-  } 
+  }
 
-  & [class*="el-icon-"] {
-    & + span {
+  & [class*="zz-icon-"] {
+    &+span {
       margin-left: 5px;
     }
   }
-    
-    
-  &.el-link--default  {
+
+
+  &.zz-link--default {
     color: $--link-default-font-color;
+
     &:hover {
       color: $--link-default-active-color
     }
+
     &:after {
       border-color: $--link-default-active-color
     }
+
     @include when(disabled) {
       color: $--link-disabled-font-color
     }
   }
 
-  @each $type, $primaryColor in $typeMap {
-    &.el-link--#{$type} {
+  @each $type,
+  $primaryColor in $typeMap {
+    &.zz-link--#{$type} {
       color: $primaryColor;
+
       &:hover {
         color: mix($primaryColor, $--color-white, 80%)
       }
+
       &:after {
         border-color: $primaryColor
       }
+
       @include when(disabled) {
         color: mix($primaryColor, $--color-white, 50%)
       }
+
       @include when(underline) {
         &:hover:after {
           border-color: $primaryColor
@@ -77,5 +86,5 @@ $typeMap: (
       }
     }
   }
-    
+
 }

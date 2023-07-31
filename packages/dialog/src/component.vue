@@ -5,31 +5,31 @@
     @after-leave="afterLeave">
     <div
       v-show="visible"
-      class="el-dialog__wrapper"
+      class="zz-dialog__wrapper"
       @click.self="handleWrapperClick">
       <div
         role="dialog"
         :key="key"
         aria-modal="true"
         :aria-label="title || 'dialog'"
-        :class="['el-dialog', { 'is-fullscreen': fullscreen, 'el-dialog--center': center }, customClass]"
+        :class="['zz-dialog', { 'is-fullscreen': fullscreen, 'zz-dialog--center': center }, customClass]"
         ref="dialog"
         :style="style">
-        <div class="el-dialog__header">
+        <div class="zz-dialog__header">
           <slot name="title">
-            <span class="el-dialog__title">{{ title }}</span>
+            <span class="zz-dialog__title">{{ title }}</span>
           </slot>
           <button
             type="button"
-            class="el-dialog__headerbtn"
+            class="zz-dialog__headerbtn"
             aria-label="Close"
             v-if="showClose"
             @click="handleClose">
-            <i class="el-dialog__close el-icon el-icon-close"></i>
+            <i class="zz-dialog__close zz-icon zz-icon-close"></i>
           </button>
         </div>
-        <div class="el-dialog__body" v-if="rendered"><slot></slot></div>
-        <div class="el-dialog__footer" v-if="$slots.footer">
+        <div class="zz-dialog__body" v-if="rendered"><slot></slot></div>
+        <div class="zz-dialog__footer" v-if="$slots.footer">
           <slot name="footer"></slot>
         </div>
       </div>
@@ -43,7 +43,7 @@
   import emitter from 'element-ui/src/mixins/emitter';
 
   export default {
-    name: 'ElDialog',
+    name: 'ZzDialog',
 
     mixins: [Popup, emitter, Migrating],
 
@@ -181,8 +181,8 @@
         }
       },
       updatePopper() {
-        this.broadcast('ElSelectDropdown', 'updatePopper');
-        this.broadcast('ElDropdownMenu', 'updatePopper');
+        this.broadcast('ZzSelectDropdown', 'updatePopper');
+        this.broadcast('ZzDropdownMenu', 'updatePopper');
       },
       afterEnter() {
         this.$emit('opened');

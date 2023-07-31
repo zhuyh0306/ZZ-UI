@@ -45,7 +45,7 @@ class TableLayout {
     if (height === null) return false;
     const bodyWrapper = this.table.bodyWrapper;
     if (this.table.$el && bodyWrapper) {
-      const body = bodyWrapper.querySelector('.el-table__body');
+      const body = bodyWrapper.querySelector('.zz-table__body');
       const prevScrollY = this.scrollY;
       const scrollY = body.offsetHeight > this.bodyHeight;
       this.scrollY = scrollY;
@@ -64,10 +64,10 @@ class TableLayout {
 
     if (typeof value === 'number') {
       el.style[prop] = value + 'px';
-      this.updateElsHeight();
+      this.updateZzsHeight();
     } else if (typeof value === 'string') {
       el.style[prop] = value;
-      this.updateElsHeight();
+      this.updateZzsHeight();
     }
   }
 
@@ -89,20 +89,20 @@ class TableLayout {
     return flattenColumns;
   }
 
-  updateElsHeight() {
-    if (!this.table.$ready) return Vue.nextTick(() => this.updateElsHeight());
+  updateZzsHeight() {
+    if (!this.table.$ready) return Vue.nextTick(() => this.updateZzsHeight());
     const { headerWrapper, appendWrapper, footerWrapper } = this.table.$refs;
     this.appendHeight = appendWrapper ? appendWrapper.offsetHeight : 0;
 
     if (this.showHeader && !headerWrapper) return;
 
-    // fix issue (https://github.com/ElemeFE/element/pull/16956)
-    const headerTrElm = headerWrapper ? headerWrapper.querySelector('.el-table__header tr') : null;
-    const noneHeader = this.headerDisplayNone(headerTrElm);
+    // fix issue (https://github.com/ZzemeFE/element/pull/16956)
+    const headerTrZzm = headerWrapper ? headerWrapper.querySelector('.zz-table__header tr') : null;
+    const noneHeader = this.headerDisplayNone(headerTrZzm);
 
     const headerHeight = this.headerHeight = !this.showHeader ? 0 : headerWrapper.offsetHeight;
     if (this.showHeader && !noneHeader && headerWrapper.offsetWidth > 0 && (this.table.columns || []).length > 0 && headerHeight < 2) {
-      return Vue.nextTick(() => this.updateElsHeight());
+      return Vue.nextTick(() => this.updateZzsHeight());
     }
     const tableHeight = this.tableHeight = this.table.$el.clientHeight;
     const footerHeight = this.footerHeight = footerWrapper ? footerWrapper.offsetHeight : 0;
@@ -124,7 +124,7 @@ class TableLayout {
       if (getComputedStyle(headerChild).display === 'none') {
         return true;
       }
-      headerChild = headerChild.parentElement;
+      headerChild = headerChild.parentZzement;
     }
     return false;
   }
@@ -172,7 +172,7 @@ class TableLayout {
         }
       } else { // HAVE HORIZONTAL SCROLL BAR
         this.scrollX = true;
-        flexColumns.forEach(function(column) {
+        flexColumns.forEach(function (column) {
           column.realWidth = column.minWidth;
         });
       }
@@ -198,7 +198,7 @@ class TableLayout {
 
     if (fixedColumns.length > 0) {
       let fixedWidth = 0;
-      fixedColumns.forEach(function(column) {
+      fixedColumns.forEach(function (column) {
         fixedWidth += column.realWidth || column.width;
       });
 
@@ -208,7 +208,7 @@ class TableLayout {
     const rightFixedColumns = this.store.states.rightFixedColumns;
     if (rightFixedColumns.length > 0) {
       let rightFixedWidth = 0;
-      rightFixedColumns.forEach(function(column) {
+      rightFixedColumns.forEach(function (column) {
         rightFixedWidth += column.realWidth || column.width;
       });
 

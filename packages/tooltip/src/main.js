@@ -5,7 +5,7 @@ import { generateId } from 'element-ui/src/utils/util';
 import Vue from 'vue';
 
 export default {
-  name: 'ElTooltip',
+  name: 'ZzTooltip',
 
   mixins: [Popper],
 
@@ -31,7 +31,7 @@ export default {
     },
     transition: {
       type: String,
-      default: 'el-fade-in-linear'
+      default: 'zz-fade-in-linear'
     },
     popperOptions: {
       default() {
@@ -57,7 +57,7 @@ export default {
 
   data() {
     return {
-      tooltipId: `el-tooltip-${generateId()}`,
+      tooltipId: `zz-tooltip-${generateId()}`,
       timeoutPending: null,
       focusing: false
     };
@@ -79,41 +79,41 @@ export default {
     if (this.popperVM) {
       this.popperVM.node = (
         <transition
-          name={ this.transition }
-          onAfterLeave={ this.doDestroy }>
+          name={this.transition}
+          onAfterLeave={this.doDestroy}>
           <div
-            onMouseleave={ () => { this.setExpectedState(false); this.debounceClose(); } }
-            onMouseenter= { () => { this.setExpectedState(true); } }
+            onMouseleave={() => { this.setExpectedState(false); this.debounceClose(); }}
+            onMouseenter={() => { this.setExpectedState(true); }}
             ref="popper"
             role="tooltip"
             id={this.tooltipId}
-            aria-hidden={ (this.disabled || !this.showPopper) ? 'true' : 'false' }
+            aria-hidden={(this.disabled || !this.showPopper) ? 'true' : 'false'}
             v-show={!this.disabled && this.showPopper}
             class={
-              ['el-tooltip__popper', 'is-' + this.effect, this.popperClass]
+              ['zz-tooltip__popper', 'is-' + this.effect, this.popperClass]
             }>
-            { this.$slots.content || this.content }
+            {this.$slots.content || this.content}
           </div>
         </transition>);
     }
 
-    const firstElement = this.getFirstElement();
-    if (!firstElement) return null;
+    const firstZzement = this.getFirstZzement();
+    if (!firstZzement) return null;
 
-    const data = firstElement.data = firstElement.data || {};
+    const data = firstZzement.data = firstZzement.data || {};
     data.staticClass = this.addTooltipClass(data.staticClass);
 
-    return firstElement;
+    return firstZzement;
   },
 
   mounted() {
-    this.referenceElm = this.$el;
+    this.referenceZzm = this.$el;
     if (this.$el.nodeType === 1) {
       this.$el.setAttribute('aria-describedby', this.tooltipId);
       this.$el.setAttribute('tabindex', this.tabindex);
-      on(this.referenceElm, 'mouseenter', this.show);
-      on(this.referenceElm, 'mouseleave', this.hide);
-      on(this.referenceElm, 'focus', () => {
+      on(this.referenceZzm, 'mouseenter', this.show);
+      on(this.referenceZzm, 'mouseleave', this.hide);
+      on(this.referenceZzm, 'focus', () => {
         if (!this.$slots.default || !this.$slots.default.length) {
           this.handleFocus();
           return;
@@ -125,10 +125,10 @@ export default {
           this.handleFocus();
         }
       });
-      on(this.referenceElm, 'blur', this.handleBlur);
-      on(this.referenceElm, 'click', this.removeFocusing);
+      on(this.referenceZzm, 'blur', this.handleBlur);
+      on(this.referenceZzm, 'click', this.removeFocusing);
     }
-    // fix issue https://github.com/ElemeFE/element/issues/14424
+    // fix issue https://github.com/ZzemeFE/element/issues/14424
     if (this.value && this.popperVM) {
       this.popperVM.$nextTick(() => {
         if (this.value) {
@@ -140,9 +140,9 @@ export default {
   watch: {
     focusing(val) {
       if (val) {
-        addClass(this.referenceElm, 'focusing');
+        addClass(this.referenceZzm, 'focusing');
       } else {
-        removeClass(this.referenceElm, 'focusing');
+        removeClass(this.referenceZzm, 'focusing');
       }
     }
   },
@@ -170,9 +170,9 @@ export default {
 
     addTooltipClass(prev) {
       if (!prev) {
-        return 'el-tooltip';
+        return 'zz-tooltip';
       } else {
-        return 'el-tooltip ' + prev.replace('el-tooltip', '');
+        return 'zz-tooltip ' + prev.replace('zz-tooltip', '');
       }
     },
 
@@ -211,7 +211,7 @@ export default {
       this.expectedState = expectedState;
     },
 
-    getFirstElement() {
+    getFirstZzement() {
       const slots = this.$slots.default;
       if (!Array.isArray(slots)) return null;
       let element = null;
@@ -230,7 +230,7 @@ export default {
   },
 
   destroyed() {
-    const reference = this.referenceElm;
+    const reference = this.referenceZzm;
     if (reference.nodeType === 1) {
       off(reference, 'mouseenter', this.show);
       off(reference, 'mouseleave', this.hide);

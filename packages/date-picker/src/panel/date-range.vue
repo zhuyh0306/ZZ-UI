@@ -1,40 +1,40 @@
 <template>
-  <transition name="el-zoom-in-top" @after-leave="$emit('dodestroy')">
+  <transition name="zz-zoom-in-top" @after-leave="$emit('dodestroy')">
     <div
       v-show="visible"
-      class="el-picker-panel el-date-range-picker el-popper"
+      class="zz-picker-panel zz-date-range-picker zz-popper"
       :class="[{
         'has-sidebar': $slots.sidebar || shortcuts,
         'has-time': showTime
       }, popperClass]">
-      <div class="el-picker-panel__body-wrapper">
-        <slot name="sidebar" class="el-picker-panel__sidebar"></slot>
-        <div class="el-picker-panel__sidebar" v-if="shortcuts">
+      <div class="zz-picker-panel__body-wrapper">
+        <slot name="sidebar" class="zz-picker-panel__sidebar"></slot>
+        <div class="zz-picker-panel__sidebar" v-if="shortcuts">
           <button
             type="button"
-            class="el-picker-panel__shortcut"
+            class="zz-picker-panel__shortcut"
             v-for="(shortcut, key) in shortcuts"
             :key="key"
             @click="handleShortcutClick(shortcut)">{{shortcut.text}}</button>
         </div>
-        <div class="el-picker-panel__body">
-          <div class="el-date-range-picker__time-header" v-if="showTime">
-            <span class="el-date-range-picker__editors-wrap">
-              <span class="el-date-range-picker__time-picker-wrap">
-                <el-input
+        <div class="zz-picker-panel__body">
+          <div class="zz-date-range-picker__time-header" v-if="showTime">
+            <span class="zz-date-range-picker__editors-wrap">
+              <span class="zz-date-range-picker__time-picker-wrap">
+                <zz-input
                   size="small"
                   :disabled="rangeState.selecting"
                   ref="minInput"
                   :placeholder="t('el.datepicker.startDate')"
-                  class="el-date-range-picker__editor"
+                  class="zz-date-range-picker__editor"
                   :value="minVisibleDate"
                   @input="val => handleDateInput(val, 'min')"
                   @change="val => handleDateChange(val, 'min')" />
               </span>
-              <span class="el-date-range-picker__time-picker-wrap" v-clickoutside="handleMinTimeClose">
-                <el-input
+              <span class="zz-date-range-picker__time-picker-wrap" v-clickoutside="handleMinTimeClose">
+                <zz-input
                   size="small"
-                  class="el-date-range-picker__editor"
+                  class="zz-date-range-picker__editor"
                   :disabled="rangeState.selecting"
                   :placeholder="t('el.datepicker.startTime')"
                   :value="minVisibleTime"
@@ -50,12 +50,12 @@
                 </time-picker>
               </span>
             </span>
-            <span class="el-icon-arrow-right"></span>
-            <span class="el-date-range-picker__editors-wrap is-right">
-              <span class="el-date-range-picker__time-picker-wrap">
-                <el-input
+            <span class="zz-icon-arrow-right"></span>
+            <span class="zz-date-range-picker__editors-wrap is-right">
+              <span class="zz-date-range-picker__time-picker-wrap">
+                <zz-input
                   size="small"
-                  class="el-date-range-picker__editor"
+                  class="zz-date-range-picker__editor"
                   :disabled="rangeState.selecting"
                   :placeholder="t('el.datepicker.endDate')"
                   :value="maxVisibleDate"
@@ -63,10 +63,10 @@
                   @input="val => handleDateInput(val, 'max')"
                   @change="val => handleDateChange(val, 'max')" />
               </span>
-              <span class="el-date-range-picker__time-picker-wrap" v-clickoutside="handleMaxTimeClose">
-                <el-input
+              <span class="zz-date-range-picker__time-picker-wrap" v-clickoutside="handleMaxTimeClose">
+                <zz-input
                   size="small"
-                  class="el-date-range-picker__editor"
+                  class="zz-date-range-picker__editor"
                   :disabled="rangeState.selecting"
                   :placeholder="t('el.datepicker.endTime')"
                   :value="maxVisibleTime"
@@ -84,30 +84,30 @@
               </span>
             </span>
           </div>
-          <div class="el-picker-panel__content el-date-range-picker__content is-left">
-            <div class="el-date-range-picker__header">
+          <div class="zz-picker-panel__content zz-date-range-picker__content is-left">
+            <div class="zz-date-range-picker__header">
               <button
                 type="button"
                 @click="leftPrevYear"
-                class="el-picker-panel__icon-btn el-icon-d-arrow-left"></button>
+                class="zz-picker-panel__icon-btn zz-icon-d-arrow-left"></button>
               <button
                 type="button"
                 @click="leftPrevMonth"
-                class="el-picker-panel__icon-btn el-icon-arrow-left"></button>
+                class="zz-picker-panel__icon-btn zz-icon-arrow-left"></button>
               <button
                 type="button"
                 @click="leftNextYear"
                 v-if="unlinkPanels"
                 :disabled="!enableYearArrow"
                 :class="{ 'is-disabled': !enableYearArrow }"
-                class="el-picker-panel__icon-btn el-icon-d-arrow-right"></button>
+                class="zz-picker-panel__icon-btn zz-icon-d-arrow-right"></button>
               <button
                 type="button"
                 @click="leftNextMonth"
                 v-if="unlinkPanels"
                 :disabled="!enableMonthArrow"
                 :class="{ 'is-disabled': !enableMonthArrow }"
-                class="el-picker-panel__icon-btn el-icon-arrow-right"></button>
+                class="zz-picker-panel__icon-btn zz-icon-arrow-right"></button>
               <div>{{ leftLabel }}</div>
             </div>
             <date-table
@@ -124,30 +124,30 @@
               @pick="handleRangePick">
             </date-table>
           </div>
-          <div class="el-picker-panel__content el-date-range-picker__content is-right">
-            <div class="el-date-range-picker__header">
+          <div class="zz-picker-panel__content zz-date-range-picker__content is-right">
+            <div class="zz-date-range-picker__header">
               <button
                 type="button"
                 @click="rightPrevYear"
                 v-if="unlinkPanels"
                 :disabled="!enableYearArrow"
                 :class="{ 'is-disabled': !enableYearArrow }"
-                class="el-picker-panel__icon-btn el-icon-d-arrow-left"></button>
+                class="zz-picker-panel__icon-btn zz-icon-d-arrow-left"></button>
               <button
                 type="button"
                 @click="rightPrevMonth"
                 v-if="unlinkPanels"
                 :disabled="!enableMonthArrow"
                 :class="{ 'is-disabled': !enableMonthArrow }"
-                class="el-picker-panel__icon-btn el-icon-arrow-left"></button>
+                class="zz-picker-panel__icon-btn zz-icon-arrow-left"></button>
               <button
                 type="button"
                 @click="rightNextYear"
-                class="el-picker-panel__icon-btn el-icon-d-arrow-right"></button>
+                class="zz-picker-panel__icon-btn zz-icon-d-arrow-right"></button>
               <button
                 type="button"
                 @click="rightNextMonth"
-                class="el-picker-panel__icon-btn el-icon-arrow-right"></button>
+                class="zz-picker-panel__icon-btn zz-icon-arrow-right"></button>
               <div>{{ rightLabel }}</div>
             </div>
             <date-table
@@ -166,22 +166,22 @@
           </div>
         </div>
       </div>
-      <div class="el-picker-panel__footer" v-if="showTime">
-        <el-button
+      <div class="zz-picker-panel__footer" v-if="showTime">
+        <zz-button
           size="mini"
           type="text"
-          class="el-picker-panel__link-btn"
+          class="zz-picker-panel__link-btn"
           @click="handleClear">
           {{ t('el.datepicker.clear') }}
-        </el-button>
-        <el-button
+        </zz-button>
+        <zz-button
           plain
           size="mini"
-          class="el-picker-panel__link-btn"
+          class="zz-picker-panel__link-btn"
           :disabled="btnDisabled"
           @click="handleConfirm(false)">
           {{ t('el.datepicker.confirm') }}
-        </el-button>
+        </zz-button>
       </div>
     </div>
   </transition>
@@ -207,8 +207,8 @@
   import Locale from 'element-ui/src/mixins/locale';
   import TimePicker from './time';
   import DateTable from '../basic/date-table';
-  import ElInput from 'element-ui/packages/input';
-  import ElButton from 'element-ui/packages/button';
+  import ZzInput from 'element-ui/packages/input';
+  import ZzButton from 'element-ui/packages/button';
 
   const calcDefaultValue = (defaultValue) => {
     if (Array.isArray(defaultValue)) {
@@ -546,7 +546,7 @@
         this.maxDate = maxDate;
         this.minDate = minDate;
 
-        // workaround for https://github.com/ElemeFE/element/issues/7539, should remove this block when we don't have to care about Chromium 55 - 57
+        // workaround for https://github.com/ZzemeFE/element/issues/7539, should remove this block when we don't have to care about Chromium 55 - 57
         setTimeout(() => {
           this.maxDate = maxDate;
           this.minDate = minDate;
@@ -675,6 +675,6 @@
       }
     },
 
-    components: { TimePicker, DateTable, ElInput, ElButton }
+    components: { TimePicker, DateTable, ZzInput, ZzButton }
   };
 </script>

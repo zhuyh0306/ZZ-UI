@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'ElAvatar',
+  name: 'ZzAvatar',
 
   props: {
     size: {
@@ -39,18 +39,18 @@ export default {
   computed: {
     avatarClass() {
       const { size, icon, shape } = this;
-      let classList = ['el-avatar'];
+      let classList = ['zz-avatar'];
 
       if (size && typeof size === 'string') {
-        classList.push(`el-avatar--${size}`);
+        classList.push(`zz-avatar--${size}`);
       }
 
       if (icon) {
-        classList.push('el-avatar--icon');
+        classList.push('zz-avatar--icon');
       }
 
       if (shape) {
-        classList.push(`el-avatar--${shape}`);
+        classList.push(`zz-avatar--${shape}`);
       }
 
       return classList.join(' ');

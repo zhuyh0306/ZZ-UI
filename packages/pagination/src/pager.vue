@@ -1,15 +1,15 @@
 <template>
-  <ul @click="onPagerClick" class="el-pager">
+  <ul @click="onPagerClick" class="zz-pager">
     <li
       :class="{ active: currentPage === 1, disabled }"
       v-if="pageCount > 0"
       class="number">1</li>
     <li
-      class="el-icon more btn-quickprev"
+      class="zz-icon more btn-quickprev"
       :class="[quickprevIconClass, { disabled }]"
       v-if="showPrevMore"
       @mouseenter="onMouseenter('left')"
-      @mouseleave="quickprevIconClass = 'el-icon-more'">
+      @mouseleave="quickprevIconClass = 'zz-icon-more'">
     </li>
     <li
       v-for="pager in pagers"
@@ -17,11 +17,11 @@
       :class="{ active: currentPage === pager, disabled }"
       class="number">{{ pager }}</li>
     <li
-      class="el-icon more btn-quicknext"
+      class="zz-icon more btn-quicknext"
       :class="[quicknextIconClass, { disabled }]"
       v-if="showNextMore"
       @mouseenter="onMouseenter('right')"
-      @mouseleave="quicknextIconClass = 'el-icon-more'">
+      @mouseleave="quicknextIconClass = 'zz-icon-more'">
     </li>
     <li
       :class="{ active: currentPage === pageCount, disabled }"
@@ -32,7 +32,7 @@
 
 <script type="text/babel">
   export default {
-    name: 'ElPager',
+    name: 'ZzPager',
 
     props: {
       currentPage: Number,
@@ -46,11 +46,11 @@
 
     watch: {
       showPrevMore(val) {
-        if (!val) this.quickprevIconClass = 'el-icon-more';
+        if (!val) this.quickprevIconClass = 'zz-icon-more';
       },
 
       showNextMore(val) {
-        if (!val) this.quicknextIconClass = 'el-icon-more';
+        if (!val) this.quicknextIconClass = 'zz-icon-more';
       }
     },
 
@@ -93,9 +93,9 @@
       onMouseenter(direction) {
         if (this.disabled) return;
         if (direction === 'left') {
-          this.quickprevIconClass = 'el-icon-d-arrow-left';
+          this.quickprevIconClass = 'zz-icon-d-arrow-left';
         } else {
-          this.quicknextIconClass = 'el-icon-d-arrow-right';
+          this.quicknextIconClass = 'zz-icon-d-arrow-right';
         }
       }
     },
@@ -155,8 +155,8 @@
         current: null,
         showPrevMore: false,
         showNextMore: false,
-        quicknextIconClass: 'el-icon-more',
-        quickprevIconClass: 'el-icon-more'
+        quicknextIconClass: 'zz-icon-more',
+        quickprevIconClass: 'zz-icon-more'
       };
     }
   };

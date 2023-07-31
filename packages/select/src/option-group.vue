@@ -1,8 +1,8 @@
 <template>
-  <ul class="el-select-group__wrap" v-show="visible">
-    <li class="el-select-group__title">{{ label }}</li>
+  <ul class="zz-select-group__wrap" v-show="visible">
+    <li class="zz-select-group__title">{{ label }}</li>
     <li>
-      <ul class="el-select-group">
+      <ul class="zz-select-group">
         <slot></slot>
       </ul>
     </li>
@@ -15,9 +15,9 @@
   export default {
     mixins: [Emitter],
 
-    name: 'ElOptionGroup',
+    name: 'ZzOptionGroup',
 
-    componentName: 'ElOptionGroup',
+    componentName: 'ZzOptionGroup',
 
     props: {
       label: String,
@@ -35,7 +35,7 @@
 
     watch: {
       disabled(val) {
-        this.broadcast('ElOption', 'handleGroupDisabled', val);
+        this.broadcast('ZzOption', 'handleGroupDisabled', val);
       }
     },
 
@@ -53,7 +53,7 @@
 
     mounted() {
       if (this.disabled) {
-        this.broadcast('ElOption', 'handleGroupDisabled', this.disabled);
+        this.broadcast('ZzOption', 'handleGroupDisabled', this.disabled);
       }
     }
   };

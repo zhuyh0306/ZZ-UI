@@ -1,8 +1,8 @@
-import ElIcon from './src/icon.vue';
+import ZzIcon from './src/icon.vue';
 
 /* istanbul ignore next */
-ElIcon.install = function(Vue) {
-  Vue.component(ElIcon.name, ElIcon);
+ZzIcon.install = function (Vue) {
+  Vue.component(ZzIcon.name, ZzIcon);
 };
 
-export default ElIcon;
+export default ZzIcon;

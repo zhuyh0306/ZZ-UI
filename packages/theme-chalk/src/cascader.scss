@@ -12,16 +12,16 @@
   line-height: $--input-height;
 
   &:not(.is-disabled):hover {
-    .el-input__inner {
+    .zz-input__inner {
       cursor: pointer;
       border-color: $--input-hover-border;
     }
   }
 
-  .el-input {
+  .zz-input {
     cursor: pointer;
 
-    .el-input__inner {
+    .zz-input__inner {
       text-overflow: ellipsis;
 
       &:focus {
@@ -29,7 +29,7 @@
       }
     }
 
-    .el-icon-arrow-down {
+    .zz-icon-arrow-down {
       transition: transform .3s;
       font-size: 14px;
 
@@ -38,12 +38,12 @@
       }
     }
 
-    .el-icon-circle-close:hover {
+    .zz-icon-circle-close:hover {
       color: $--input-clear-hover-color;
     }
 
     @include when(focus) {
-      .el-input__inner {
+      .zz-input__inner {
         border-color: $--input-focus-border;
       }
     }
@@ -65,7 +65,7 @@
   }
 
   @include when(disabled) {
-    .el-cascader__label {
+    .zz-cascader__label {
       z-index: #{$--index-normal + 1};
       color: $--disabled-color-base;
     }
@@ -92,7 +92,7 @@
     text-align: left;
     box-sizing: border-box;
 
-    .el-tag {
+    .zz-tag {
       display: inline-flex;
       align-items: center;
       max-width: 100%;
@@ -104,13 +104,13 @@
         border-color: transparent;
       }
 
-      > span {
+      >span {
         flex: 1;
         overflow: hidden;
         text-overflow: ellipsis;
       }
 
-      .el-icon-close {
+      .zz-icon-close {
         flex: none;
         background-color: $--color-text-placeholder;
         color: $--color-white;
@@ -145,7 +145,8 @@
     outline: none;
     cursor: pointer;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background: $--cascader-node-background-hover;
     }
 
@@ -154,7 +155,7 @@
       font-weight: bold;
     }
 
-    > span {
+    >span {
       margin-right: 10px;
     }
   }

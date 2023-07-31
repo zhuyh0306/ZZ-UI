@@ -2,7 +2,7 @@ import DescriptionsRow from './descriptions-row';
 import { isFunction } from 'element-ui/src/utils/types';
 
 export default {
-  name: 'ElDescriptions',
+  name: 'ZzDescriptions',
   components: {
     [DescriptionsRow.name]: DescriptionsRow
   },
@@ -83,7 +83,7 @@ export default {
       const children = vnode.children || componentOptions.children || [];
       const slots = {};
       children.forEach(child => {
-        if (!this.isEmptyElement(child)) {
+        if (!this.isEmptyZzement(child)) {
           const name = (child.data && child.data.slot) || 'default';
           slots[name] = slots[name] || [];
           if (child.tag === 'template') {
@@ -95,7 +95,7 @@ export default {
       });
       return { ...slots };
     },
-    isEmptyElement(c) {
+    isEmptyZzement(c) {
       return !(c.tag || (c.text && c.text.trim() !== ''));
     },
     filledNode(node, span, count, isLast = false) {
@@ -113,7 +113,7 @@ export default {
     },
     getRows() {
       const children = ((this.$slots.default || []).filter(vnode => vnode.tag &&
-            vnode.componentOptions && vnode.componentOptions.Ctor.options.name === 'ElDescriptionsItem'));
+        vnode.componentOptions && vnode.componentOptions.Ctor.options.name === 'ZzDescriptionsItem'));
       const nodes = children.map(vnode => {
         return {
           props: this.getOptionProps(vnode),
@@ -153,22 +153,22 @@ export default {
     const rows = this.getRows();
 
     return (
-      <div class="el-descriptions">
+      <div class="zz-descriptions">
         {
           (title || extra || $slots.title || $slots.extra)
-            ? <div class="el-descriptions__header">
-              <div class="el-descriptions__title">
-                { $slots.title ? $slots.title : title}
+            ? <div class="zz-descriptions__header">
+              <div class="zz-descriptions__title">
+                {$slots.title ? $slots.title : title}
               </div>
-              <div class="el-descriptions__extra">
-                { $slots.extra ? $slots.extra : extra }
+              <div class="zz-descriptions__extra">
+                {$slots.extra ? $slots.extra : extra}
               </div>
             </div>
             : null
         }
 
-        <div class="el-descriptions__body">
-          <table class={['el-descriptions__table', {'is-bordered': border}, descriptionsSize ? `el-descriptions--${descriptionsSize}` : '']}>
+        <div class="zz-descriptions__body">
+          <table class={['zz-descriptions__table', { 'is-bordered': border }, descriptionsSize ? `zz-descriptions--${descriptionsSize}` : '']}>
             {rows.map(row => (
               <DescriptionsRow row={row}></DescriptionsRow>
             ))}

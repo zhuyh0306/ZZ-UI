@@ -1,5 +1,5 @@
 export default {
-  name: 'ElMarker',
+  name: 'ZzMarker',
 
   props: {
     mark: {
@@ -10,8 +10,8 @@ export default {
     let label = typeof this.mark === 'string' ? this.mark : this.mark.label;
 
     return (
-      <div class="el-slider__marks-text" style={ this.mark.style || {} }>
-        { label }
+      <div class="zz-slider__marks-text" style={this.mark.style || {}}>
+        {label}
       </div>
     );
   }

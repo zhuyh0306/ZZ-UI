@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import { hasClass, addClass, removeClass } from 'element-ui/src/utils/dom';
-import ElCheckbox from 'element-ui/packages/checkbox';
+import ZzCheckbox from 'element-ui/packages/checkbox';
 import FilterPanel from './filter-panel.vue';
 import LayoutObserver from './layout-observer';
 import { mapStates } from './store/helper';
@@ -64,7 +64,7 @@ const convertToRows = (originColumns) => {
 };
 
 export default {
-  name: 'ElTableHeader',
+  name: 'ZzTableHeader',
 
   mixins: [LayoutObserver],
 
@@ -76,38 +76,38 @@ export default {
     if (isGroup) this.$parent.isGroup = true;
     return (
       <table
-        class="el-table__header"
+        class="zz-table__header"
         cellspacing="0"
         cellpadding="0"
         border="0">
         <colgroup>
           {
-            this.columns.map(column => <col name={ column.id } key={column.id} />)
+            this.columns.map(column => <col name={column.id} key={column.id} />)
           }
           {
             this.hasGutter ? <col name="gutter" /> : ''
           }
         </colgroup>
-        <thead class={ [{ 'is-group': isGroup, 'has-gutter': this.hasGutter }] }>
+        <thead class={[{ 'is-group': isGroup, 'has-gutter': this.hasGutter }]}>
           {
             this._l(columnRows, (columns, rowIndex) =>
               <tr
-                style={ this.getHeaderRowStyle(rowIndex) }
-                class={ this.getHeaderRowClass(rowIndex) }
+                style={this.getHeaderRowStyle(rowIndex)}
+                class={this.getHeaderRowClass(rowIndex)}
               >
                 {
                   columns.map((column, cellIndex) => (<th
-                    colspan={ column.colSpan }
-                    rowspan={ column.rowSpan }
-                    on-mousemove={ ($event) => this.handleMouseMove($event, column) }
-                    on-mouseout={ this.handleMouseOut }
-                    on-mousedown={ ($event) => this.handleMouseDown($event, column) }
-                    on-click={ ($event) => this.handleHeaderClick($event, column) }
-                    on-contextmenu={ ($event) => this.handleHeaderContextMenu($event, column) }
-                    style={ this.getHeaderCellStyle(rowIndex, cellIndex, columns, column) }
-                    class={ this.getHeaderCellClass(rowIndex, cellIndex, columns, column) }
-                    key={ column.id }>
-                    <div class={ ['cell', column.filteredValue && column.filteredValue.length > 0 ? 'highlight' : '', column.labelClassName] }>
+                    colspan={column.colSpan}
+                    rowspan={column.rowSpan}
+                    on-mousemove={($event) => this.handleMouseMove($event, column)}
+                    on-mouseout={this.handleMouseOut}
+                    on-mousedown={($event) => this.handleMouseDown($event, column)}
+                    on-click={($event) => this.handleHeaderClick($event, column)}
+                    on-contextmenu={($event) => this.handleHeaderContextMenu($event, column)}
+                    style={this.getHeaderCellStyle(rowIndex, cellIndex, columns, column)}
+                    class={this.getHeaderCellClass(rowIndex, cellIndex, columns, column)}
+                    key={column.id}>
+                    <div class={['cell', column.filteredValue && column.filteredValue.length > 0 ? 'highlight' : '', column.labelClassName]}>
                       {
                         column.renderHeader
                           ? column.renderHeader.call(this._renderProxy, h, { column, $index: cellIndex, store: this.store, _self: this.$parent.$vnode.context })
@@ -116,27 +116,27 @@ export default {
                       {
                         column.sortable ? (<span
                           class="caret-wrapper"
-                          on-click={ ($event) => this.handleSortClick($event, column) }>
+                          on-click={($event) => this.handleSortClick($event, column)}>
                           <i class="sort-caret ascending"
-                            on-click={ ($event) => this.handleSortClick($event, column, 'ascending') }>
+                            on-click={($event) => this.handleSortClick($event, column, 'ascending')}>
                           </i>
                           <i class="sort-caret descending"
-                            on-click={ ($event) => this.handleSortClick($event, column, 'descending') }>
+                            on-click={($event) => this.handleSortClick($event, column, 'descending')}>
                           </i>
                         </span>) : ''
                       }
                       {
                         column.filterable ? (<span
-                          class="el-table__column-filter-trigger"
-                          on-click={ ($event) => this.handleFilterClick($event, column) }>
-                          <i class={ ['el-icon-arrow-down', column.filterOpened ? 'el-icon-arrow-up' : ''] }></i>
+                          class="zz-table__column-filter-trigger"
+                          on-click={($event) => this.handleFilterClick($event, column)}>
+                          <i class={['zz-icon-arrow-down', column.filterOpened ? 'zz-icon-arrow-up' : '']}></i>
                         </span>) : ''
                       }
                     </div>
                   </th>))
                 }
                 {
-                  this.hasGutter ? <th class="el-table__cell gutter"></th> : ''
+                  this.hasGutter ? <th class="zz-table__cell gutter"></th> : ''
                 }
               </tr>
             )
@@ -164,7 +164,7 @@ export default {
   },
 
   components: {
-    ElCheckbox
+    ZzCheckbox
   },
 
   computed: {
@@ -192,7 +192,7 @@ export default {
   },
 
   mounted() {
-    // nextTick 是有必要的 https://github.com/ElemeFE/element/pull/11311
+    // nextTick 是有必要的 https://github.com/ZzemeFE/element/pull/11311
     this.$nextTick(() => {
       const { prop, order } = this.defaultSort;
       const init = true;
@@ -286,7 +286,7 @@ export default {
         }));
       }
 
-      classes.push('el-table__cell');
+      classes.push('zz-table__cell');
 
       return classes.join(' ');
     },
@@ -300,7 +300,7 @@ export default {
       const target = event.target;
       let cell = target.tagName === 'TH' ? target : target.parentNode;
       if (hasClass(cell, 'noclick')) return;
-      cell = cell.querySelector('.el-table__column-filter-trigger') || cell;
+      cell = cell.querySelector('.zz-table__column-filter-trigger') || cell;
       const table = this.$parent;
 
       let filterPanel = this.filterPanels[column.id];
@@ -319,7 +319,7 @@ export default {
         filterPanel.table = table;
         filterPanel.cell = cell;
         filterPanel.column = column;
-        !this.$isServer && filterPanel.$mount(document.createElement('div'));
+        !this.$isServer && filterPanel.$mount(document.createZzement('div'));
       }
 
       setTimeout(() => {
@@ -351,13 +351,13 @@ export default {
         this.$parent.resizeProxyVisible = true;
 
         const table = this.$parent;
-        const tableEl = table.$el;
-        const tableLeft = tableEl.getBoundingClientRect().left;
-        const columnEl = this.$el.querySelector(`th.${column.id}`);
-        const columnRect = columnEl.getBoundingClientRect();
+        const tableZz = table.$el;
+        const tableLeft = tableZz.getBoundingClientRect().left;
+        const columnZz = this.$el.querySelector(`th.${column.id}`);
+        const columnRect = columnZz.getBoundingClientRect();
         const minLeft = columnRect.left - tableLeft + 30;
 
-        addClass(columnEl, 'noclick');
+        addClass(columnZz, 'noclick');
 
         this.dragState = {
           startMouseLeft: event.clientX,
@@ -369,8 +369,8 @@ export default {
         const resizeProxy = table.$refs.resizeProxy;
         resizeProxy.style.left = this.dragState.startLeft + 'px';
 
-        document.onselectstart = function() { return false; };
-        document.ondragstart = function() { return false; };
+        document.onselectstart = function () { return false; };
+        document.ondragstart = function () { return false; };
 
         const handleMouseMove = (event) => {
           const deltaLeft = event.clientX - this.dragState.startMouseLeft;
@@ -405,8 +405,8 @@ export default {
           document.onselectstart = null;
           document.ondragstart = null;
 
-          setTimeout(function() {
-            removeClass(columnEl, 'noclick');
+          setTimeout(function () {
+            removeClass(columnZz, 'noclick');
           }, 0);
         };
 

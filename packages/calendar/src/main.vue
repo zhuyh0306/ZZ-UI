@@ -1,36 +1,36 @@
 <template>
-  <div class="el-calendar">
-    <div class="el-calendar__header">
-      <div class="el-calendar__title">
+  <div class="zz-calendar">
+    <div class="zz-calendar__header">
+      <div class="zz-calendar__title">
         {{ i18nDate }}
       </div>
       <div
-        class="el-calendar__button-group"
+        class="zz-calendar__button-group"
         v-if="validatedRange.length === 0">
-        <el-button-group>
-          <el-button
+        <zz-button-group>
+          <zz-button
             type="plain"
             size="mini"
             @click="selectDate('prev-month')">
             {{ t('el.datepicker.prevMonth') }}
-          </el-button>
-          <el-button
+          </zz-button>
+          <zz-button
             type="plain"
             size="mini"
             @click="selectDate('today')">
             {{ t('el.datepicker.today') }}
-          </el-button>
-          <el-button
+          </zz-button>
+          <zz-button
             type="plain"
             size="mini"
             @click="selectDate('next-month')">
             {{ t('el.datepicker.nextMonth') }}
-          </el-button>
-        </el-button-group>
+          </zz-button>
+        </zz-button-group>
       </div>
     </div>
     <div
-      class="el-calendar__body"
+      class="zz-calendar__body"
       v-if="validatedRange.length === 0"
       key="no-range">
       <date-table
@@ -41,7 +41,7 @@
     </div>
     <div
       v-else
-      class="el-calendar__body"
+      class="zz-calendar__body"
       key="has-range">
       <date-table
         v-for="(range, index) in validatedRange"
@@ -59,8 +59,8 @@
 <script>
 import Locale from 'element-ui/src/mixins/locale';
 import fecha from 'element-ui/src/utils/date';
-import ElButton from 'element-ui/packages/button';
-import ElButtonGroup from 'element-ui/packages/button-group';
+import ZzButton from 'element-ui/packages/button';
+import ZzButtonGroup from 'element-ui/packages/button-group';
 import DateTable from './date-table';
 import { validateRangeInOneMonth } from 'element-ui/src/utils/date-util';
 
@@ -69,14 +69,14 @@ const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Frida
 const oneDay = 86400000;
 
 export default {
-  name: 'ElCalendar',
+  name: 'ZzCalendar',
 
   mixins: [Locale],
 
   components: {
     DateTable,
-    ElButton,
-    ElButtonGroup
+    ZzButton,
+    ZzButtonGroup
   },
 
   props: {
@@ -140,7 +140,7 @@ export default {
       const expected = isStart ? firstDayOfWeek : (firstDayOfWeek === 0 ? 6 : firstDayOfWeek - 1);
       const message = `${isStart ? 'start' : 'end'} of range should be ${weekDays[expected]}.`;
       if (date.getDay() !== expected) {
-        console.warn('[ElementCalendar]', message, 'Invalid range will be ignored.');
+        console.warn('[ZzementCalendar]', message, 'Invalid range will be ignored.');
         return false;
       }
       return true;
@@ -217,7 +217,7 @@ export default {
       if (range.length === 2) {
         const [start, end] = range;
         if (start > end) {
-          console.warn('[ElementCalendar]end time should be greater than start time');
+          console.warn('[ZzementCalendar]end time should be greater than start time');
           return [];
         }
         // start time and end time in one month
@@ -230,7 +230,7 @@ export default {
         let startDay = new Date(start.getFullYear(), start.getMonth() + 1, 1);
         const lastDay = this.toDate(startDay.getTime() - oneDay);
         if (!validateRangeInOneMonth(startDay, end)) {
-          console.warn('[ElementCalendar]start time and end time interval must not exceed two months');
+          console.warn('[ZzementCalendar]start time and end time interval must not exceed two months');
           return [];
         }
         // 第一个月的时间范围

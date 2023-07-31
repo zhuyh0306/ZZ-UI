@@ -1,6 +1,6 @@
 <template>
-  <transition name="el-zoom-in-top" @after-leave="doDestroy">
-    <ul class="el-dropdown-menu el-popper" :class="[size && `el-dropdown-menu--${size}`]" v-show="showPopper">
+  <transition name="zz-zoom-in-top" @after-leave="doDestroy">
+    <ul class="zz-dropdown-menu zz-popper" :class="[size && `zz-dropdown-menu--${size}`]" v-show="showPopper">
       <slot></slot>
     </ul>
   </transition>
@@ -9,9 +9,9 @@
   import Popper from 'element-ui/src/utils/vue-popper';
 
   export default {
-    name: 'ElDropdownMenu',
+    name: 'ZzDropdownMenu',
 
-    componentName: 'ElDropdownMenu',
+    componentName: 'ZzDropdownMenu',
 
     mixins: [Popper],
 
@@ -44,10 +44,10 @@
     },
 
     mounted() {
-      this.dropdown.popperElm = this.popperElm = this.$el;
-      this.referenceElm = this.dropdown.$el;
+      this.dropdown.popperZzm = this.popperZzm = this.$el;
+      this.referenceZzm = this.dropdown.$el;
       // compatible with 2.6 new v-slot syntax
-      // issue link https://github.com/ElemeFE/element/issues/14345
+      // issue link https://github.com/ZzemeFE/element/issues/14345
       this.dropdown.initDomOperation();
     },
 

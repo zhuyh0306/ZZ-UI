@@ -2,8 +2,8 @@
   <div
     ref="reference"
     :class="[
-      'el-cascader',
-      realSize && `el-cascader--${realSize}`,
+      'zz-cascader',
+      realSize && `zz-cascader--${realSize}`,
       { 'is-disabled': isDisabled }
     ]"
     v-clickoutside="() => toggleDropDownVisible(false)"
@@ -12,7 +12,7 @@
     @click="() => toggleDropDownVisible(readonly ? undefined : true)"
     @keydown="handleKeyDown">
 
-    <el-input
+    <zz-input
       ref="input"
       v-model="multiple ? presentText : inputValue"
       :size="realSize"
@@ -28,22 +28,22 @@
         <i
           v-if="clearBtnVisible"
           key="clear"
-          class="el-input__icon el-icon-circle-close"
+          class="zz-input__icon zz-icon-circle-close"
           @click.stop="handleClear"></i>
         <i
           v-else
           key="arrow-down"
           :class="[
-            'el-input__icon',
-            'el-icon-arrow-down',
+            'zz-input__icon',
+            'zz-icon-arrow-down',
             dropDownVisible && 'is-reverse'
           ]"
           @click.stop="toggleDropDownVisible()"></i>
       </template>
-    </el-input>
+    </zz-input>
 
-    <div v-if="multiple" class="el-cascader__tags">
-      <el-tag
+    <div v-if="multiple" class="zz-cascader__tags">
+      <zz-tag
         v-for="tag in presentTags"
         :key="tag.key"
         type="info"
@@ -53,24 +53,24 @@
         disable-transitions
         @close="deleteTag(tag)">
         <span>{{ tag.text }}</span>
-      </el-tag>
+      </zz-tag>
       <input
         v-if="filterable && !isDisabled"
         v-model.trim="inputValue"
         type="text"
-        class="el-cascader__search-input"
+        class="zz-cascader__search-input"
         :placeholder="presentTags.length ? '' : placeholder"
         @input="e => handleInput(inputValue, e)"
         @click.stop="toggleDropDownVisible(true)"
         @keydown.delete="handleDelete">
     </div>
 
-    <transition name="el-zoom-in-top" @after-leave="handleDropdownLeave">
+    <transition name="zz-zoom-in-top" @after-leave="handleDropdownLeave">
       <div
         v-show="dropDownVisible"
         ref="popper"
-        :class="['el-popper', 'el-cascader__dropdown', popperClass]">
-        <el-cascader-panel
+        :class="['zz-popper', 'zz-cascader__dropdown', popperClass]">
+        <zz-cascader-panel
           ref="panel"
           v-show="!filtering"
           v-model="checkedValue"
@@ -79,33 +79,33 @@
           :border="false"
           :render-label="$scopedSlots.default"
           @expand-change="handleExpandChange"
-          @close="toggleDropDownVisible(false)"></el-cascader-panel>
-        <el-scrollbar
+          @close="toggleDropDownVisible(false)"></zz-cascader-panel>
+        <zz-scrollbar
           ref="suggestionPanel"
           v-if="filterable"
           v-show="filtering"
           tag="ul"
-          class="el-cascader__suggestion-panel"
-          view-class="el-cascader__suggestion-list"
+          class="zz-cascader__suggestion-panel"
+          view-class="zz-cascader__suggestion-list"
           @keydown.native="handleSuggestionKeyDown">
           <template v-if="suggestions.length">
             <li
               v-for="(item, index) in suggestions"
               :key="item.uid"
               :class="[
-                'el-cascader__suggestion-item',
+                'zz-cascader__suggestion-item',
                 item.checked && 'is-checked'
               ]"
               :tabindex="-1"
               @click="handleSuggestionClick(index)">
               <span>{{ item.text }}</span>
-              <i v-if="item.checked" class="el-icon-check"></i>
+              <i v-if="item.checked" class="zz-icon-check"></i>
             </li>
           </template>
           <slot v-else name="empty">
-            <li class="el-cascader__empty-text">{{ t('el.cascader.noMatch') }}</li>
+            <li class="zz-cascader__empty-text">{{ t('el.cascader.noMatch') }}</li>
           </slot>
-        </el-scrollbar>
+        </zz-scrollbar>
       </div>
     </transition>
   </div>
@@ -117,10 +117,10 @@ import Clickoutside from 'element-ui/src/utils/clickoutside';
 import Emitter from 'element-ui/src/mixins/emitter';
 import Locale from 'element-ui/src/mixins/locale';
 import Migrating from 'element-ui/src/mixins/migrating';
-import ElInput from 'element-ui/packages/input';
-import ElTag from 'element-ui/packages/tag';
-import ElScrollbar from 'element-ui/packages/scrollbar';
-import ElCascaderPanel from 'element-ui/packages/cascader-panel';
+import ZzInput from 'element-ui/packages/input';
+import ZzTag from 'element-ui/packages/tag';
+import ZzScrollbar from 'element-ui/packages/scrollbar';
+import ZzCascaderPanel from 'element-ui/packages/cascader-panel';
 import AriaUtils from 'element-ui/src/utils/aria-utils';
 import { t } from 'element-ui/src/locale';
 import { isEqual, isEmpty, kebabCase } from 'element-ui/src/utils/util';
@@ -174,7 +174,7 @@ const InputSizeMap = {
 };
 
 export default {
-  name: 'ElCascader',
+  name: 'ZzCascader',
 
   directives: { Clickoutside },
 
@@ -190,10 +190,10 @@ export default {
   },
 
   components: {
-    ElInput,
-    ElTag,
-    ElScrollbar,
-    ElCascaderPanel
+    ZzInput,
+    ZzTag,
+    ZzScrollbar,
+    ZzCascaderPanel
   },
 
   props: {
@@ -323,7 +323,7 @@ export default {
 
         this.$emit('input', val);
         this.$emit('change', val);
-        this.dispatch('ElFormItem', 'el.form.change', [val]);
+        this.dispatch('ZzFormItem', 'el.form.change', [val]);
       }
     },
     options: {
@@ -464,10 +464,10 @@ export default {
         let firstNode = null;
 
         if (filtering && suggestionPanel) {
-          firstNode = suggestionPanel.$el.querySelector('.el-cascader__suggestion-item');
+          firstNode = suggestionPanel.$el.querySelector('.zz-cascader__suggestion-item');
         } else {
-          const firstMenu = popper.querySelector('.el-cascader-menu');
-          firstNode = firstMenu.querySelector('.el-cascader-node[tabindex="-1"]');
+          const firstMenu = popper.querySelector('.zz-cascader-menu');
+          firstNode = firstMenu.querySelector('.zz-cascader-node[tabindex="-1"]');
         }
 
         if (firstNode) {
@@ -575,11 +575,11 @@ export default {
           target.click();
           break;
         case KeyCode.up:
-          const prev = target.previousElementSibling;
+          const prev = target.previousZzementSibling;
           prev && prev.focus();
           break;
         case KeyCode.down:
-          const next = target.nextElementSibling;
+          const next = target.nextZzementSibling;
           next && next.focus();
           break;
         case KeyCode.esc:
@@ -629,15 +629,15 @@ export default {
       if (this.$isServer || !$el) return;
 
       const { suggestionPanel } = this.$refs;
-      const inputInner = $el.querySelector('.el-input__inner');
+      const inputInner = $el.querySelector('.zz-input__inner');
 
       if (!inputInner) return;
 
-      const tags = $el.querySelector('.el-cascader__tags');
-      let suggestionPanelEl = null;
+      const tags = $el.querySelector('.zz-cascader__tags');
+      let suggestionPanelZz = null;
 
-      if (suggestionPanel && (suggestionPanelEl = suggestionPanel.$el)) {
-        const suggestionList = suggestionPanelEl.querySelector('.el-cascader__suggestion-list');
+      if (suggestionPanel && (suggestionPanelZz = suggestionPanel.$el)) {
+        const suggestionList = suggestionPanelZz.querySelector('.zz-cascader__suggestion-list');
         suggestionList.style.minWidth = inputInner.offsetWidth + 'px';
       }
 

@@ -188,14 +188,14 @@ export default {
     } = this;
     const data = {
       class: {
-        'el-upload': true
+        'zz-upload': true
       },
       on: {
         click: handleClick,
         keydown: handleKeydown
       }
     };
-    data.class[`el-upload--${listType}`] = true;
+    data.class[`zz-upload--${listType}`] = true;
     return (
       <div {...data} tabindex="0" >
         {
@@ -203,7 +203,7 @@ export default {
             ? <upload-dragger disabled={disabled} on-file={uploadFiles}>{this.$slots.default}</upload-dragger>
             : this.$slots.default
         }
-        <input class="el-upload__input" type="file" ref="input" name={name} on-change={handleChange} multiple={multiple} accept={accept}></input>
+        <input class="zz-upload__input" type="file" ref="input" name={name} on-change={handleChange} multiple={multiple} accept={accept}></input>
       </div>
     );
   }

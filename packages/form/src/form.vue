@@ -1,7 +1,7 @@
 <template>
-  <form class="el-form" :class="[
-    labelPosition ? 'el-form--label-' + labelPosition : '',
-    { 'el-form--inline': inline }
+  <form class="zz-form" :class="[
+    labelPosition ? 'zz-form--labzz-' + labelPosition : '',
+    { 'zz-form--inline': inline }
   ]">
     <slot></slot>
   </form>
@@ -10,9 +10,9 @@
   import objectAssign from 'element-ui/src/utils/merge';
 
   export default {
-    name: 'ElForm',
+    name: 'ZzForm',
 
-    componentName: 'ElForm',
+    componentName: 'ZzForm',
 
     provide() {
       return {
@@ -89,7 +89,7 @@
     methods: {
       resetFields() {
         if (!this.model) {
-          console.warn('[Element Warn][Form]model is required for resetFields to work.');
+          console.warn('[Zzement Warn][Form]model is required for resetFields to work.');
           return;
         }
         this.fields.forEach(field => {
@@ -108,7 +108,7 @@
       },
       validate(callback) {
         if (!this.model) {
-          console.warn('[Element Warn][Form]model is required for validate to work!');
+          console.warn('[Zzement Warn][Form]model is required for validate to work!');
           return;
         }
 
@@ -149,7 +149,7 @@
         props = [].concat(props);
         const fields = this.fields.filter(field => props.indexOf(field.prop) !== -1);
         if (!fields.length) {
-          console.warn('[Element Warn]please pass correct props!');
+          console.warn('[Zzement Warn]please pass correct props!');
           return;
         }
 
@@ -161,7 +161,7 @@
         const index = this.potentialLabelWidthArr.indexOf(width);
         // it's impossible
         if (index === -1) {
-          throw new Error('[ElementForm]unpected width ', width);
+          throw new Error('[ZzementForm]unpected width ', width);
         }
         return index;
       },

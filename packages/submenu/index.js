@@ -1,8 +1,8 @@
-import ElSubmenu from '../menu/src/submenu';
+import ZzSubmenu from '../menu/src/submenu';
 
 /* istanbul ignore next */
-ElSubmenu.install = function(Vue) {
-  Vue.component(ElSubmenu.name, ElSubmenu);
+ZzSubmenu.install = function (Vue) {
+  Vue.component(ZzSubmenu.name, ZzSubmenu);
 };
 
-export default ElSubmenu;
+export default ZzSubmenu;
