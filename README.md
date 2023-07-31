@@ -2,7 +2,7 @@
 
 ## Install
 ```shell
-npm install element-ui -S
+npm install @yhui/zz-ui -S
 ```
 
 ## Quick Start
