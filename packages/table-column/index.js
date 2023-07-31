@@ -1,8 +1,8 @@
-import ElTableColumn from '../table/src/table-column';
+import ZzTableColumn from '../table/src/table-column';
 
 /* istanbul ignore next */
-ElTableColumn.install = function(Vue) {
-  Vue.component(ElTableColumn.name, ElTableColumn);
+ZzTableColumn.install = function (Vue) {
+  Vue.component(ZzTableColumn.name, ZzTableColumn);
 };
 
-export default ElTableColumn;
+export default ZzTableColumn;

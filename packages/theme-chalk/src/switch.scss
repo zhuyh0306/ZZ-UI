@@ -9,9 +9,11 @@
   line-height: $--switch-height;
   height: $--switch-height;
   vertical-align: middle;
+
   @include when(disabled) {
-    & .el-switch__core,
-    & .el-switch__label {
+
+    & .zz-switch__core,
+    & .zz-switch__label {
       cursor: not-allowed;
     }
   }
@@ -33,9 +35,11 @@
     @include m(left) {
       margin-right: 10px;
     }
+
     @include m(right) {
       margin-left: 10px;
     }
+
     & * {
       line-height: 1;
       font-size: $--switch-font-size;
@@ -80,9 +84,10 @@
   }
 
   @include when(checked) {
-    .el-switch__core {
+    .zz-switch__core {
       border-color: $--switch-on-color;
       background-color: $--switch-on-color;
+
       &::after {
         left: 100%;
         margin-left: -$--switch-button-size - 1px;
@@ -95,13 +100,14 @@
   }
 
   @include m(wide) {
-    .el-switch__label {
-      &.el-switch__label--left {
+    .zz-switch__label {
+      &.zz-switch__labzz--left {
         span {
           left: 10px;
         }
       }
-      &.el-switch__label--right {
+
+      &.zz-switch__labzz--right {
         span {
           right: 10px;
         }
@@ -109,8 +115,8 @@
     }
   }
 
-  & .label-fade-enter,
-  & .label-fade-leave-active {
+  & .labzz-fade-enter,
+  & .labzz-fade-leave-active {
     opacity: 0;
   }
 }

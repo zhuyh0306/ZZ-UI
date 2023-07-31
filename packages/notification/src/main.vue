@@ -1,7 +1,7 @@
 <template>
-  <transition name="el-notification-fade">
+  <transition name="zz-notification-fade">
     <div
-      :class="['el-notification', customClass, horizontalClass]"
+      :class="['zz-notification', customClass, horizontalClass]"
       v-show="visible"
       :style="positionStyle"
       @mouseenter="clearTimer()"
@@ -10,20 +10,20 @@
       role="alert"
     >
       <i
-        class="el-notification__icon"
+        class="zz-notification__icon"
         :class="[ typeClass, iconClass ]"
         v-if="type || iconClass">
       </i>
-      <div class="el-notification__group" :class="{ 'is-with-icon': typeClass || iconClass }">
-        <h2 class="el-notification__title" v-text="title"></h2>
-        <div class="el-notification__content" v-show="message">
+      <div class="zz-notification__group" :class="{ 'is-with-icon': typeClass || iconClass }">
+        <h2 class="zz-notification__title" v-text="title"></h2>
+        <div class="zz-notification__content" v-show="message">
           <slot>
             <p v-if="!dangerouslyUseHTMLString">{{ message }}</p>
             <p v-else v-html="message"></p>
           </slot>
         </div>
         <div
-          class="el-notification__closeBtn el-icon-close"
+          class="zz-notification__closeBtn zz-icon-close"
           v-if="showClose"
           @click.stop="close"></div>
       </div>
@@ -62,7 +62,7 @@
 
     computed: {
       typeClass() {
-        return this.type && typeMap[this.type] ? `el-icon-${ typeMap[this.type] }` : '';
+        return this.type && typeMap[this.type] ? `zz-icon-${ typeMap[this.type] }` : '';
       },
 
       horizontalClass() {
@@ -84,14 +84,14 @@
       closed(newVal) {
         if (newVal) {
           this.visible = false;
-          this.$el.addEventListener('transitionend', this.destroyElement);
+          this.$el.addEventListener('transitionend', this.destroyZzement);
         }
       }
     },
 
     methods: {
-      destroyElement() {
-        this.$el.removeEventListener('transitionend', this.destroyElement);
+      destroyZzement() {
+        this.$el.removeEventListener('transitionend', this.destroyZzement);
         this.$destroy(true);
         this.$el.parentNode.removeChild(this.$el);
       },

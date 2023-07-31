@@ -1,8 +1,8 @@
 <template>
   <label
-    class="el-radio-button"
+    class="zz-radio-button"
     :class="[
-      size ? 'el-radio-button--' + size : '',
+      size ? 'zz-radio-button--' + size : '',
       { 'is-active': value === label },
       { 'is-disabled': isDisabled },
       { 'is-focus': focus }
@@ -14,7 +14,7 @@
     @keydown.space.stop.prevent="value = isDisabled ? value : label"
   >
     <input
-      class="el-radio-button__orig-radio"
+      class="zz-radio-button__orig-radio"
       :value="label"
       type="radio"
       v-model="value"
@@ -27,7 +27,7 @@
       autocomplete="off"
     >
     <span
-      class="el-radio-button__inner"
+      class="zz-radio-button__inner"
       :style="value === label ? activeStyle : null"
       @keydown.stop>
       <slot></slot>
@@ -39,7 +39,7 @@
   import Emitter from 'element-ui/src/mixins/emitter';
 
   export default {
-    name: 'ElRadioButton',
+    name: 'ZzRadioButton',
 
     mixins: [Emitter],
 
@@ -74,7 +74,7 @@
       _radioGroup() {
         let parent = this.$parent;
         while (parent) {
-          if (parent.$options.componentName !== 'ElRadioGroup') {
+          if (parent.$options.componentName !== 'ZzRadioGroup') {
             parent = parent.$parent;
           } else {
             return parent;
@@ -107,7 +107,7 @@
     methods: {
       handleChange() {
         this.$nextTick(() => {
-          this.dispatch('ElRadioGroup', 'handleChange', this.value);
+          this.dispatch('ZzRadioGroup', 'handleChange', this.value);
         });
       }
     }

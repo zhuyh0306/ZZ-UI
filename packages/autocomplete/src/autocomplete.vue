@@ -1,13 +1,13 @@
 <template>
   <div
-    class="el-autocomplete"
+    class="zz-autocomplete"
     v-clickoutside="close"
     aria-haspopup="listbox"
     role="combobox"
     :aria-expanded="suggestionVisible"
     :aria-owns="id"
   >
-    <el-input
+    <zz-input
       ref="input"
       v-bind="[$props, $attrs]"
       @input="handleInput"
@@ -32,8 +32,8 @@
       <template slot="suffix" v-if="$slots.suffix">
         <slot name="suffix"></slot>
       </template>
-    </el-input>
-    <el-autocomplete-suggestions
+    </zz-input>
+    <zz-autocomplete-suggestions
       visible-arrow
       :class="[popperClass ? popperClass : '']"
       :popper-options="popperOptions"
@@ -54,31 +54,31 @@
           {{ item[valueKey] }}
         </slot>
       </li>
-    </el-autocomplete-suggestions>
+    </zz-autocomplete-suggestions>
   </div>
 </template>
 <script>
   import debounce from 'throttle-debounce/debounce';
-  import ElInput from 'element-ui/packages/input';
+  import ZzInput from 'element-ui/packages/input';
   import Clickoutside from 'element-ui/src/utils/clickoutside';
-  import ElAutocompleteSuggestions from './autocomplete-suggestions.vue';
+  import ZzAutocompleteSuggestions from './autocomplete-suggestions.vue';
   import Emitter from 'element-ui/src/mixins/emitter';
   import Migrating from 'element-ui/src/mixins/migrating';
   import { generateId } from 'element-ui/src/utils/util';
   import Focus from 'element-ui/src/mixins/focus';
 
   export default {
-    name: 'ElAutocomplete',
+    name: 'ZzAutocomplete',
 
     mixins: [Emitter, Focus('input'), Migrating],
 
     inheritAttrs: false,
 
-    componentName: 'ElAutocomplete',
+    componentName: 'ZzAutocomplete',
 
     components: {
-      ElInput,
-      ElAutocompleteSuggestions
+      ZzInput,
+      ZzAutocompleteSuggestions
     },
 
     directives: { Clickoutside },
@@ -149,14 +149,14 @@
         return (isValidData || this.loading) && this.activated;
       },
       id() {
-        return `el-autocomplete-${generateId()}`;
+        return `zz-autocomplete-${generateId()}`;
       }
     },
     watch: {
       suggestionVisible(val) {
         let $input = this.getInput();
         if ($input) {
-          this.broadcast('ElAutocompleteSuggestions', 'visible', [val, $input.offsetWidth]);
+          this.broadcast('ZzAutocompleteSuggestions', 'visible', [val, $input.offsetWidth]);
         }
       }
     },
@@ -183,7 +183,7 @@
             this.suggestions = suggestions;
             this.highlightedIndex = this.highlightFirstItem ? 0 : -1;
           } else {
-            console.error('[Element Error][Autocomplete]autocomplete suggestions must be an array');
+            console.error('[Zzement Error][Autocomplete]autocomplete suggestions must be an array');
           }
         });
       },
@@ -246,8 +246,8 @@
         if (index >= this.suggestions.length) {
           index = this.suggestions.length - 1;
         }
-        const suggestion = this.$refs.suggestions.$el.querySelector('.el-autocomplete-suggestion__wrap');
-        const suggestionList = suggestion.querySelectorAll('.el-autocomplete-suggestion__list li');
+        const suggestion = this.$refs.suggestions.$el.querySelector('.zz-autocomplete-suggestion__wrap');
+        const suggestionList = suggestion.querySelectorAll('.zz-autocomplete-suggestion__list li');
 
         let highlightItem = suggestionList[index];
         let scrollTop = suggestion.scrollTop;

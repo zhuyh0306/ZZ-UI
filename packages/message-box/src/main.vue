@@ -1,57 +1,57 @@
 <template>
   <transition name="msgbox-fade">
     <div
-      class="el-message-box__wrapper"
+      class="zz-message-box__wrapper"
       tabindex="-1"
       v-show="visible"
       @click.self="handleWrapperClick"
       role="dialog"
       aria-modal="true"
       :aria-label="title || 'dialog'">
-      <div class="el-message-box" :class="[customClass, center && 'el-message-box--center']">
-        <div class="el-message-box__header" v-if="title !== null">
-          <div class="el-message-box__title">
+      <div class="zz-message-box" :class="[customClass, center && 'zz-message-box--center']">
+        <div class="zz-message-box__header" v-if="title !== null">
+          <div class="zz-message-box__title">
             <div
-              :class="['el-message-box__status', icon]"
+              :class="['zz-message-box__status', icon]"
               v-if="icon && center">
             </div>
             <span>{{ title }}</span>
           </div>
           <button
             type="button"
-            class="el-message-box__headerbtn"
+            class="zz-message-box__headerbtn"
             aria-label="Close"
             v-if="showClose"
             @click="handleAction(distinguishCancelAndClose ? 'close' : 'cancel')"
             @keydown.enter="handleAction(distinguishCancelAndClose ? 'close' : 'cancel')">
-            <i class="el-message-box__close el-icon-close"></i>
+            <i class="zz-message-box__close zz-icon-close"></i>
           </button>
         </div>
-        <div class="el-message-box__content">
-          <div class="el-message-box__container">
+        <div class="zz-message-box__content">
+          <div class="zz-message-box__container">
             <div
-              :class="['el-message-box__status', icon]"
+              :class="['zz-message-box__status', icon]"
               v-if="icon && !center && message !== ''">
             </div>
-            <div class="el-message-box__message" v-if="message !== ''">
+            <div class="zz-message-box__message" v-if="message !== ''">
               <slot>
                 <p v-if="!dangerouslyUseHTMLString">{{ message }}</p>
                 <p v-else v-html="message"></p>
               </slot>
             </div>
           </div>
-          <div class="el-message-box__input" v-show="showInput">
-            <el-input
+          <div class="zz-message-box__input" v-show="showInput">
+            <zz-input
               v-model="inputValue"
               :type="inputType"
               @keydown.enter.native="handleInputEnter"
               :placeholder="inputPlaceholder"
-              ref="input"></el-input>
-            <div class="el-message-box__errormsg" :style="{ visibility: !!editorErrorMessage ? 'visible' : 'hidden' }">{{ editorErrorMessage }}</div>
+              ref="input"></zz-input>
+            <div class="zz-message-box__errormsg" :style="{ visibility: !!editorErrorMessage ? 'visible' : 'hidden' }">{{ editorErrorMessage }}</div>
           </div>
         </div>
-        <div class="el-message-box__btns">
-          <el-button
+        <div class="zz-message-box__btns">
+          <zz-button
             :loading="cancelButtonLoading"
             :class="[ cancelButtonClasses ]"
             v-if="showCancelButton"
@@ -60,8 +60,8 @@
             @click.native="handleAction('cancel')"
             @keydown.enter="handleAction('cancel')">
             {{ cancelButtonText || t('el.messagebox.cancel') }}
-          </el-button>
-          <el-button
+          </zz-button>
+          <zz-button
             :loading="confirmButtonLoading"
             ref="confirm"
             :class="[ confirmButtonClasses ]"
@@ -71,7 +71,7 @@
             @click.native="handleAction('confirm')"
             @keydown.enter="handleAction('confirm')">
             {{ confirmButtonText || t('el.messagebox.confirm') }}
-          </el-button>
+          </zz-button>
         </div>
       </div>
     </div>
@@ -81,8 +81,8 @@
 <script type="text/babel">
   import Popup from 'element-ui/src/utils/popup';
   import Locale from 'element-ui/src/mixins/locale';
-  import ElInput from 'element-ui/packages/input';
-  import ElButton from 'element-ui/packages/button';
+  import ZzInput from 'element-ui/packages/input';
+  import ZzButton from 'element-ui/packages/button';
   import { addClass, removeClass } from 'element-ui/src/utils/dom';
   import { t } from 'element-ui/src/locale';
   import Dialog from 'element-ui/src/utils/aria-dialog';
@@ -129,18 +129,18 @@
     },
 
     components: {
-      ElInput,
-      ElButton
+      ZzInput,
+      ZzButton
     },
 
     computed: {
       icon() {
         const { type, iconClass } = this;
-        return iconClass || (type && typeMap[type] ? `el-icon-${ typeMap[type] }` : '');
+        return iconClass || (type && typeMap[type] ? `zz-icon-${ typeMap[type] }` : '');
       },
 
       confirmButtonClasses() {
-        return `el-button--primary ${ this.confirmButtonClass }`;
+        return `zz-button--primary ${ this.confirmButtonClass }`;
       },
       cancelButtonClasses() {
         return `${ this.cancelButtonClass }`;
@@ -203,7 +203,7 @@
           const inputPattern = this.inputPattern;
           if (inputPattern && !inputPattern.test(this.inputValue || '')) {
             this.editorErrorMessage = this.inputErrorMessage || t('el.messagebox.error');
-            addClass(this.getInputElement(), 'invalid');
+            addClass(this.getInputZzement(), 'invalid');
             return false;
           }
           const inputValidator = this.inputValidator;
@@ -211,26 +211,26 @@
             const validateResult = inputValidator(this.inputValue);
             if (validateResult === false) {
               this.editorErrorMessage = this.inputErrorMessage || t('el.messagebox.error');
-              addClass(this.getInputElement(), 'invalid');
+              addClass(this.getInputZzement(), 'invalid');
               return false;
             }
             if (typeof validateResult === 'string') {
               this.editorErrorMessage = validateResult;
-              addClass(this.getInputElement(), 'invalid');
+              addClass(this.getInputZzement(), 'invalid');
               return false;
             }
           }
         }
         this.editorErrorMessage = '';
-        removeClass(this.getInputElement(), 'invalid');
+        removeClass(this.getInputZzement(), 'invalid');
         return true;
       },
       getFirstFocus() {
-        const btn = this.$el.querySelector('.el-message-box__btns .el-button');
-        const title = this.$el.querySelector('.el-message-box__btns .el-message-box__title');
+        const btn = this.$el.querySelector('.zz-message-box__btns .zz-button');
+        const title = this.$el.querySelector('.zz-message-box__btns .zz-message-box__title');
         return btn || title;
       },
-      getInputElement() {
+      getInputZzement() {
         const inputRefs = this.$refs.input.$refs;
         return inputRefs.input || inputRefs.textarea;
       },
@@ -259,7 +259,7 @@
               this.$refs.confirm.$el.focus();
             });
           }
-          this.focusAfterClosed = document.activeElement;
+          this.focusAfterClosed = document.activeZzement;
           messageBox = new Dialog(this.$el, this.focusAfterClosed, this.getFirstFocus());
         }
 
@@ -268,12 +268,12 @@
         if (val) {
           setTimeout(() => {
             if (this.$refs.input && this.$refs.input.$el) {
-              this.getInputElement().focus();
+              this.getInputZzement().focus();
             }
           }, 500);
         } else {
           this.editorErrorMessage = '';
-          removeClass(this.getInputElement(), 'invalid');
+          removeClass(this.getInputZzement(), 'invalid');
         }
       }
     },

@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      'el-cascader-panel',
+      'zz-cascader-panel',
       border && 'is-bordered'
     ]"
     @keydown="handleKeyDown">
@@ -49,7 +49,7 @@ const isLeaf = el => !el.getAttribute('aria-owns');
 const getSibling = (el, distance) => {
   const { parentNode } = el;
   if (parentNode) {
-    const siblings = parentNode.querySelectorAll('.el-cascader-node[tabindex="-1"]');
+    const siblings = parentNode.querySelectorAll('.zz-cascader-node[tabindex="-1"]');
     const index = Array.prototype.indexOf.call(siblings, el);
     return siblings[index + distance] || null;
   }
@@ -80,7 +80,7 @@ const checkNode = el => {
 };
 
 export default {
-  name: 'ElCascaderPanel',
+  name: 'ZzCascaderPanel',
 
   components: {
     CascaderMenu
@@ -247,14 +247,14 @@ export default {
         case KeyCode.left:
           const preMenu = this.$refs.menu[getMenuIndex(target) - 1];
           if (preMenu) {
-            const expandedNode = preMenu.$el.querySelector('.el-cascader-node[aria-expanded="true"]');
+            const expandedNode = preMenu.$el.querySelector('.zz-cascader-node[aria-expanded="true"]');
             focusNode(expandedNode);
           }
           break;
         case KeyCode.right:
           const nextMenu = this.$refs.menu[getMenuIndex(target) + 1];
           if (nextMenu) {
-            const firstNode = nextMenu.$el.querySelector('.el-cascader-node[tabindex="-1"]');
+            const firstNode = nextMenu.$el.querySelector('.zz-cascader-node[tabindex="-1"]');
             focusNode(firstNode);
           }
           break;
@@ -347,11 +347,11 @@ export default {
 
       const menus = this.$refs.menu || [];
       menus.forEach(menu => {
-        const menuElement = menu.$el;
-        if (menuElement) {
-          const container = menuElement.querySelector('.el-scrollbar__wrap');
-          const activeNode = menuElement.querySelector('.el-cascader-node.is-active') ||
-            menuElement.querySelector('.el-cascader-node.in-active-path');
+        const menuZzement = menu.$el;
+        if (menuZzement) {
+          const container = menuZzement.querySelector('.zz-scrollbar__wrap');
+          const activeNode = menuZzement.querySelector('.zz-cascader-node.is-active') ||
+            menuZzement.querySelector('.zz-cascader-node.in-active-path');
           scrollIntoView(container, activeNode);
         }
       });

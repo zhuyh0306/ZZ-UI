@@ -1,35 +1,35 @@
 <template>
   <div
-    class="el-select"
-    :class="[selectSize ? 'el-select--' + selectSize : '']"
+    class="zz-select"
+    :class="[selectSize ? 'zz-select--' + selectSize : '']"
     @click.stop="toggleMenu"
     v-clickoutside="handleClose">
     <div
-      class="el-select__tags"
+      class="zz-select__tags"
       v-if="multiple"
       ref="tags"
       :style="{ 'max-width': inputWidth - 32 + 'px', width: '100%' }">
       <span v-if="collapseTags && selected.length">
-        <el-tag
+        <zz-tag
           :closable="!selectDisabled"
           :size="collapseTagSize"
           :hit="selected[0].hitState"
           type="info"
           @close="deleteTag($event, selected[0])"
           disable-transitions>
-          <span class="el-select__tags-text">{{ selected[0].currentLabel }}</span>
-        </el-tag>
-        <el-tag
+          <span class="zz-select__tags-text">{{ selected[0].currentLabel }}</span>
+        </zz-tag>
+        <zz-tag
           v-if="selected.length > 1"
           :closable="false"
           :size="collapseTagSize"
           type="info"
           disable-transitions>
-          <span class="el-select__tags-text">+ {{ selected.length - 1 }}</span>
-        </el-tag>
+          <span class="zz-select__tags-text">+ {{ selected.length - 1 }}</span>
+        </zz-tag>
       </span>
       <transition-group @after-leave="resetInputHeight" v-if="!collapseTags">
-        <el-tag
+        <zz-tag
           v-for="item in selected"
           :key="getValueKey(item)"
           :closable="!selectDisabled"
@@ -38,13 +38,13 @@
           type="info"
           @close="deleteTag($event, item)"
           disable-transitions>
-          <span class="el-select__tags-text">{{ item.currentLabel }}</span>
-        </el-tag>
+          <span class="zz-select__tags-text">{{ item.currentLabel }}</span>
+        </zz-tag>
       </transition-group>
 
       <input
         type="text"
-        class="el-select__input"
+        class="zz-select__input"
         :class="[selectSize ? `is-${ selectSize }` : '']"
         :disabled="selectDisabled"
         :autocomplete="autoComplete || autocomplete"
@@ -67,7 +67,7 @@
         :style="{ 'flex-grow': '1', width: inputLength / (inputWidth - 32) + '%', 'max-width': inputWidth - 42 + 'px' }"
         ref="input">
     </div>
-    <el-input
+    <zz-input
       ref="reference"
       v-model="selectedLabel"
       type="text"
@@ -98,39 +98,39 @@
         <slot name="prefix"></slot>
       </template>
       <template slot="suffix">
-        <i v-show="!showClose" :class="['el-select__caret', 'el-input__icon', 'el-icon-' + iconClass]"></i>
-        <i v-if="showClose" class="el-select__caret el-input__icon el-icon-circle-close" @click="handleClearClick"></i>
+        <i v-show="!showClose" :class="['zz-select__caret', 'zz-input__icon', 'zz-icon-' + iconClass]"></i>
+        <i v-if="showClose" class="zz-select__caret zz-input__icon zz-icon-circle-close" @click="handleClearClick"></i>
       </template>
-    </el-input>
+    </zz-input>
     <transition
-      name="el-zoom-in-top"
+      name="zz-zoom-in-top"
       @before-enter="handleMenuEnter"
       @after-leave="doDestroy">
-      <el-select-menu
+      <zz-select-menu
         ref="popper"
         :append-to-body="popperAppendToBody"
         v-show="visible && emptyText !== false">
-        <el-scrollbar
+        <zz-scrollbar
           tag="ul"
-          wrap-class="el-select-dropdown__wrap"
-          view-class="el-select-dropdown__list"
+          wrap-class="zz-select-dropdown__wrap"
+          view-class="zz-select-dropdown__list"
           ref="scrollbar"
           :class="{ 'is-empty': !allowCreate && query && filteredOptionsCount === 0 }"
           v-show="options.length > 0 && !loading">
-          <el-option
+          <zz-option
             :value="query"
             created
             v-if="showNewOption">
-          </el-option>
+          </zz-option>
           <slot></slot>
-        </el-scrollbar>
+        </zz-scrollbar>
         <template v-if="emptyText && (!allowCreate || loading || (allowCreate && options.length === 0 ))">
           <slot name="empty" v-if="$slots.empty"></slot>
-          <p class="el-select-dropdown__empty" v-else>
+          <p class="zz-select-dropdown__empty" v-else>
             {{ emptyText }}
           </p>
         </template>
-      </el-select-menu>
+      </zz-select-menu>
     </transition>
   </div>
 </template>
@@ -139,11 +139,11 @@
   import Emitter from 'element-ui/src/mixins/emitter';
   import Focus from 'element-ui/src/mixins/focus';
   import Locale from 'element-ui/src/mixins/locale';
-  import ElInput from 'element-ui/packages/input';
-  import ElSelectMenu from './select-dropdown.vue';
-  import ElOption from './option.vue';
-  import ElTag from 'element-ui/packages/tag';
-  import ElScrollbar from 'element-ui/packages/scrollbar';
+  import ZzInput from 'element-ui/packages/input';
+  import ZzSelectMenu from './select-dropdown.vue';
+  import ZzOption from './option.vue';
+  import ZzTag from 'element-ui/packages/tag';
+  import ZzScrollbar from 'element-ui/packages/scrollbar';
   import debounce from 'throttle-debounce/debounce';
   import Clickoutside from 'element-ui/src/utils/clickoutside';
   import { addResizeListener, removeResizeListener } from 'element-ui/src/utils/resize-event';
@@ -155,9 +155,9 @@
   export default {
     mixins: [Emitter, Locale, Focus('reference'), NavigationMixin],
 
-    name: 'ElSelect',
+    name: 'ZzSelect',
 
-    componentName: 'ElSelect',
+    componentName: 'ZzSelect',
 
     inject: {
       elForm: {
@@ -243,11 +243,11 @@
     },
 
     components: {
-      ElInput,
-      ElSelectMenu,
-      ElOption,
-      ElTag,
-      ElScrollbar
+      ZzInput,
+      ZzSelectMenu,
+      ZzOption,
+      ZzTag,
+      ZzScrollbar
     },
 
     directives: { Clickoutside },
@@ -267,7 +267,7 @@
         type: String,
         validator(val) {
           process.env.NODE_ENV !== 'production' &&
-            console.warn('[Element Warn][Select]\'auto-complete\' property will be deprecated in next major version. please use \'autocomplete\' instead.');
+            console.warn('[Zzement Warn][Select]\'auto-complete\' property will be deprecated in next major version. please use \'autocomplete\' instead.');
           return true;
         }
       },
@@ -363,13 +363,13 @@
           this.inputLength = 20;
         }
         if (!valueEquals(val, oldVal)) {
-          this.dispatch('ElFormItem', 'el.form.change', val);
+          this.dispatch('ZzFormItem', 'el.form.change', val);
         }
       },
 
       visible(val) {
         if (!val) {
-          this.broadcast('ElSelectDropdown', 'destroyPopper');
+          this.broadcast('ZzSelectDropdown', 'destroyPopper');
           if (this.$refs.input) {
             this.$refs.input.blur();
           }
@@ -402,7 +402,7 @@
             }
           }
         } else {
-          this.broadcast('ElSelectDropdown', 'updatePopper');
+          this.broadcast('ZzSelectDropdown', 'updatePopper');
           if (this.filterable) {
             this.query = this.remote ? '' : this.selectedLabel;
             this.handleQueryChange(this.query);
@@ -410,8 +410,8 @@
               this.$refs.input.focus();
             } else {
               if (!this.remote) {
-                this.broadcast('ElOption', 'queryChange', '');
-                this.broadcast('ElOptionGroup', 'queryChange');
+                this.broadcast('ZzOption', 'queryChange', '');
+                this.broadcast('ZzOptionGroup', 'queryChange');
               }
 
               if (this.selectedLabel) {
@@ -427,13 +427,13 @@
       options() {
         if (this.$isServer) return;
         this.$nextTick(() => {
-          this.broadcast('ElSelectDropdown', 'updatePopper');
+          this.broadcast('ZzSelectDropdown', 'updatePopper');
         });
         if (this.multiple) {
           this.resetInputHeight();
         }
         let inputs = this.$el.querySelectorAll('input');
-        if ([].indexOf.call(inputs, document.activeElement) === -1) {
+        if ([].indexOf.call(inputs, document.activeZzement) === -1) {
           this.setSelected();
         }
         if (this.defaultFirstOption && (this.filterable || this.remote) && this.filteredOptionsCount) {
@@ -469,7 +469,7 @@
         }
         this.previousQuery = val;
         this.$nextTick(() => {
-          if (this.visible) this.broadcast('ElSelectDropdown', 'updatePopper');
+          if (this.visible) this.broadcast('ZzSelectDropdown', 'updatePopper');
         });
         this.hoverIndex = -1;
         if (this.multiple && this.filterable) {
@@ -485,11 +485,11 @@
           this.remoteMethod(val);
         } else if (typeof this.filterMethod === 'function') {
           this.filterMethod(val);
-          this.broadcast('ElOptionGroup', 'queryChange');
+          this.broadcast('ZzOptionGroup', 'queryChange');
         } else {
           this.filteredOptionsCount = this.optionsCount;
-          this.broadcast('ElOption', 'queryChange', val);
-          this.broadcast('ElOptionGroup', 'queryChange');
+          this.broadcast('ZzOption', 'queryChange', val);
+          this.broadcast('ZzOptionGroup', 'queryChange');
         }
         if (this.defaultFirstOption && (this.filterable || this.remote) && this.filteredOptionsCount) {
           this.checkDefaultFirstOption();
@@ -499,7 +499,7 @@
       scrollToOption(option) {
         const target = Array.isArray(option) && option[0] ? option[0].$el : option.$el;
         if (this.$refs.popper && target) {
-          const menu = this.$refs.popper.$el.querySelector('.el-select-dropdown__wrap');
+          const menu = this.$refs.popper.$el.querySelector('.zz-select-dropdown__wrap');
           scrollIntoView(menu, target);
         }
         this.$refs.scrollbar && this.$refs.scrollbar.handleScroll();
@@ -663,7 +663,7 @@
               sizeInMap
             ) + 'px';
           if (this.visible && this.emptyText !== false) {
-            this.broadcast('ElSelectDropdown', 'updatePopper');
+            this.broadcast('ZzSelectDropdown', 'updatePopper');
           }
         });
       },

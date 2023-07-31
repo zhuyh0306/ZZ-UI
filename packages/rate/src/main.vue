@@ -1,6 +1,6 @@
 <template>
   <div
-    class="el-rate"
+    class="zz-rate"
     @keydown="handleKey"
     role="slider"
     :aria-valuenow="currentValue"
@@ -10,7 +10,7 @@
     tabindex="0">
     <span
       v-for="(item, key) in max"
-      class="el-rate__item"
+      class="zz-rate__item"
       @mousemove="setCurrentValue(item, $event)"
       @mouseleave="resetCurrentValue"
       @click="selectValue(item)"
@@ -18,17 +18,17 @@
       :key="key">
       <i
         :class="[classes[item - 1], { 'hover': hoverIndex === item }]"
-        class="el-rate__icon"
+        class="zz-rate__icon"
         :style="getIconStyle(item)">
         <i
           v-if="showDecimalIcon(item)"
           :class="decimalIconClass"
           :style="decimalStyle"
-          class="el-rate__decimal">
+          class="zz-rate__decimal">
         </i>
       </i>
     </span>
-    <span v-if="showText || showScore" class="el-rate__text" :style="{ color: textColor }">{{ text }}</span>
+    <span v-if="showText || showScore" class="zz-rate__text" :style="{ color: textColor }">{{ text }}</span>
   </div>
 </template>
 
@@ -38,7 +38,7 @@
   import Migrating from 'element-ui/src/mixins/migrating';
 
   export default {
-    name: 'ElRate',
+    name: 'ZzRate',
 
     mixins: [Migrating],
 
@@ -90,16 +90,16 @@
       iconClasses: {
         type: [Array, Object],
         default() {
-          return ['el-icon-star-on', 'el-icon-star-on', 'el-icon-star-on'];
+          return ['zz-icon-star-on', 'zz-icon-star-on', 'zz-icon-star-on'];
         }
       },
       voidIconClass: {
         type: String,
-        default: 'el-icon-star-off'
+        default: 'zz-icon-star-off'
       },
       disabledVoidIconClass: {
         type: String,
-        default: 'el-icon-star-on'
+        default: 'zz-icon-star-on'
       },
       disabled: {
         type: Boolean,
@@ -313,10 +313,10 @@
         /* istanbul ignore if */
         if (this.allowHalf) {
           let target = event.target;
-          if (hasClass(target, 'el-rate__item')) {
-            target = target.querySelector('.el-rate__icon');
+          if (hasClass(target, 'zz-rate__item')) {
+            target = target.querySelector('.zz-rate__icon');
           }
-          if (hasClass(target, 'el-rate__decimal')) {
+          if (hasClass(target, 'zz-rate__decimal')) {
             target = target.parentNode;
           }
           this.pointerAtLeftHalf = event.offsetX * 2 <= target.clientWidth;

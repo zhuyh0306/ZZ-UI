@@ -78,7 +78,7 @@ export default Vue.extend({
     // 检查 rowKey 是否存在
     assertRowKey() {
       const rowKey = this.states.rowKey;
-      if (!rowKey) throw new Error('[ElTable] prop row-key is required');
+      if (!rowKey) throw new Error('[ZzTable] prop row-key is required');
     },
 
     // 更新列
@@ -223,7 +223,7 @@ export default Vue.extend({
       if (rowKey) {
         selectedMap = getKeysMap(selection, rowKey);
       }
-      const isSelected = function(row) {
+      const isSelected = function (row) {
         if (selectedMap) {
           return !!selectedMap[getRowIdentity(row, rowKey)];
         } else {

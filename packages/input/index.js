@@ -1,8 +1,8 @@
-import ElInput from './src/input';
+import ZzInput from './src/input';
 
 /* istanbul ignore next */
-ElInput.install = function(Vue) {
-  Vue.component(ElInput.name, ElInput);
+ZzInput.install = function (Vue) {
+  Vue.component(ZzInput.name, ZzInput);
 };
 
-export default ElInput;
+export default ZzInput;

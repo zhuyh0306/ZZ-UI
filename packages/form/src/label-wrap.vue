@@ -20,7 +20,7 @@ export default {
           style.marginLeft = marginLeft + 'px';
         }
       }
-      return (<div class="el-form-item__label-wrap" style={style}>
+      return (<div class="zz-form-item__labzz-wrap" style={style}>
         { slots }
       </div>);
     } else {
@@ -30,15 +30,15 @@ export default {
 
   methods: {
     getLabelWidth() {
-      if (this.$el && this.$el.firstElementChild) {
-        const computedWidth = window.getComputedStyle(this.$el.firstElementChild).width;
+      if (this.$el && this.$el.firstZzementChild) {
+        const computedWidth = window.getComputedStyle(this.$el.firstZzementChild).width;
         return Math.ceil(parseFloat(computedWidth));
       } else {
         return 0;
       }
     },
     updateLabelWidth(action = 'update') {
-      if (this.$slots.default && this.isAutoWidth && this.$el.firstElementChild) {
+      if (this.$slots.default && this.isAutoWidth && this.$el.firstZzementChild) {
         if (action === 'update') {
           this.computedWidth = this.getLabelWidth();
         } else if (action === 'remove') {

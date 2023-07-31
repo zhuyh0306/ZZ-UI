@@ -1,18 +1,18 @@
 <template>
-  <span class="el-breadcrumb__item">
+  <span class="zz-breadcrumb__item">
     <span
-      :class="['el-breadcrumb__inner', to ? 'is-link' : '']"
+      :class="['zz-breadcrumb__inner', to ? 'is-link' : '']"
       ref="link"
       role="link">
       <slot></slot>
     </span>
-    <i v-if="separatorClass" class="el-breadcrumb__separator" :class="separatorClass"></i>
-    <span v-else class="el-breadcrumb__separator" role="presentation">{{separator}}</span>
+    <i v-if="separatorClass" class="zz-breadcrumb__separator" :class="separatorClass"></i>
+    <span v-else class="zz-breadcrumb__separator" role="presentation">{{separator}}</span>
   </span>
 </template>
 <script>
   export default {
-    name: 'ElBreadcrumbItem',
+    name: 'ZzBreadcrumbItem',
     props: {
       to: {},
       replace: Boolean

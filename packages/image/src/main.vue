@@ -1,20 +1,20 @@
 <template>
-  <div class="el-image">
+  <div class="zz-image">
     <slot v-if="loading" name="placeholder">
-      <div class="el-image__placeholder"></div>
+      <div class="zz-image__placeholder"></div>
     </slot>
     <slot v-else-if="error" name="error">
-      <div class="el-image__error">{{ t('el.image.error') }}</div>
+      <div class="zz-image__error">{{ t('el.image.error') }}</div>
     </slot>
     <img
       v-else
-      class="el-image__inner"
+      class="zz-image__inner"
       v-bind="$attrs"
       v-on="$listeners"
       @click="clickHandler"
       :src="src"
       :style="imageStyle"
-      :class="{ 'el-image__inner--center': alignCenter, 'el-image__preview': preview }">
+      :class="{ 'zz-image__inner--center': alignCenter, 'zz-image__preview': preview }">
     <template v-if="preview">
       <image-viewer :z-index="zIndex" :initial-index="imageIndex" v-if="showViewer" :on-close="closeViewer" :url-list="previewSrcList"/>
     </template>
@@ -25,10 +25,10 @@
   import ImageViewer from './image-viewer';
   import Locale from 'element-ui/src/mixins/locale';
   import { on, off, getScrollContainer, isInContainer } from 'element-ui/src/utils/dom';
-  import { isString, isHtmlElement } from 'element-ui/src/utils/types';
+  import { isString, isHtmlZzement } from 'element-ui/src/utils/types';
   import throttle from 'throttle-debounce/throttle';
 
-  const isSupportObjectFit = () => document.documentElement.style.objectFit !== undefined;
+  const isSupportObjectFit = () => document.documentZzement.style.objectFit !== undefined;
 
   const ObjectFit = {
     NONE: 'none',
@@ -41,7 +41,7 @@
   let prevOverflow = '';
 
   export default {
-    name: 'ElImage',
+    name: 'ZzImage',
 
     mixins: [Locale],
     inheritAttrs: false,
@@ -175,7 +175,7 @@
         const { scrollContainer } = this;
         let _scrollContainer = null;
 
-        if (isHtmlElement(scrollContainer)) {
+        if (isHtmlZzement(scrollContainer)) {
           _scrollContainer = scrollContainer;
         } else if (isString(scrollContainer)) {
           _scrollContainer = document.querySelector(scrollContainer);

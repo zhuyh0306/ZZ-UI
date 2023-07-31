@@ -1,7 +1,7 @@
 <template>
   <component
     :is="_elTag"
-    class="el-radio-group"
+    class="zz-radio-group"
     role="radiogroup"
     @keydown="handleKeydown"
   >
@@ -18,9 +18,9 @@
     DOWN: 40
   });
   export default {
-    name: 'ElRadioGroup',
+    name: 'ZzRadioGroup',
 
-    componentName: 'ElRadioGroup',
+    componentName: 'ZzRadioGroup',
 
     inject: {
       elFormItem: {
@@ -105,7 +105,7 @@
     },
     watch: {
       value(value) {
-        this.dispatch('ElFormItem', 'el.form.change', [this.value]);
+        this.dispatch('ZzFormItem', 'el.form.change', [this.value]);
       }
     }
   };

@@ -1,21 +1,21 @@
 import { arrayFindIndex } from 'element-ui/src/utils/util';
 import { getCell, getColumnByCell, getRowIdentity } from './util';
 import { getStyle, hasClass, removeClass, addClass } from 'element-ui/src/utils/dom';
-import ElCheckbox from 'element-ui/packages/checkbox';
-import ElTooltip from 'element-ui/packages/tooltip';
+import ZzCheckbox from 'element-ui/packages/checkbox';
+import ZzTooltip from 'element-ui/packages/tooltip';
 import debounce from 'throttle-debounce/debounce';
 import LayoutObserver from './layout-observer';
 import { mapStates } from './store/helper';
 import TableRow from './table-row.js';
 
 export default {
-  name: 'ElTableBody',
+  name: 'ZzTableBody',
 
   mixins: [LayoutObserver],
 
   components: {
-    ElCheckbox,
-    ElTooltip,
+    ZzCheckbox,
+    ZzTooltip,
     TableRow
   },
 
@@ -35,7 +35,7 @@ export default {
     const data = this.data || [];
     return (
       <table
-        class="el-table__body"
+        class="zz-table__body"
         cellspacing="0"
         cellpadding="0"
         border="0">
@@ -50,7 +50,7 @@ export default {
               return acc.concat(this.wrappedRowRender(row, acc.length));
             }, [])
           }
-          <el-tooltip effect={this.table.tooltipEffect} placement="top" ref="tooltip" content={this.tooltipContent}></el-tooltip>
+          <zz-tooltip effect={this.table.tooltipEffect} placement="top" ref="tooltip" content={this.tooltipContent}></zz-tooltip>
         </tbody>
       </table>
     );
@@ -84,7 +84,7 @@ export default {
 
   watch: {
     // don't trigger getter of currentRow in getCellClass. see https://jsfiddle.net/oe2b4hqt/
-    // update DOM manually. see https://github.com/ElemeFE/element/pull/13954/files#diff-9b450c00d0a9dec0ffad5a3176972e40
+    // update DOM manually. see https://github.com/ZzemeFE/element/pull/13954/files#diff-9b450c00d0a9dec0ffad5a3176972e40
     'store.states.hoverRow'(newVal, oldVal) {
       if (!this.store.states.isComplex || this.$isServer) return;
       let raf = window.requestAnimationFrame;
@@ -92,7 +92,7 @@ export default {
         raf = (fn) => setTimeout(fn, 16);
       }
       raf(() => {
-        const rows = this.$el.querySelectorAll('.el-table__row');
+        const rows = this.$el.querySelectorAll('.zz-table__row');
         const oldRow = rows[oldVal];
         const newRow = rows[newVal];
         if (oldRow) {
@@ -168,13 +168,13 @@ export default {
     },
 
     getRowClass(row, rowIndex) {
-      const classes = ['el-table__row'];
+      const classes = ['zz-table__row'];
       if (this.table.highlightCurrentRow && row === this.store.states.currentRow) {
         classes.push('current-row');
       }
 
       if (this.stripe && rowIndex % 2 === 1) {
-        classes.push('el-table__row--striped');
+        classes.push('zz-table__row--striped');
       }
       const rowClassName = this.table.rowClassName;
       if (typeof rowClassName === 'string') {
@@ -225,7 +225,7 @@ export default {
         }));
       }
 
-      classes.push('el-table__cell');
+      classes.push('zz-table__cell');
 
       return classes.join(' ');
     },
@@ -250,7 +250,7 @@ export default {
 
       // 判断是否text-overflow, 如果是就显示tooltip
       const cellChild = event.target.querySelector('.cell');
-      if (!(hasClass(cellChild, 'el-tooltip') && cellChild.childNodes.length)) {
+      if (!(hasClass(cellChild, 'zz-tooltip') && cellChild.childNodes.length)) {
         return;
       }
       // use range width instead of scrollWidth to determine whether the text is overflowing
@@ -265,7 +265,7 @@ export default {
         const tooltip = this.$refs.tooltip;
         // TODO 会引起整个 Table 的重新渲染，需要优化
         this.tooltipContent = cell.innerText || cell.textContent;
-        tooltip.referenceElm = cell;
+        tooltip.referenceZzm = cell;
         tooltip.$refs.popper && (tooltip.$refs.popper.style.display = 'none');
         tooltip.doDestroy();
         tooltip.setExpectedState(true);
@@ -286,11 +286,11 @@ export default {
       this.table.$emit('cell-mouse-leave', oldHoverState.row, oldHoverState.column, oldHoverState.cell, event);
     },
 
-    handleMouseEnter: debounce(30, function(index) {
+    handleMouseEnter: debounce(30, function (index) {
       this.store.commit('setHoverRow', index);
     }),
 
-    handleMouseLeave: debounce(30, function() {
+    handleMouseLeave: debounce(30, function () {
       this.store.commit('setHoverRow', null);
     }),
 
@@ -325,11 +325,11 @@ export default {
       const rowClasses = this.getRowClass(row, $index);
       let display = true;
       if (treeRowData) {
-        rowClasses.push('el-table__row--level-' + treeRowData.level);
+        rowClasses.push('zz-table__row--levzz-' + treeRowData.level);
         display = treeRowData.display;
       }
       // 指令 v-show 会覆盖 row-style 中 display
-      // 使用 :style 代替 v-show https://github.com/ElemeFE/element/issues/16995
+      // 使用 :style 代替 v-show https://github.com/ZzemeFE/element/issues/16995
       let displayStyle = display ? null : {
         display: 'none'
       };
@@ -374,15 +374,15 @@ export default {
         const renderExpanded = this.table.renderExpanded;
         const tr = this.rowRender(row, $index);
         if (!renderExpanded) {
-          console.error('[Element Error]renderExpanded is required.');
+          console.error('[Zzement Error]renderExpanded is required.');
           return tr;
         }
         // 使用二维数组，避免修改 $index
         return [[
           tr,
           <tr key={'expanded-row__' + tr.key}>
-            <td colspan={ this.columnsCount } class="el-table__cell el-table__expanded-cell">
-              { renderExpanded(this.$createElement, { row, $index, store: this.store }) }
+            <td colspan={this.columnsCount} class="zz-table__cell zz-table__expanded-cell">
+              {renderExpanded(this.$createZzement, { row, $index, store: this.store })}
             </td>
           </tr>]];
       } else if (Object.keys(treeData).length) {

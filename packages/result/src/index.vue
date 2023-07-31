@@ -1,21 +1,21 @@
 <template>
-  <div class="el-result">
-    <div class="el-result__icon">
+  <div class="zz-result">
+    <div class="zz-result__icon">
       <slot name="icon">
-        <component :is="iconElement" :class="iconElement" />
+        <component :is="iconZzement" :class="iconZzement" />
       </slot>
     </div>
-    <div v-if="title || $slots.title" class="el-result__title">
+    <div v-if="title || $slots.title" class="zz-result__title">
       <slot name="title">
         <p>{{ title }}</p>
       </slot>
     </div>
-    <div v-if="subTitle || $slots.subTitle" class="el-result__subtitle">
+    <div v-if="subTitle || $slots.subTitle" class="zz-result__subtitle">
       <slot name="subTitle">
         <p>{{ subTitle }}</p>
       </slot>
     </div>
-    <div v-if="$slots.extra" class="el-result__extra">
+    <div v-if="$slots.extra" class="zz-result__extra">
       <slot name="extra"></slot>
     </div>
   </div>
@@ -34,7 +34,7 @@ const IconMap = {
 };
 
 export default {
-  name: 'ElResult',
+  name: 'ZzResult',
   components: {
     [IconSuccess.name]: IconSuccess,
     [IconError.name]: IconError,
@@ -56,7 +56,7 @@ export default {
     }
   },
   computed: {
-    iconElement() {
+    iconZzement() {
       const icon = this.icon;
       return icon && IconMap[icon] ? IconMap[icon] : 'icon-info';
     }

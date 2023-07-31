@@ -69,7 +69,7 @@ const defaultCallback = action => {
 
 const initInstance = () => {
   instance = new MessageBoxConstructor({
-    el: document.createElement('div')
+    el: document.createZzement('div')
   });
 
   instance.callback = defaultCallback;
@@ -120,7 +120,7 @@ const showNextMsg = () => {
   }
 };
 
-const MessageBox = function(options, callback) {
+const MessageBox = function (options, callback) {
   if (Vue.prototype.$isServer) return;
   if (typeof options === 'string' || isVNode(options)) {
     options = {

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="el-upload-dragger"
+    class="zz-upload-dragger"
     :class="{
       'is-dragover': dragover
     }"
@@ -13,7 +13,7 @@
 </template>
 <script>
   export default {
-    name: 'ElUploadDrag',
+    name: 'ZzUploadDrag',
     props: {
       disabled: Boolean
     },

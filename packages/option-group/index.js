@@ -1,8 +1,8 @@
-import ElOptionGroup from '../select/src/option-group';
+import ZzOptionGroup from '../select/src/option-group';
 
 /* istanbul ignore next */
-ElOptionGroup.install = function(Vue) {
-  Vue.component(ElOptionGroup.name, ElOptionGroup);
+ZzOptionGroup.install = function (Vue) {
+  Vue.component(ZzOptionGroup.name, ZzOptionGroup);
 };
 
-export default ElOptionGroup;
+export default ZzOptionGroup;

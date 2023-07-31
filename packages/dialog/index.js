@@ -1,8 +1,8 @@
-import ElDialog from './src/component';
+import ZzDialog from './src/component';
 
 /* istanbul ignore next */
-ElDialog.install = function(Vue) {
-  Vue.component(ElDialog.name, ElDialog);
+ZzDialog.install = function (Vue) {
+  Vue.component(ZzDialog.name, ZzDialog);
 };
 
-export default ElDialog;
+export default ZzDialog;

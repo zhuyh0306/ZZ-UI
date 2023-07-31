@@ -1,8 +1,8 @@
-import ElForm from './src/form';
+import ZzForm from './src/form';
 
 /* istanbul ignore next */
-ElForm.install = function(Vue) {
-  Vue.component(ElForm.name, ElForm);
+ZzForm.install = function (Vue) {
+  Vue.component(ZzForm.name, ZzForm);
 };
 
-export default ElForm;
+export default ZzForm;

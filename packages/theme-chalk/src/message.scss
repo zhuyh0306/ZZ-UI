@@ -24,7 +24,7 @@
   }
 
   @include when(closable) {
-    .el-message__content {
+    .zz-message__content {
       padding-right: 16px;
     }
   }
@@ -34,7 +34,7 @@
   }
 
   @include m(info) {
-    .el-message__content {
+    .zz-message__content {
       color: $--message-info-font-color;
     }
   }
@@ -43,7 +43,7 @@
     background-color: $--color-success-lighter;
     border-color: $--color-success-light;
 
-    .el-message__content {
+    .zz-message__content {
       color: $--message-success-font-color;
     }
   }
@@ -52,7 +52,7 @@
     background-color: $--color-warning-lighter;
     border-color: $--color-warning-light;
 
-    .el-message__content {
+    .zz-message__content {
       color: $--message-warning-font-color;
     }
   }
@@ -61,7 +61,7 @@
     background-color: $--color-danger-lighter;
     border-color: $--color-danger-light;
 
-    .el-message__content {
+    .zz-message__content {
       color: $--message-danger-font-color;
     }
   }
@@ -74,6 +74,7 @@
     padding: 0;
     font-size: 14px;
     line-height: 1;
+
     &:focus {
       outline-width: 0;
     }
@@ -91,30 +92,31 @@
     &:focus {
       outline-width: 0;
     }
+
     &:hover {
       color: $--message-close-hover-color;
     }
   }
 
-  & .el-icon-success {
+  & .zz-icon-success {
     color: $--message-success-font-color;
   }
 
-  & .el-icon-error {
+  & .zz-icon-error {
     color: $--message-danger-font-color;
   }
 
-  & .el-icon-info {
+  & .zz-icon-info {
     color: $--message-info-font-color;
   }
 
-  & .el-icon-warning {
+  & .zz-icon-warning {
     color: $--message-warning-font-color;
   }
 }
 
-.el-message-fade-enter,
-.el-message-fade-leave-active {
+.zz-message-fade-enter,
+.zz-message-fade-leave-active {
   opacity: 0;
   transform: translate(-50%, -100%);
 }

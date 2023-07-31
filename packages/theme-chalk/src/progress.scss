@@ -7,7 +7,7 @@
   line-height: 1;
 
   @include e(text) {
-    font-size:14px;
+    font-size: 14px;
     color: $--color-text-regular;
     display: inline-block;
     vertical-align: middle;
@@ -20,10 +20,10 @@
     }
   }
 
-  @include m((circle,dashboard)) {
+  @include m((circle, dashboard)) {
     display: inline-block;
 
-    .el-progress__text {
+    .zz-progress__text {
       position: absolute;
       top: 50%;
       left: 0;
@@ -41,11 +41,11 @@
 
 
   @include m(without-text) {
-    .el-progress__text {
+    .zz-progress__text {
       display: none;
     }
 
-    .el-progress-bar {
+    .zz-progress-bar {
       padding-right: 0;
       margin-right: 0;
       display: block;
@@ -53,38 +53,38 @@
   }
 
   @include m(text-inside) {
-    .el-progress-bar {
+    .zz-progress-bar {
       padding-right: 0;
       margin-right: 0;
     }
   }
 
   @include when(success) {
-    .el-progress-bar__inner {
+    .zz-progress-bar__inner {
       background-color: $--color-success;
     }
 
-    .el-progress__text {
+    .zz-progress__text {
       color: $--color-success;
     }
   }
 
   @include when(warning) {
-    .el-progress-bar__inner {
+    .zz-progress-bar__inner {
       background-color: $--color-warning;
     }
 
-    .el-progress__text {
+    .zz-progress__text {
       color: $--color-warning;
     }
   }
 
   @include when(exception) {
-    .el-progress-bar__inner {
+    .zz-progress-bar__inner {
       background-color: $--color-danger;
     }
 
-    .el-progress__text {
+    .zz-progress__text {
       color: $--color-danger;
     }
   }
@@ -106,6 +106,7 @@
     position: relative;
     vertical-align: middle;
   }
+
   @include e(inner) {
     position: absolute;
     left: 0;

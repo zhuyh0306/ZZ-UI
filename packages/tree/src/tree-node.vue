@@ -1,6 +1,6 @@
 <template>
   <div
-    class="el-tree-node"
+    class="zz-tree-node"
     @click.stop="handleClick"
     @contextmenu="($event) => this.handleContextMenu($event)"
     v-show="node.visible"
@@ -23,18 +23,18 @@
     @drop.stop="handleDrop"
     ref="node"
   >
-    <div class="el-tree-node__content"
+    <div class="zz-tree-node__content"
       :style="{ 'padding-left': (node.level - 1) * tree.indent + 'px' }">
       <span
         @click.stop="handleExpandIconClick"
         :class="[
           { 'is-leaf': node.isLeaf, expanded: !node.isLeaf && expanded },
-          'el-tree-node__expand-icon',
-          tree.iconClass ? tree.iconClass : 'el-icon-caret-right'
+          'zz-tree-node__expand-icon',
+          tree.iconClass ? tree.iconClass : 'zz-icon-caret-right'
         ]"
       >
       </span>
-      <el-checkbox
+      <zz-checkbox
         v-if="showCheckbox"
         v-model="node.checked"
         :indeterminate="node.indeterminate"
@@ -42,22 +42,22 @@
         @click.native.stop
         @change="handleCheckChange"
       >
-      </el-checkbox>
+      </zz-checkbox>
       <span
         v-if="node.loading"
-        class="el-tree-node__loading-icon el-icon-loading">
+        class="zz-tree-node__loading-icon zz-icon-loading">
       </span>
       <node-content :node="node"></node-content>
     </div>
-    <el-collapse-transition>
+    <zz-collapse-transition>
       <div
-        class="el-tree-node__children"
+        class="zz-tree-node__children"
         v-if="!renderAfterExpand || childNodeRendered"
         v-show="expanded"
         role="group"
         :aria-expanded="expanded"
       >
-        <el-tree-node
+        <zz-tree-node
           :render-content="renderContent"
           v-for="child in node.childNodes"
           :render-after-expand="renderAfterExpand"
@@ -65,22 +65,22 @@
           :key="getNodeKey(child)"
           :node="child"
           @node-expand="handleChildNodeExpand">
-        </el-tree-node>
+        </zz-tree-node>
       </div>
-    </el-collapse-transition>
+    </zz-collapse-transition>
   </div>
 </template>
 
 <script type="text/jsx">
-  import ElCollapseTransition from 'element-ui/src/transitions/collapse-transition';
-  import ElCheckbox from 'element-ui/packages/checkbox';
+  import ZzCollapseTransition from 'element-ui/src/transitions/collapse-transition';
+  import ZzCheckbox from 'element-ui/packages/checkbox';
   import emitter from 'element-ui/src/mixins/emitter';
   import { getNodeKey } from './model/util';
 
   export default {
-    name: 'ElTreeNode',
+    name: 'ZzTreeNode',
 
-    componentName: 'ElTreeNode',
+    componentName: 'ZzTreeNode',
 
     mixins: [emitter],
 
@@ -103,8 +103,8 @@
     },
 
     components: {
-      ElCollapseTransition,
-      ElCheckbox,
+      ZzCollapseTransition,
+      ZzCheckbox,
       NodeContent: {
         props: {
           node: {
@@ -121,7 +121,7 @@
               ? parent.renderContent.call(parent._renderProxy, h, { _self: tree.$vnode.context, node, data, store })
               : tree.$scopedSlots.default
                 ? tree.$scopedSlots.default({ node, data })
-                : <span class="el-tree-node__label">{ node.label }</span>
+                : <span class="zz-tree-node__label">{ node.label }</span>
           );
         }
       }
@@ -216,7 +216,7 @@
       },
 
       handleChildNodeExpand(nodeData, node, instance) {
-        this.broadcast('ElTreeNode', 'tree-node-expand', node);
+        this.broadcast('ZzTreeNode', 'tree-node-expand', node);
         this.tree.$emit('node-expand', nodeData, node, instance);
       },
 

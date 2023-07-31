@@ -65,24 +65,24 @@
     }
   }
 
-  .el-icon-success {
+  .zz-icon-success {
     color: $--notification-success-icon-color;
   }
 
-  .el-icon-error {
+  .zz-icon-error {
     color: $--notification-danger-icon-color;
   }
 
-  .el-icon-info {
+  .zz-icon-info {
     color: $--notification-info-icon-color;
   }
 
-  .el-icon-warning {
+  .zz-icon-warning {
     color: $--notification-warning-icon-color;
   }
 }
 
-.el-notification-fade-enter {
+.zz-notification-fade-enter {
   &.right {
     right: 0;
     transform: translateX(100%);
@@ -94,6 +94,6 @@
   }
 }
 
-.el-notification-fade-leave-active {
+.zz-notification-fade-leave-active {
   opacity: 0;
 }

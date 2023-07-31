@@ -80,7 +80,7 @@ Watcher.prototype.mutations = {
   },
 
   changeSortCondition(states, options) {
-    // 修复 pr https://github.com/ElemeFE/element/pull/15012 导致的 bug
+    // 修复 pr https://github.com/ZzemeFE/element/pull/15012 导致的 bug
     const { sortingColumn: column, sortProp: prop, sortOrder: order } = states;
     if (order === null) {
       states.sortingColumn = null;
@@ -131,7 +131,7 @@ Watcher.prototype.mutations = {
   }
 };
 
-Watcher.prototype.commit = function(name, ...args) {
+Watcher.prototype.commit = function (name, ...args) {
   const mutations = this.mutations;
   if (mutations[name]) {
     mutations[name].apply(this, [this.states].concat(args));
@@ -140,7 +140,7 @@ Watcher.prototype.commit = function(name, ...args) {
   }
 };
 
-Watcher.prototype.updateTableScrollY = function() {
+Watcher.prototype.updateTableScrollY = function () {
   Vue.nextTick(this.table.updateScrollY);
 };
 

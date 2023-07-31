@@ -1,38 +1,38 @@
 <template>
-  <transition name="el-zoom-in-top" @after-leave="doDestroy">
+  <transition name="zz-zoom-in-top" @after-leave="doDestroy">
     <div
-      class="el-color-dropdown"
+      class="zz-color-dropdown"
       v-show="showPopper">
-      <div class="el-color-dropdown__main-wrapper">
+      <div class="zz-color-dropdown__main-wrapper">
         <hue-slider ref="hue" :color="color" vertical style="float: right;"></hue-slider>
         <sv-panel ref="sl" :color="color"></sv-panel>
       </div>
       <alpha-slider v-if="showAlpha" ref="alpha" :color="color"></alpha-slider>
       <predefine v-if="predefine" :color="color" :colors="predefine"></predefine>
-      <div class="el-color-dropdown__btns">
-        <span class="el-color-dropdown__value">
-          <el-input
+      <div class="zz-color-dropdown__btns">
+        <span class="zz-color-dropdown__value">
+          <zz-input
             v-model="customInput"
             @keyup.native.enter="handleConfirm"
             @blur="handleConfirm"
             :validate-event="false"
             size="mini">
-          </el-input>
+          </zz-input>
         </span>
-        <el-button
+        <zz-button
           size="mini"
           type="text"
-          class="el-color-dropdown__link-btn"
+          class="zz-color-dropdown__link-btn"
           @click="$emit('clear')">
           {{ t('el.colorpicker.clear') }}
-        </el-button>
-        <el-button
+        </zz-button>
+        <zz-button
           plain
           size="mini"
-          class="el-color-dropdown__btn"
+          class="zz-color-dropdown__btn"
           @click="confirmValue">
           {{ t('el.colorpicker.confirm') }}
-        </el-button>
+        </zz-button>
       </div>
     </div>
   </transition>
@@ -45,11 +45,11 @@
   import Predefine from './predefine';
   import Popper from 'element-ui/src/utils/vue-popper';
   import Locale from 'element-ui/src/mixins/locale';
-  import ElInput from 'element-ui/packages/input';
-  import ElButton from 'element-ui/packages/button';
+  import ZzInput from 'element-ui/packages/input';
+  import ZzButton from 'element-ui/packages/button';
 
   export default {
-    name: 'el-color-picker-dropdown',
+    name: 'zz-color-picker-dropdown',
 
     mixins: [Popper, Locale],
 
@@ -57,8 +57,8 @@
       SvPanel,
       HueSlider,
       AlphaSlider,
-      ElInput,
-      ElButton,
+      ZzInput,
+      ZzButton,
       Predefine
     },
 
@@ -94,8 +94,8 @@
     },
 
     mounted() {
-      this.$parent.popperElm = this.popperElm = this.$el;
-      this.referenceElm = this.$parent.$el;
+      this.$parent.popperZzm = this.popperZzm = this.$el;
+      this.referenceZzm = this.$parent.$el;
     },
 
     watch: {

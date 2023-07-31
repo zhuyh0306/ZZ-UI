@@ -9,14 +9,15 @@
   color: $--color-text-regular;
   font-size: $--font-size-base;
 
-  .el-button-group {
+  .zz-button-group {
     display: block;
-    .el-button {
+
+    .zz-button {
       float: none;
     }
   }
 
-  & .el-dropdown__caret-button {
+  & .zz-dropdown__caret-button {
     padding-left: 5px;
     padding-right: 5px;
     position: relative;
@@ -35,7 +36,7 @@
       background: mix(white, transparent, 50%);
     }
 
-    &.el-button--default::before {
+    &.zz-button--default::before {
       background: mix($--button-default-border-color, transparent, 50%);
     }
 
@@ -46,17 +47,21 @@
       }
     }
 
-    & .el-dropdown__icon {
+    & .zz-dropdown__icon {
       padding-left: 0;
     }
   }
+
   @include e(icon) {
     font-size: 12px;
     margin: 0 3px;
   }
 
-  .el-dropdown-selfdefine { // 自定义
-    &:focus:active, &:focus:not(.focusing) {
+  .zz-dropdown-selfdefine {
+
+    // 自定义
+    &:focus:active,
+    &:focus:not(.focusing) {
       outline-width: 0;
     }
   }
@@ -88,7 +93,9 @@
     color: $--color-text-regular;
     cursor: pointer;
     outline: none;
-    &:not(.is-disabled):hover, &:focus {
+
+    &:not(.is-disabled):hover,
+    &:focus {
       background-color: $--dropdown-menuItem-hover-fill;
       color: $--dropdown-menuItem-hover-color;
     }
@@ -128,7 +135,7 @@
       padding: 0 17px;
       font-size: 14px;
 
-      &.el-dropdown-menu__item--divided {
+      &.zz-dropdown-menu__item--divided {
         $divided-offset: 6px;
         margin-top: $divided-offset;
 
@@ -148,7 +155,7 @@
       padding: 0 15px;
       font-size: 13px;
 
-      &.el-dropdown-menu__item--divided {
+      &.zz-dropdown-menu__item--divided {
         $divided-offset: 4px;
         margin-top: $divided-offset;
 
@@ -168,7 +175,7 @@
       padding: 0 10px;
       font-size: 12px;
 
-      &.el-dropdown-menu__item--divided {
+      &.zz-dropdown-menu__item--divided {
         $divided-offset: 3px;
         margin-top: $divided-offset;
 

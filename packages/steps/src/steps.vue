@@ -1,9 +1,9 @@
 <template>
   <div
-    class="el-steps"
+    class="zz-steps"
     :class="[
-       !simple && 'el-steps--' + direction,
-       simple && 'el-steps--simple'
+       !simple && 'zz-steps--' + direction,
+       simple && 'zz-steps--simple'
      ]">
       <slot></slot>
   </div>
@@ -13,7 +13,7 @@
 import Migrating from 'element-ui/src/mixins/migrating';
 
 export default {
-  name: 'ElSteps',
+  name: 'ZzSteps',
 
   mixins: [Migrating],
 

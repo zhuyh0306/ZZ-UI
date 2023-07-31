@@ -1,13 +1,13 @@
 <template>
-  <div class="el-collapse" role="tablist" aria-multiselectable="true">
+  <div class="zz-collapse" role="tablist" aria-multiselectable="true">
     <slot></slot>
   </div>
 </template>
 <script>
   export default {
-    name: 'ElCollapse',
+    name: 'ZzCollapse',
 
-    componentName: 'ElCollapse',
+    componentName: 'ZzCollapse',
 
     props: {
       accordion: Boolean,

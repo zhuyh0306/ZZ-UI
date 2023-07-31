@@ -20,7 +20,7 @@ let fullscreenLoading;
 LoadingConstructor.prototype.originalPosition = '';
 LoadingConstructor.prototype.originalOverflow = '';
 
-LoadingConstructor.prototype.close = function() {
+LoadingConstructor.prototype.close = function () {
   if (this.fullscreen) {
     fullscreenLoading = undefined;
   }
@@ -28,8 +28,8 @@ LoadingConstructor.prototype.close = function() {
     const target = this.fullscreen || this.body
       ? document.body
       : this.target;
-    removeClass(target, 'el-loading-parent--relative');
-    removeClass(target, 'el-loading-parent--hidden');
+    removeClass(target, 'zz-loading-parent--relative');
+    removeClass(target, 'zz-loading-parent--hidden');
     if (this.$el && this.$el.parentNode) {
       this.$el.parentNode.removeChild(this.$el);
     }
@@ -50,7 +50,7 @@ const addStyle = (options, parent, instance) => {
       let scroll = property === 'top' ? 'scrollTop' : 'scrollLeft';
       maskStyle[property] = options.target.getBoundingClientRect()[property] +
         document.body[scroll] +
-        document.documentElement[scroll] +
+        document.documentZzement[scroll] +
         'px';
     });
     ['height', 'width'].forEach(property => {
@@ -82,16 +82,16 @@ const Loading = (options = {}) => {
 
   let parent = options.body ? document.body : options.target;
   let instance = new LoadingConstructor({
-    el: document.createElement('div'),
+    el: document.createZzement('div'),
     data: options
   });
 
   addStyle(options, parent, instance);
   if (instance.originalPosition !== 'absolute' && instance.originalPosition !== 'fixed' && instance.originalPosition !== 'sticky') {
-    addClass(parent, 'el-loading-parent--relative');
+    addClass(parent, 'zz-loading-parent--relative');
   }
   if (options.fullscreen && options.lock) {
-    addClass(parent, 'el-loading-parent--hidden');
+    addClass(parent, 'zz-loading-parent--hidden');
   }
   parent.appendChild(instance.$el);
   Vue.nextTick(() => {

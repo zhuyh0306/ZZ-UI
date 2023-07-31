@@ -1,8 +1,8 @@
-import ElTimelineItem from '../timeline/src/item';
+import ZzTimelineItem from '../timeline/src/item';
 
 /* istanbul ignore next */
-ElTimelineItem.install = function(Vue) {
-  Vue.component(ElTimelineItem.name, ElTimelineItem);
+ZzTimelineItem.install = function (Vue) {
+  Vue.component(ZzTimelineItem.name, ZzTimelineItem);
 };
 
-export default ElTimelineItem;
+export default ZzTimelineItem;

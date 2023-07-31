@@ -1,7 +1,7 @@
 <template>
-  <el-input
-    class="el-date-editor"
-    :class="'el-date-editor--' + type"
+  <zz-input
+    class="zz-date-editor"
+    :class="'zz-date-editor--' + type"
     :readonly="!editable || readonly || type === 'dates' || type === 'week' || type === 'years' || type === 'months'"
     :disabled="pickerDisabled"
     :size="pickerSize"
@@ -20,22 +20,22 @@
     :validateEvent="false"
     ref="reference">
     <i slot="prefix"
-      class="el-input__icon"
+      class="zz-input__icon"
       :class="triggerClass"
       @click="handleFocus">
     </i>
     <i slot="suffix"
-      class="el-input__icon"
+      class="zz-input__icon"
       @click="handleClickIcon"
       :class="[showClose ? '' + clearIcon : '']"
       v-if="haveTrigger">
     </i>
-  </el-input>
+  </zz-input>
   <div
-    class="el-date-editor el-range-editor el-input__inner"
+    class="zz-date-editor zz-range-editor zz-input__inner"
     :class="[
-      'el-date-editor--' + type,
-      pickerSize ? `el-range-editor--${ pickerSize }` : '',
+      'zz-date-editor--' + type,
+      pickerSize ? `zz-range-editor--${ pickerSize }` : '',
       pickerDisabled ? 'is-disabled' : '',
       pickerVisible ? 'is-active' : ''
     ]"
@@ -46,7 +46,7 @@
     ref="reference"
     v-clickoutside="handleClose"
     v-else>
-    <i :class="['el-input__icon', 'el-range__icon', triggerClass]"></i>
+    <i :class="['zz-input__icon', 'zz-range__icon', triggerClass]"></i>
     <input
       autocomplete="off"
       :placeholder="startPlaceholder"
@@ -58,9 +58,9 @@
       @input="handleStartInput"
       @change="handleStartChange"
       @focus="handleFocus"
-      class="el-range-input">
+      class="zz-range-input">
     <slot name="range-separator">
-      <span class="el-range-separator">{{ rangeSeparator }}</span>
+      <span class="zz-range-separator">{{ rangeSeparator }}</span>
     </slot>
     <input
       autocomplete="off"
@@ -73,12 +73,12 @@
       @input="handleEndInput"
       @change="handleEndChange"
       @focus="handleFocus"
-      class="el-range-input">
+      class="zz-range-input">
     <i
       @click="handleClickIcon"
       v-if="haveTrigger"
       :class="[showClose ? '' + clearIcon : '']"
-      class="el-input__icon el-range__close-icon">
+      class="zz-input__icon zz-range__close-icon">
     </i>
   </div>
 </template>
@@ -89,7 +89,7 @@ import Clickoutside from 'element-ui/src/utils/clickoutside';
 import { formatDate, parseDate, isDateObject, getWeekNumber } from 'element-ui/src/utils/date-util';
 import Popper from 'element-ui/src/utils/vue-popper';
 import Emitter from 'element-ui/src/mixins/emitter';
-import ElInput from 'element-ui/packages/input';
+import ZzInput from 'element-ui/packages/input';
 import merge from 'element-ui/src/utils/merge';
 
 const NewPopper = {
@@ -376,7 +376,7 @@ export default {
     prefixIcon: String,
     clearIcon: {
       type: String,
-      default: 'el-icon-circle-close'
+      default: 'zz-icon-circle-close'
     },
     name: {
       default: '',
@@ -414,7 +414,7 @@ export default {
     }
   },
 
-  components: { ElInput },
+  components: { ZzInput },
 
   directives: { Clickoutside },
 
@@ -439,7 +439,7 @@ export default {
         this.emitChange(this.value);
         this.userInput = null;
         if (this.validateEvent) {
-          this.dispatch('ElFormItem', 'el.form.blur');
+          this.dispatch('ZzFormItem', 'el.form.blur');
         }
         this.$emit('blur', this);
         this.blur();
@@ -461,7 +461,7 @@ export default {
     },
     value(val, oldVal) {
       if (!valueEquals(val, oldVal) && !this.pickerVisible && this.validateEvent) {
-        this.dispatch('ElFormItem', 'el.form.change', val);
+        this.dispatch('ZzFormItem', 'el.form.change', val);
       }
     }
   },
@@ -500,7 +500,7 @@ export default {
     },
 
     triggerClass() {
-      return this.prefixIcon || (this.type.indexOf('time') !== -1 ? 'el-icon-time' : 'el-icon-date');
+      return this.prefixIcon || (this.type.indexOf('time') !== -1 ? 'zz-icon-time' : 'zz-icon-date');
     },
 
     selectionMode() {
@@ -780,7 +780,7 @@ export default {
         } else {
           // user may change focus between two input
           setTimeout(() => {
-            if (this.refInput.indexOf(document.activeElement) === -1) {
+            if (this.refInput.indexOf(document.activeZzement) === -1) {
               this.pickerVisible = false;
               this.blur();
               event.stopPropagation();
@@ -852,7 +852,7 @@ export default {
       this.picker.defaultValue = this.defaultValue;
       this.picker.defaultTime = this.defaultTime;
       this.picker.popperClass = this.popperClass;
-      this.popperElm = this.picker.$el;
+      this.popperZzm = this.picker.$el;
       this.picker.width = this.reference.getBoundingClientRect().width;
       this.picker.showTime = this.type === 'datetime' || this.type === 'datetimerange';
       this.picker.selectionMode = this.selectionMode;
@@ -929,7 +929,7 @@ export default {
         this.$emit('change', val);
         this.valueOnOpen = val;
         if (this.validateEvent) {
-          this.dispatch('ElFormItem', 'el.form.change', val);
+          this.dispatch('ZzFormItem', 'el.form.change', val);
         }
       }
     },

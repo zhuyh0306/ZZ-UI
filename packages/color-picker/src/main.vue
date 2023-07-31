@@ -1,25 +1,25 @@
 <template>
   <div
     :class="[
-      'el-color-picker',
+      'zz-color-picker',
       colorDisabled ? 'is-disabled' : '',
-      colorSize ? `el-color-picker--${ colorSize }` : ''
+      colorSize ? `zz-color-picker--${ colorSize }` : ''
     ]"
     v-clickoutside="hide">
-    <div class="el-color-picker__mask" v-if="colorDisabled"></div>
-    <div class="el-color-picker__trigger" @click="handleTrigger">
-      <span class="el-color-picker__color" :class="{ 'is-alpha': showAlpha }">
-        <span class="el-color-picker__color-inner"
+    <div class="zz-color-picker__mask" v-if="colorDisabled"></div>
+    <div class="zz-color-picker__trigger" @click="handleTrigger">
+      <span class="zz-color-picker__color" :class="{ 'is-alpha': showAlpha }">
+        <span class="zz-color-picker__color-inner"
           :style="{
             backgroundColor: displayedColor
           }"></span>
-        <span class="el-color-picker__empty el-icon-close" v-if="!value && !showPanelColor"></span>
+        <span class="zz-color-picker__empty zz-icon-close" v-if="!value && !showPanelColor"></span>
       </span>
-      <span class="el-color-picker__icon el-icon-arrow-down" v-show="value || showPanelColor"></span>
+      <span class="zz-color-picker__icon zz-icon-arrow-down" v-show="value || showPanelColor"></span>
     </div>
     <picker-dropdown
        ref="dropdown"
-       :class="['el-color-picker__panel', popperClass || '']"
+       :class="['zz-color-picker__panel', popperClass || '']"
        v-model="showPicker"
        @pick="confirmValue"
        @clear="clearValue"
@@ -37,7 +37,7 @@
   import Emitter from 'element-ui/src/mixins/emitter';
 
   export default {
-    name: 'ElColorPicker',
+    name: 'ZzColorPicker',
 
     mixins: [Emitter],
 
@@ -122,14 +122,14 @@
         const value = this.color.value;
         this.$emit('input', value);
         this.$emit('change', value);
-        this.dispatch('ElFormItem', 'el.form.change', value);
+        this.dispatch('ZzFormItem', 'el.form.change', value);
         this.showPicker = false;
       },
       clearValue() {
         this.$emit('input', null);
         this.$emit('change', null);
         if (this.value !== null) {
-          this.dispatch('ElFormItem', 'el.form.change', null);
+          this.dispatch('ZzFormItem', 'el.form.change', null);
         }
         this.showPanelColor = false;
         this.showPicker = false;
@@ -165,7 +165,7 @@
       if (value) {
         this.color.fromString(value);
       }
-      this.popperElm = this.$refs.dropdown.$el;
+      this.popperZzm = this.$refs.dropdown.$el;
     },
 
     data() {

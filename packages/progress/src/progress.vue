@@ -1,12 +1,12 @@
 <template>
   <div
-    class="el-progress"
+    class="zz-progress"
     :class="[
-      'el-progress--' + type,
+      'zz-progress--' + type,
       status ? 'is-' + status : '',
       {
-        'el-progress--without-text': !showText,
-        'el-progress--text-inside': textInside,
+        'zz-progress--without-text': !showText,
+        'zz-progress--text-inside': textInside,
       }
     ]"
     role="progressbar"
@@ -14,24 +14,24 @@
     aria-valuemin="0"
     aria-valuemax="100"
   >
-    <div class="el-progress-bar" v-if="type === 'line'">
-      <div class="el-progress-bar__outer" :style="{height: strokeWidth + 'px', backgroundColor:defineBackColor}">
-        <div class="el-progress-bar__inner" :style="barStyle">
-          <div class="el-progress-bar__innerText" :style="{color:textColor}" v-if="showText && textInside">{{content}}</div>
+    <div class="zz-progress-bar" v-if="type === 'line'">
+      <div class="zz-progress-bar__outer" :style="{height: strokeWidth + 'px', backgroundColor:defineBackColor}">
+        <div class="zz-progress-bar__inner" :style="barStyle">
+          <div class="zz-progress-bar__innerText" :style="{color:textColor}" v-if="showText && textInside">{{content}}</div>
         </div>
       </div>
     </div>
-    <div class="el-progress-circle" :style="{height: width + 'px', width: width + 'px'}" v-else>
+    <div class="zz-progress-circle" :style="{height: width + 'px', width: width + 'px'}" v-else>
       <svg viewBox="0 0 100 100">
         <path
-          class="el-progress-circle__track"
+          class="zz-progress-circle__track"
           :d="trackPath"
           :stroke="defineBackColor"
           :stroke-width="relativeStrokeWidth"
           fill="none"
           :style="trailPathStyle"></path>
         <path
-          class="el-progress-circle__path"
+          class="zz-progress-circle__path"
           :d="trackPath"
           :stroke="stroke"
           fill="none"
@@ -41,7 +41,7 @@
       </svg>
     </div>
     <div
-      class="el-progress__text"
+      class="zz-progress__text"
       v-if="showText && !textInside"
       :style="{fontSize: progressTextSize + 'px', color:textColor}"
     >
@@ -52,7 +52,7 @@
 </template>
 <script>
   export default {
-    name: 'ElProgress',
+    name: 'ZzProgress',
     props: {
       type: {
         type: String,
@@ -176,12 +176,12 @@
       },
       iconClass() {
         if (this.status === 'warning') {
-          return 'el-icon-warning';
+          return 'zz-icon-warning';
         }
         if (this.type === 'line') {
-          return this.status === 'success' ? 'el-icon-circle-check' : 'el-icon-circle-close';
+          return this.status === 'success' ? 'zz-icon-circle-check' : 'zz-icon-circle-close';
         } else {
-          return this.status === 'success' ? 'el-icon-check' : 'el-icon-close';
+          return this.status === 'success' ? 'zz-icon-check' : 'zz-icon-close';
         }
       },
       progressTextSize() {

@@ -1,8 +1,8 @@
-import ElTag from './src/tag';
+import ZzTag from './src/tag';
 
 /* istanbul ignore next */
-ElTag.install = function(Vue) {
-  Vue.component(ElTag.name, ElTag);
+ZzTag.install = function (Vue) {
+  Vue.component(ZzTag.name, ZzTag);
 };
 
-export default ElTag;
+export default ZzTag;

@@ -1,15 +1,15 @@
 <template>
   <div :class="[
-    type === 'textarea' ? 'el-textarea' : 'el-input',
-    inputSize ? 'el-input--' + inputSize : '',
+    type === 'textarea' ? 'zz-textarea' : 'zz-input',
+    inputSize ? 'zz-input--' + inputSize : '',
     {
       'is-disabled': inputDisabled,
       'is-exceed': inputExceed,
-      'el-input-group': $slots.prepend || $slots.append,
-      'el-input-group--append': $slots.append,
-      'el-input-group--prepend': $slots.prepend,
-      'el-input--prefix': $slots.prefix || prefixIcon,
-      'el-input--suffix': $slots.suffix || suffixIcon || clearable || showPassword
+      'zz-input-group': $slots.prepend || $slots.append,
+      'zz-input-group--append': $slots.append,
+      'zz-input-group--prepend': $slots.prepend,
+      'zz-input--prefix': $slots.prefix || prefixIcon,
+      'zz-input--suffix': $slots.suffix || suffixIcon || clearable || showPassword
     }
     ]"
     @mouseenter="hovering = true"
@@ -17,13 +17,13 @@
   >
     <template v-if="type !== 'textarea'">
       <!-- 前置元素 -->
-      <div class="el-input-group__prepend" v-if="$slots.prepend">
+      <div class="zz-input-group__prepend" v-if="$slots.prepend">
         <slot name="prepend"></slot>
       </div>
       <input
         :tabindex="tabindex"
         v-if="type !== 'textarea'"
-        class="el-input__inner"
+        class="zz-input__inner"
         v-bind="$attrs"
         :type="showPassword ? (passwordVisible ? 'text': 'password') : type"
         :disabled="inputDisabled"
@@ -40,54 +40,54 @@
         :aria-label="label"
       >
       <!-- 前置内容 -->
-      <span class="el-input__prefix" v-if="$slots.prefix || prefixIcon">
+      <span class="zz-input__prefix" v-if="$slots.prefix || prefixIcon">
         <slot name="prefix"></slot>
-        <i class="el-input__icon"
+        <i class="zz-input__icon"
            v-if="prefixIcon"
            :class="prefixIcon">
         </i>
       </span>
       <!-- 后置内容 -->
       <span
-        class="el-input__suffix"
+        class="zz-input__suffix"
         v-if="getSuffixVisible()">
-        <span class="el-input__suffix-inner">
+        <span class="zz-input__suffix-inner">
           <template v-if="!showClear || !showPwdVisible || !isWordLimitVisible">
             <slot name="suffix"></slot>
-            <i class="el-input__icon"
+            <i class="zz-input__icon"
               v-if="suffixIcon"
               :class="suffixIcon">
             </i>
           </template>
           <i v-if="showClear"
-            class="el-input__icon el-icon-circle-close el-input__clear"
+            class="zz-input__icon zz-icon-circle-close zz-input__clear"
             @mousedown.prevent
             @click="clear"
           ></i>
           <i v-if="showPwdVisible"
-            class="el-input__icon el-icon-view el-input__clear"
+            class="zz-input__icon zz-icon-view zz-input__clear"
             @click="handlePasswordVisible"
           ></i>
-          <span v-if="isWordLimitVisible" class="el-input__count">
-            <span class="el-input__count-inner">
+          <span v-if="isWordLimitVisible" class="zz-input__count">
+            <span class="zz-input__count-inner">
               {{ textLength }}/{{ upperLimit }}
             </span>
           </span>
         </span>
-        <i class="el-input__icon"
+        <i class="zz-input__icon"
           v-if="validateState"
-          :class="['el-input__validateIcon', validateIcon]">
+          :class="['zz-input__validateIcon', validateIcon]">
         </i>
       </span>
       <!-- 后置元素 -->
-      <div class="el-input-group__append" v-if="$slots.append">
+      <div class="zz-input-group__append" v-if="$slots.append">
         <slot name="append"></slot>
       </div>
     </template>
     <textarea
       v-else
       :tabindex="tabindex"
-      class="el-textarea__inner"
+      class="zz-textarea__inner"
       @compositionstart="handleCompositionStart"
       @compositionupdate="handleCompositionUpdate"
       @compositionend="handleCompositionEnd"
@@ -104,7 +104,7 @@
       :aria-label="label"
     >
     </textarea>
-    <span v-if="isWordLimitVisible && type === 'textarea'" class="el-input__count">{{ textLength }}/{{ upperLimit }}</span>
+    <span v-if="isWordLimitVisible && type === 'textarea'" class="zz-input__count">{{ textLength }}/{{ upperLimit }}</span>
   </div>
 </template>
 <script>
@@ -115,9 +115,9 @@
   import {isKorean} from 'element-ui/src/utils/shared';
 
   export default {
-    name: 'ElInput',
+    name: 'ZzInput',
 
-    componentName: 'ElInput',
+    componentName: 'ZzInput',
 
     mixins: [emitter, Migrating],
 
@@ -166,7 +166,7 @@
         type: String,
         validator(val) {
           process.env.NODE_ENV !== 'production' &&
-            console.warn('[Element Warn][Input]\'auto-complete\' property will be deprecated in next major version. please use \'autocomplete\' instead.');
+            console.warn('[Zzement Warn][Input]\'auto-complete\' property will be deprecated in next major version. please use \'autocomplete\' instead.');
           return true;
         }
       },
@@ -204,9 +204,9 @@
       },
       validateIcon() {
         return {
-          validating: 'el-icon-loading',
-          success: 'el-icon-circle-check',
-          error: 'el-icon-circle-close'
+          validating: 'zz-icon-loading',
+          success: 'zz-icon-circle-check',
+          error: 'zz-icon-circle-close'
         }[this.validateState];
       },
       textareaStyle() {
@@ -263,18 +263,18 @@
       value(val) {
         this.$nextTick(this.resizeTextarea);
         if (this.validateEvent) {
-          this.dispatch('ElFormItem', 'el.form.change', [val]);
+          this.dispatch('ZzFormItem', 'el.form.change', [val]);
         }
       },
       // native input value is set explicitly
       // do not use v-model / :value in template
-      // see: https://github.com/ElemeFE/element/issues/14521
+      // see: https://github.com/ZzemeFE/element/issues/14521
       nativeInputValue() {
         this.setNativeInputValue();
       },
       // when change between <input> and <textarea>,
       // update DOM dependent value and styles
-      // https://github.com/ElemeFE/element/issues/14857
+      // https://github.com/ZzemeFE/element/issues/14857
       type() {
         this.$nextTick(() => {
           this.setNativeInputValue();
@@ -306,7 +306,7 @@
         this.focused = false;
         this.$emit('blur', event);
         if (this.validateEvent) {
-          this.dispatch('ElFormItem', 'el.form.blur', [this.value]);
+          this.dispatch('ZzFormItem', 'el.form.blur', [this.value]);
         }
       },
       select() {
@@ -356,24 +356,24 @@
       },
       handleInput(event) {
         // should not emit input during composition
-        // see: https://github.com/ElemeFE/element/issues/10516
+        // see: https://github.com/ZzemeFE/element/issues/10516
         if (this.isComposing) return;
 
-        // hack for https://github.com/ElemeFE/element/issues/8548
+        // hack for https://github.com/ZzemeFE/element/issues/8548
         // should remove the following line when we don't support IE
         if (event.target.value === this.nativeInputValue) return;
 
         this.$emit('input', event.target.value);
 
         // ensure native input value is controlled
-        // see: https://github.com/ElemeFE/element/issues/12850
+        // see: https://github.com/ZzemeFE/element/issues/12850
         this.$nextTick(this.setNativeInputValue);
       },
       handleChange(event) {
         this.$emit('change', event.target.value);
       },
       calcIconOffset(place) {
-        let elList = [].slice.call(this.$el.querySelectorAll(`.el-input__${place}`) || []);
+        let elList = [].slice.call(this.$el.querySelectorAll(`.zz-input__${place}`) || []);
         if (!elList.length) return;
         let el = null;
         for (let i = 0; i < elList.length; i++) {
@@ -390,7 +390,7 @@
 
         const pendant = pendantMap[place];
         if (this.$slots[pendant]) {
-          el.style.transform = `translateX(${place === 'suffix' ? '-' : ''}${this.$el.querySelector(`.el-input-group__${pendant}`).offsetWidth}px)`;
+          el.style.transform = `translateX(${place === 'suffix' ? '-' : ''}${this.$el.querySelector(`.zz-input-group__${pendant}`).offsetWidth}px)`;
         } else {
           el.removeAttribute('style');
         }

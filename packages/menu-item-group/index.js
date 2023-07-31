@@ -1,8 +1,8 @@
-import ElMenuItemGroup from '../menu/src/menu-item-group';
+import ZzMenuItemGroup from '../menu/src/menu-item-group';
 
 /* istanbul ignore next */
-ElMenuItemGroup.install = function(Vue) {
-  Vue.component(ElMenuItemGroup.name, ElMenuItemGroup);
+ZzMenuItemGroup.install = function (Vue) {
+  Vue.component(ZzMenuItemGroup.name, ZzMenuItemGroup);
 };
 
-export default ElMenuItemGroup;
+export default ZzMenuItemGroup;

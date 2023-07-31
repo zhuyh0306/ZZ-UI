@@ -1,5 +1,5 @@
 <template>
-  <transition name="el-fade-in">
+  <transition name="zz-fade-in">
     <div
       v-if="visible"
       @click.stop="handleClick"
@@ -7,9 +7,9 @@
         'right': styleRight,
         'bottom': styleBottom
       }"
-      class="el-backtop">
+      class="zz-backtop">
       <slot>
-        <el-icon name="caret-top"></el-icon>
+        <zz-icon name="caret-top"></zz-icon>
       </slot>
     </div>
   </transition>
@@ -24,7 +24,7 @@ const easeInOutCubic = value => value < 0.5
   : 1 - cubic((1 - value) * 2) / 2;
 
 export default {
-  name: 'ElBacktop',
+  name: 'ZzBacktop',
 
   props: {
     visibilityHeight: {
@@ -68,7 +68,7 @@ export default {
   methods: {
     init() {
       this.container = document;
-      this.el = document.documentElement;
+      this.el = document.documentZzement;
       if (this.target) {
         this.el = document.querySelector(this.target);
         if (!this.el) {
