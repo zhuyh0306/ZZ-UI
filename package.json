@@ -1,6 +1,6 @@
 {
   "name": "@yhui/zz-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Component Library base element for Vue.js.",
   "main": "lib/element-ui.common.js",
   "files": [
