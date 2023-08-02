@@ -30,8 +30,8 @@
 </template>
 <script>
   import Menu from './menu-mixin';
-  import ZzTooltip from 'element-ui/packages/tooltip';
-  import Emitter from 'element-ui/src/mixins/emitter';
+  import ZzTooltip from '@yhui/zz-ui/packages/tooltip';
+  import Emitter from '@yhui/zz-ui/src/mixins/emitter';
 
   export default {
     name: 'ZzMenuItem',

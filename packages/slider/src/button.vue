@@ -28,7 +28,7 @@
 </template>
 
 <script>
-  import ZzTooltip from 'element-ui/packages/tooltip';
+  import ZzTooltip from '@yhui/zz-ui/packages/tooltip';
 
   export default {
     name: 'ZzSliderButton',

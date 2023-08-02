@@ -59,13 +59,13 @@
 </template>
 <script>
   import debounce from 'throttle-debounce/debounce';
-  import ZzInput from 'element-ui/packages/input';
-  import Clickoutside from 'element-ui/src/utils/clickoutside';
+  import ZzInput from '@yhui/zz-ui/packages/input';
+  import Clickoutside from '@yhui/zz-ui/src/utils/clickoutside';
   import ZzAutocompleteSuggestions from './autocomplete-suggestions.vue';
-  import Emitter from 'element-ui/src/mixins/emitter';
-  import Migrating from 'element-ui/src/mixins/migrating';
-  import { generateId } from 'element-ui/src/utils/util';
-  import Focus from 'element-ui/src/mixins/focus';
+  import Emitter from '@yhui/zz-ui/src/mixins/emitter';
+  import Migrating from '@yhui/zz-ui/src/mixins/migrating';
+  import { generateId } from '@yhui/zz-ui/src/utils/util';
+  import Focus from '@yhui/zz-ui/src/mixins/focus';
 
   export default {
     name: 'ZzAutocomplete',

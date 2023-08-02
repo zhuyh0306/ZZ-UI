@@ -34,9 +34,9 @@
   import TreeStore from './model/tree-store';
   import { getNodeKey, findNearestComponent } from './model/util';
   import ZzTreeNode from './tree-node.vue';
-  import {t} from 'element-ui/src/locale';
-  import emitter from 'element-ui/src/mixins/emitter';
-  import { addClass, removeClass } from 'element-ui/src/utils/dom';
+  import {t} from '@yhui/zz-ui/src/locale';
+  import emitter from '@yhui/zz-ui/src/mixins/emitter';
+  import { addClass, removeClass } from '@yhui/zz-ui/src/utils/dom';
 
   export default {
     name: 'ZzTree',

@@ -1,7 +1,7 @@
 <script>
-  import ZzCheckbox from 'element-ui/packages/checkbox';
-  import ZzRadio from 'element-ui/packages/radio';
-  import { isEqual } from 'element-ui/src/utils/util';
+  import ZzCheckbox from '@yhui/zz-ui/packages/checkbox';
+  import ZzRadio from '@yhui/zz-ui/packages/radio';
+  import { isEqual } from '@yhui/zz-ui/src/utils/util';
 
   const stopPropagation = e => e.stopPropagation();
 

@@ -1,4 +1,4 @@
-import ZzCheckbox from 'element-ui/packages/checkbox';
+import ZzCheckbox from '@yhui/zz-ui/packages/checkbox';
 export default {
   name: 'ZzTableRow',
   props: [

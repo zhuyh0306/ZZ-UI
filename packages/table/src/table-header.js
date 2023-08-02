@@ -1,6 +1,6 @@
 import Vue from 'vue';
-import { hasClass, addClass, removeClass } from 'element-ui/src/utils/dom';
-import ZzCheckbox from 'element-ui/packages/checkbox';
+import { hasClass, addClass, removeClass } from '@yhui/zz-ui/src/utils/dom';
+import ZzCheckbox from '@yhui/zz-ui/packages/checkbox';
 import FilterPanel from './filter-panel.vue';
 import LayoutObserver from './layout-observer';
 import { mapStates } from './store/helper';

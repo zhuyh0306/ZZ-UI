@@ -46,9 +46,9 @@
   </div>
 </template>
 <script>
-  import ZzInput from 'element-ui/packages/input';
-  import Focus from 'element-ui/src/mixins/focus';
-  import RepeatClick from 'element-ui/src/directives/repeat-click';
+  import ZzInput from '@yhui/zz-ui/packages/input';
+  import Focus from '@yhui/zz-ui/src/mixins/focus';
+  import RepeatClick from '@yhui/zz-ui/src/directives/repeat-click';
 
   export default {
     name: 'ZzInputNumber',

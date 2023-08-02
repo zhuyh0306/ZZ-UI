@@ -79,13 +79,13 @@
 </template>
 
 <script type="text/babel">
-  import Popup from 'element-ui/src/utils/popup';
-  import Locale from 'element-ui/src/mixins/locale';
-  import ZzInput from 'element-ui/packages/input';
-  import ZzButton from 'element-ui/packages/button';
-  import { addClass, removeClass } from 'element-ui/src/utils/dom';
-  import { t } from 'element-ui/src/locale';
-  import Dialog from 'element-ui/src/utils/aria-dialog';
+  import Popup from '@yhui/zz-ui/src/utils/popup';
+  import Locale from '@yhui/zz-ui/src/mixins/locale';
+  import ZzInput from '@yhui/zz-ui/packages/input';
+  import ZzButton from '@yhui/zz-ui/packages/button';
+  import { addClass, removeClass } from '@yhui/zz-ui/src/utils/dom';
+  import { t } from '@yhui/zz-ui/src/locale';
+  import Dialog from '@yhui/zz-ui/src/utils/aria-dialog';
 
   let messageBox;
   let typeMap = {

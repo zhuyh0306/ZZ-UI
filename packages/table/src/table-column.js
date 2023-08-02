@@ -1,6 +1,6 @@
 import { cellStarts, cellForced, defaultRenderCell, treeCellPrefix } from './config';
 import { mergeOptions, parseWidth, parseMinWidth, compose } from './util';
-import ZzCheckbox from 'element-ui/packages/checkbox';
+import ZzCheckbox from '@yhui/zz-ui/packages/checkbox';
 
 let columnIdSeed = 1;
 

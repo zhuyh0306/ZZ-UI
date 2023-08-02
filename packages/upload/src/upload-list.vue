@@ -63,8 +63,8 @@
   </transition-group>
 </template>
 <script>
-  import Locale from 'element-ui/src/mixins/locale';
-  import ZzProgress from 'element-ui/packages/progress';
+  import Locale from '@yhui/zz-ui/src/mixins/locale';
+  import ZzProgress from '@yhui/zz-ui/packages/progress';
 
   export default {
 

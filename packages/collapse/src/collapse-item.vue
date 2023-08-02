@@ -45,9 +45,9 @@
   </div>
 </template>
 <script>
-  import ZzCollapseTransition from 'element-ui/src/transitions/collapse-transition';
-  import Emitter from 'element-ui/src/mixins/emitter';
-  import { generateId } from 'element-ui/src/utils/util';
+  import ZzCollapseTransition from '@yhui/zz-ui/src/transitions/collapse-transition';
+  import Emitter from '@yhui/zz-ui/src/mixins/emitter';
+  import { generateId } from '@yhui/zz-ui/src/utils/util';
 
   export default {
     name: 'ZzCollapseItem',

@@ -44,7 +44,7 @@
   </label>
 </template>
 <script>
-  import Emitter from 'element-ui/src/mixins/emitter';
+  import Emitter from '@yhui/zz-ui/src/mixins/emitter';
 
   export default {
     name: 'ZzCheckboxButton',

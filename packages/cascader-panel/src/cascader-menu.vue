@@ -1,8 +1,8 @@
 <script>
-import ZzScrollbar from 'element-ui/packages/scrollbar';
+import ZzScrollbar from '@yhui/zz-ui/packages/scrollbar';
 import CascaderNode from './cascader-node.vue';
-import Locale from 'element-ui/src/mixins/locale';
-import { generateId } from 'element-ui/src/utils/util';
+import Locale from '@yhui/zz-ui/src/mixins/locale';
+import { generateId } from '@yhui/zz-ui/src/utils/util';
 
 export default {
   name: 'ZzCascaderMenu',

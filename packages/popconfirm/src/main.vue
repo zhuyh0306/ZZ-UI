@@ -36,9 +36,9 @@
 </template>
 
 <script>
-import ZzPopover from 'element-ui/packages/popover';
-import ZzButton from 'element-ui/packages/button';
-import {t} from 'element-ui/src/locale';
+import ZzPopover from '@yhui/zz-ui/packages/popover';
+import ZzButton from '@yhui/zz-ui/packages/button';
+import {t} from '@yhui/zz-ui/src/locale';
 
 export default {
   name: 'ZzPopconfirm',

@@ -19,8 +19,8 @@
 </template>
 
 <script type="text/babel">
-  import ZzScrollbar from 'element-ui/packages/scrollbar';
-  import scrollIntoView from 'element-ui/src/utils/scroll-into-view';
+  import ZzScrollbar from '@yhui/zz-ui/packages/scrollbar';
+  import scrollIntoView from '@yhui/zz-ui/src/utils/scroll-into-view';
 
   const parseTime = function(time) {
     const values = (time || '').split(':');

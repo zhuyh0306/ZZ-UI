@@ -57,12 +57,12 @@
 </template>
 
 <script>
-import Locale from 'element-ui/src/mixins/locale';
-import fecha from 'element-ui/src/utils/date';
-import ZzButton from 'element-ui/packages/button';
-import ZzButtonGroup from 'element-ui/packages/button-group';
+import Locale from '@yhui/zz-ui/src/mixins/locale';
+import fecha from '@yhui/zz-ui/src/utils/date';
+import ZzButton from '@yhui/zz-ui/packages/button';
+import ZzButtonGroup from '@yhui/zz-ui/packages/button-group';
 import DateTable from './date-table';
-import { validateRangeInOneMonth } from 'element-ui/src/utils/date-util';
+import { validateRangeInOneMonth } from '@yhui/zz-ui/src/utils/date-util';
 
 const validTypes = ['prev-month', 'today', 'next-month'];
 const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];

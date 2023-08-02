@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { isNumber, chain, multiply, padStart, reduce} from 'element-ui/src/utils/lodash';
+import { isNumber, chain, multiply, padStart, reduce} from '@yhui/zz-ui/src/utils/lodash';
 export default {
   name: 'ZzStatistic',
   data() {

@@ -33,8 +33,8 @@
 <script>
   import Color from './color';
   import PickerDropdown from './components/picker-dropdown.vue';
-  import Clickoutside from 'element-ui/src/utils/clickoutside';
-  import Emitter from 'element-ui/src/mixins/emitter';
+  import Clickoutside from '@yhui/zz-ui/src/utils/clickoutside';
+  import Emitter from '@yhui/zz-ui/src/mixins/emitter';
 
   export default {
     name: 'ZzColorPicker',

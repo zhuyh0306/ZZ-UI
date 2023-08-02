@@ -1,9 +1,9 @@
 import Pager from './pager.vue';
-import ZzSelect from 'element-ui/packages/select';
-import ZzOption from 'element-ui/packages/option';
-import ZzInput from 'element-ui/packages/input';
-import Locale from 'element-ui/src/mixins/locale';
-import { valueEquals } from 'element-ui/src/utils/util';
+import ZzSelect from '@yhui/zz-ui/packages/select';
+import ZzOption from '@yhui/zz-ui/packages/option';
+import ZzInput from '@yhui/zz-ui/packages/input';
+import Locale from '@yhui/zz-ui/src/mixins/locale';
+import { valueEquals } from '@yhui/zz-ui/src/utils/util';
 
 export default {
   name: 'ZzPagination',

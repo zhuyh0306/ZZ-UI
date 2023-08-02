@@ -43,14 +43,14 @@
 </template>
 
 <script type="text/babel">
-  import Popper from 'element-ui/src/utils/vue-popper';
-  import { PopupManager } from 'element-ui/src/utils/popup';
-  import Locale from 'element-ui/src/mixins/locale';
-  import Clickoutside from 'element-ui/src/utils/clickoutside';
+  import Popper from '@yhui/zz-ui/src/utils/vue-popper';
+  import { PopupManager } from '@yhui/zz-ui/src/utils/popup';
+  import Locale from '@yhui/zz-ui/src/mixins/locale';
+  import Clickoutside from '@yhui/zz-ui/src/utils/clickoutside';
   import Dropdown from './dropdown';
-  import ZzCheckbox from 'element-ui/packages/checkbox';
-  import ZzCheckboxGroup from 'element-ui/packages/checkbox-group';
-  import ZzScrollbar from 'element-ui/packages/scrollbar';
+  import ZzCheckbox from '@yhui/zz-ui/packages/checkbox';
+  import ZzCheckboxGroup from '@yhui/zz-ui/packages/checkbox-group';
+  import ZzScrollbar from '@yhui/zz-ui/packages/scrollbar';
 
   export default {
     name: 'ZzTableFilterPanel',

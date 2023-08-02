@@ -1,6 +1,6 @@
-import objectAssign from 'element-ui/src/utils/merge';
+import objectAssign from '@yhui/zz-ui/src/utils/merge';
 import { markNodeData, NODE_KEY } from './util';
-import { arrayFindIndex } from 'element-ui/src/utils/util';
+import { arrayFindIndex } from '@yhui/zz-ui/src/utils/util';
 
 export const getChildState = node => {
   let all = true;
@@ -22,10 +22,10 @@ export const getChildState = node => {
   return { all, none, allWithoutDisable, half: !all && !none };
 };
 
-const reInitChecked = function(node) {
+const reInitChecked = function (node) {
   if (node.childNodes.length === 0 || node.loading) return;
 
-  const {all, none, half} = getChildState(node.childNodes);
+  const { all, none, half } = getChildState(node.childNodes);
   if (all) {
     node.checked = true;
     node.indeterminate = false;
@@ -45,7 +45,7 @@ const reInitChecked = function(node) {
   }
 };
 
-const getPropertyFromData = function(node, prop) {
+const getPropertyFromData = function (node, prop) {
   const props = node.store.props;
   const data = node.data || {};
   const config = props[prop];
@@ -192,7 +192,7 @@ export default class Node {
   }
 
   contains(target, deep = true) {
-    const walk = function(parent) {
+    const walk = function (parent) {
       const children = parent.childNodes || [];
       let result = false;
       for (let i = 0, j = children.length; i < j; i++) {

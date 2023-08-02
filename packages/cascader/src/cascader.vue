@@ -112,21 +112,21 @@
 </template>
 
 <script>
-import Popper from 'element-ui/src/utils/vue-popper';
-import Clickoutside from 'element-ui/src/utils/clickoutside';
-import Emitter from 'element-ui/src/mixins/emitter';
-import Locale from 'element-ui/src/mixins/locale';
-import Migrating from 'element-ui/src/mixins/migrating';
-import ZzInput from 'element-ui/packages/input';
-import ZzTag from 'element-ui/packages/tag';
-import ZzScrollbar from 'element-ui/packages/scrollbar';
-import ZzCascaderPanel from 'element-ui/packages/cascader-panel';
-import AriaUtils from 'element-ui/src/utils/aria-utils';
-import { t } from 'element-ui/src/locale';
-import { isEqual, isEmpty, kebabCase } from 'element-ui/src/utils/util';
-import { isUndefined, isFunction } from 'element-ui/src/utils/types';
-import { isDef } from 'element-ui/src/utils/shared';
-import { addResizeListener, removeResizeListener } from 'element-ui/src/utils/resize-event';
+import Popper from '@yhui/zz-ui/src/utils/vue-popper';
+import Clickoutside from '@yhui/zz-ui/src/utils/clickoutside';
+import Emitter from '@yhui/zz-ui/src/mixins/emitter';
+import Locale from '@yhui/zz-ui/src/mixins/locale';
+import Migrating from '@yhui/zz-ui/src/mixins/migrating';
+import ZzInput from '@yhui/zz-ui/packages/input';
+import ZzTag from '@yhui/zz-ui/packages/tag';
+import ZzScrollbar from '@yhui/zz-ui/packages/scrollbar';
+import ZzCascaderPanel from '@yhui/zz-ui/packages/cascader-panel';
+import AriaUtils from '@yhui/zz-ui/src/utils/aria-utils';
+import { t } from '@yhui/zz-ui/src/locale';
+import { isEqual, isEmpty, kebabCase } from '@yhui/zz-ui/src/utils/util';
+import { isUndefined, isFunction } from '@yhui/zz-ui/src/utils/types';
+import { isDef } from '@yhui/zz-ui/src/utils/shared';
+import { addResizeListener, removeResizeListener } from '@yhui/zz-ui/src/utils/resize-event';
 import debounce from 'throttle-debounce/debounce';
 
 const { keys: KeyCode } = AriaUtils;

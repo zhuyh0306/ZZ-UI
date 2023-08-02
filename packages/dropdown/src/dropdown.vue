@@ -1,10 +1,10 @@
 <script>
-  import Clickoutside from 'element-ui/src/utils/clickoutside';
-  import Emitter from 'element-ui/src/mixins/emitter';
-  import Migrating from 'element-ui/src/mixins/migrating';
-  import ZzButton from 'element-ui/packages/button';
-  import ZzButtonGroup from 'element-ui/packages/button-group';
-  import { generateId } from 'element-ui/src/utils/util';
+  import Clickoutside from '@yhui/zz-ui/src/utils/clickoutside';
+  import Emitter from '@yhui/zz-ui/src/mixins/emitter';
+  import Migrating from '@yhui/zz-ui/src/mixins/migrating';
+  import ZzButton from '@yhui/zz-ui/packages/button';
+  import ZzButtonGroup from '@yhui/zz-ui/packages/button-group';
+  import { generateId } from '@yhui/zz-ui/src/utils/util';
 
   export default {
     name: 'ZzDropdown',

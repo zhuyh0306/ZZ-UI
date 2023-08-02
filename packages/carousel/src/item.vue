@@ -21,7 +21,7 @@
 </template>
 
 <script>
-  import { autoprefixer } from 'element-ui/src/utils/util';
+  import { autoprefixer } from '@yhui/zz-ui/src/utils/util';
   const CARD_SCALE = 0.83;
   export default {
     name: 'ZzCarouselItem',

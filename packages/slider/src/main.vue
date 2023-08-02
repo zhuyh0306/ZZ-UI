@@ -74,10 +74,10 @@
 </template>
 
 <script type="text/babel">
-  import ZzInputNumber from 'element-ui/packages/input-number';
+  import ZzInputNumber from '@yhui/zz-ui/packages/input-number';
   import SliderButton from './button.vue';
   import SliderMarker from './marker';
-  import Emitter from 'element-ui/src/mixins/emitter';
+  import Emitter from '@yhui/zz-ui/src/mixins/emitter';
 
   export default {
     name: 'ZzSlider',

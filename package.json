@@ -1,6 +1,6 @@
 {
   "name": "@yhui/zz-ui",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "description": "A Component Library base element for Vue.js.",
   "main": "lib/element-ui.common.js",
   "files": [
@@ -68,7 +68,6 @@
     "normalize-wheel": "^1.0.1",
     "qs": "^6.11.2",
     "resize-observer-polyfill": "^1.5.0",
-    "sass": "^1.64.2",
     "throttle-debounce": "^1.0.1"
   },
   "peerDependencies": {
@@ -126,6 +125,7 @@
     "markdown-it-container": "^2.0.0",
     "mini-css-extract-plugin": "^0.4.1",
     "mocha": "^6.0.2",
+    "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss": "^7.0.14",
     "progress-bar-webpack-plugin": "^1.11.0",

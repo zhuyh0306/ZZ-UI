@@ -18,9 +18,9 @@
   </transition>
 </template>
 <script>
-  import Popper from 'element-ui/src/utils/vue-popper';
-  import Emitter from 'element-ui/src/mixins/emitter';
-  import ZzScrollbar from 'element-ui/packages/scrollbar';
+  import Popper from '@yhui/zz-ui/src/utils/vue-popper';
+  import Emitter from '@yhui/zz-ui/src/mixins/emitter';
+  import ZzScrollbar from '@yhui/zz-ui/packages/scrollbar';
 
   export default {
     components: { ZzScrollbar },

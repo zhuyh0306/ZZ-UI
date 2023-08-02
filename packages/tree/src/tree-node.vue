@@ -72,9 +72,9 @@
 </template>
 
 <script type="text/jsx">
-  import ZzCollapseTransition from 'element-ui/src/transitions/collapse-transition';
-  import ZzCheckbox from 'element-ui/packages/checkbox';
-  import emitter from 'element-ui/src/mixins/emitter';
+  import ZzCollapseTransition from '@yhui/zz-ui/src/transitions/collapse-transition';
+  import ZzCheckbox from '@yhui/zz-ui/packages/checkbox';
+  import emitter from '@yhui/zz-ui/src/mixins/emitter';
   import { getNodeKey } from './model/util';
 
   export default {

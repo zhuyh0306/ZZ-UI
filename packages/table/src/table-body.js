@@ -1,8 +1,8 @@
-import { arrayFindIndex } from 'element-ui/src/utils/util';
+import { arrayFindIndex } from '@yhui/zz-ui/src/utils/util';
 import { getCell, getColumnByCell, getRowIdentity } from './util';
-import { getStyle, hasClass, removeClass, addClass } from 'element-ui/src/utils/dom';
-import ZzCheckbox from 'element-ui/packages/checkbox';
-import ZzTooltip from 'element-ui/packages/tooltip';
+import { getStyle, hasClass, removeClass, addClass } from '@yhui/zz-ui/src/utils/dom';
+import ZzCheckbox from '@yhui/zz-ui/packages/checkbox';
+import ZzTooltip from '@yhui/zz-ui/packages/tooltip';
 import debounce from 'throttle-debounce/debounce';
 import LayoutObserver from './layout-observer';
 import { mapStates } from './store/helper';

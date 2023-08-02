@@ -52,10 +52,10 @@
 </template>
 
 <script>
-  import ZzCheckboxGroup from 'element-ui/packages/checkbox-group';
-  import ZzCheckbox from 'element-ui/packages/checkbox';
-  import ZzInput from 'element-ui/packages/input';
-  import Locale from 'element-ui/src/mixins/locale';
+  import ZzCheckboxGroup from '@yhui/zz-ui/packages/checkbox-group';
+  import ZzCheckbox from '@yhui/zz-ui/packages/checkbox';
+  import ZzInput from '@yhui/zz-ui/packages/input';
+  import Locale from '@yhui/zz-ui/src/mixins/locale';
 
   export default {
     mixins: [Locale],

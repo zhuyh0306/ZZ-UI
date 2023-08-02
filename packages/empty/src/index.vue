@@ -18,7 +18,7 @@
 
 <script>
 import ImgEmpty from './img-empty.vue';
-import { t } from 'element-ui/src/locale';
+import { t } from '@yhui/zz-ui/src/locale';
 
 export default {
   name: 'ZzEmpty',
